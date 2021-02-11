@@ -24,7 +24,22 @@ namespace EnglishVocabulary
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                VocabularyDBContext dBContext = new VocabularyDBContext();
+                dBContext.Topics.Add(new Topics());
+                dBContext.Topics.Add(new Topics());
+                dBContext.SaveChanges();
 
+                foreach (var item in dBContext.Topics)
+                {
+                    MessageBox.Show(item.ToString());
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
