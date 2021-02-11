@@ -14,6 +14,6 @@ namespace EnglishVocabulary
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<VocabularyDBContext>());
         }
 
-        public DbSet<Topics> Topics { get; set; }
+        public DbSet<Vocabulary> Topics { get; set; }
     }
 }

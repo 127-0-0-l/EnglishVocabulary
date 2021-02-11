@@ -27,8 +27,9 @@ namespace EnglishVocabulary
             try
             {
                 VocabularyDBContext dBContext = new VocabularyDBContext();
-                dBContext.Topics.Add(new Topics());
-                dBContext.Topics.Add(new Topics());
+                //dBContext.Topics.RemoveRange(dBContext.Topics);
+                dBContext.Topics.Add(new Vocabulary());
+                //dBContext.Topics.Add(new Topics());
                 dBContext.SaveChanges();
 
                 foreach (var item in dBContext.Topics)

@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
 
 namespace EnglishVocabulary
 {
     class Topic
     {
         public int Id { get; set; }
-        public Subtopic subtopic { get; set; }
+        public List<Subtopic> Subtopics { get; set; }
     }
 }
