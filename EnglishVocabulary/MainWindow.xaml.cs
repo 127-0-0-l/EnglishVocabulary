@@ -24,7 +24,12 @@ namespace EnglishVocabulary
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            DataBaseAccess.CreateTopic(new Topic());
+
+            foreach (var item in DataBaseAccess.GetData())
+            {
+                MessageBox.Show(item);
+            }
         }
     }
 }
