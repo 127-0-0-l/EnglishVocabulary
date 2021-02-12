@@ -20,15 +20,24 @@ namespace EnglishVocabulary
         public MainWindow()
         {
             InitializeComponent();
+
+            grdMenuItemTest.MouseEnter += (s, e) =>
+            {
+                grdMenuItemTest.Background = new SolidColorBrush(Color.FromRgb(0, 100, 0));
+            };
+            grdMenuItemTest.MouseLeave += (s, e) =>
+            {
+                grdMenuItemTest.Background = new SolidColorBrush(Color.FromRgb(100, 0, 0));
+            };
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataBaseAccess.CreateTopic(new Topic());
+            //DataBaseAccess.CreateTopic(new Topic());
 
             foreach (var item in DataBaseAccess.GetData())
             {
-                MessageBox.Show(item);
+                //MessageBox.Show(item);
             }
         }
     }

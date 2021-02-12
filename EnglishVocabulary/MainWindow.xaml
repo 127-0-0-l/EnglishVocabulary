@@ -4,9 +4,81 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnglishVocabulary"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
-    <Grid>
-        
+        mc:Ignorable="d" Height="400" Width="700" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Background="{x:Null}" WindowStyle="None" MinWidth="700" MinHeight="400">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0,0,0,1" CornerRadius="0"/>
+    </WindowChrome.WindowChrome>
+    <Grid x:Name="grdMain" Background="White">
+        <Canvas x:Name="cnvBase" Margin="200,40,0,0" IsEnabled="False" Background="#FFF2F2F2"/>
+        <Grid x:Name="grdHeader" Height="{Binding Margin.Top, ElementName=cnvBase}" Margin="0" VerticalAlignment="Top" Background="#FFADADAD">
+            <Rectangle x:Name="rct" Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="24" Margin="0,0,10,0" VerticalAlignment="Center" Width="24"/>
+            <Rectangle x:Name="rct_Copy" Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="24" Margin="0,0,44,0" VerticalAlignment="Center" Width="24"/>
+        </Grid>
+        <Grid x:Name="grdMenu" HorizontalAlignment="Left" Margin="0,40,0,0" Width="{Binding Margin.Left, ElementName=cnvBase}" Background="#FF6473E2">
+            <Grid x:Name="grdMenuItemTest" Height="40" Margin="0" VerticalAlignment="Top" Background="#FF5BA0DB">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Test" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid x:Name="grdMenuItemAddTopic" Height="40" Margin="0,40,0,0" VerticalAlignment="Top" Background="#FF5BA0DB">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Add topic" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid x:Name="grdMenuItemEditTopic" Height="40" Margin="0,80,0,0" VerticalAlignment="Top" Background="#FF5BA0DB">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Edit topic" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid x:Name="grdMenuItemDeleteTopic" Height="40" Margin="0,120,0,0" VerticalAlignment="Top" Background="#FF5BA0DB">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Delete topic" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid x:Name="grdMenuItemColorTheme" Height="40" Margin="0,160,0,0" VerticalAlignment="Top" Background="#FF5BA0DB">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Change color theme" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid x:Name="grdMenuItemHelp" Height="40" Margin="0,200,0,0" VerticalAlignment="Top" Background="#FF5BA0DB">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Help" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid x:Name="grdMenuItemAbout" Height="40" Margin="0,240,0,0" VerticalAlignment="Top" Background="#FF5BA0DB">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="About" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+        <Grid x:Name="grdTest" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Focusable="True" Visibility="Hidden">
+            <Grid x:Name="grdTestHeader" Height="40" Margin="0" VerticalAlignment="Top" Background="#FFD1D1D1">
+                <ComboBox x:Name="cbTestHeaderTopic" HorizontalAlignment="Left" Margin="6,6,0,6" Width="150" FontSize="14"/>
+                <ComboBox x:Name="cbTestHeaderSubtopic" HorizontalAlignment="Left" Margin="162,6,0,6" Width="150"/>
+                <Grid x:Name="grdTestHeaderBtnStart" HorizontalAlignment="Right" Height="22" Margin="0,6,6,6" Width="79" Background="#FF5BA0DB">
+                    <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Start" VerticalAlignment="Center"/>
+                </Grid>
+                <ComboBox x:Name="cbTestHeaderMode" HorizontalAlignment="Left" Margin="318,6,0,6" Width="80"/>
+            </Grid>
+            <Grid x:Name="grdTestTest" Background="{Binding Background, ElementName=cnvBase}" Margin="0,40,0,0" Visibility="Hidden">
+                <TextBlock x:Name="tbTestTestWord" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rbtnTestTest4" Content="RadioButton" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rbtnTestTest2" Content="RadioButton" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rbtnTestTest3" Content="RadioButton" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rbtnTestTest1" Content="RadioButton" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top"/>
+                <Grid x:Name="grdTestTestBtnFinish" HorizontalAlignment="Right" Height="30" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="80" Background="#FF5BA0DB">
+                    <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Finish" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid x:Name="grdTestTestBtnNext" HorizontalAlignment="Right" Height="30" Margin="0,0,100,10" VerticalAlignment="Bottom" Width="80" Background="#FF5BA0DB">
+                    <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Next" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid x:Name="grdTestResult" Background="{Binding Background, ElementName=cnvBase}" Margin="{Binding Margin, ElementName=grdTestTest}" Visibility="Hidden">
+                <Rectangle x:Name="rctTestResultRightAnswers" Fill="#FF00E544" HorizontalAlignment="Left" Height="20" Margin="150,20,0,0" VerticalAlignment="Top" Width="200"/>
+                <Rectangle x:Name="rctTestResultWrongAnswers" Fill="#FFE51C00" HorizontalAlignment="Left" Height="20" Margin="150,50,0,0" VerticalAlignment="Top" Width="200"/>
+                <Rectangle x:Name="rctTestResultNoAnswer" Fill="#FF898989" HorizontalAlignment="Left" Height="20" Margin="150,80,0,0" VerticalAlignment="Top" Width="200"/>
+                <TextBlock HorizontalAlignment="Left" Margin="19,20,0,0" TextWrapping="Wrap" Text="right answers:" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" Text="wrong answers:" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="35,80,0,0" TextWrapping="Wrap" Text="no answer:" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tbTestResultWrongAnswers" HorizontalAlignment="Left" Margin="111,50,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tbTestResultNoAnswer" HorizontalAlignment="Left" Margin="111,80,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tbTestResultRightAnswers" HorizontalAlignment="Left" Margin="111,20,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+                <ScrollViewer Margin="0,130,0,0" VerticalScrollBarVisibility="Auto">
+                    <Grid x:Name="grdTestResultWords" Height="100" VerticalAlignment="Top"/>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+        <Grid x:Name="grdAddTopic" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden"/>
+        <Grid x:Name="grdEditTopic" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden"/>
+        <Grid x:Name="grdDeleteTopic" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden"/>
+        <Grid x:Name="grdColorTheme" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden"/>
+        <Grid x:Name="grdHelp" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden"/>
+        <Grid x:Name="grdAbout" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden"/>
     </Grid>
 </Window>
