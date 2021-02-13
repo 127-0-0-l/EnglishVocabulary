@@ -9,10 +9,12 @@
         <WindowChrome GlassFrameThickness="0,0,0,1" CornerRadius="0"/>
     </WindowChrome.WindowChrome>
     <Grid x:Name="grdMain" Background="White">
-        <Canvas x:Name="cnvBase" Margin="200,40,0,0" IsEnabled="False" Background="#FFF2F2F2"/>
+        <Canvas x:Name="cnvBase" Margin="200,40,0,0" IsEnabled="False" Background="#FFF2F2F2" Visibility="Hidden"/>
         <Grid x:Name="grdHeader" Height="{Binding Margin.Top, ElementName=cnvBase}" Margin="0" VerticalAlignment="Top" Background="#FFADADAD">
             <Rectangle x:Name="rctBtnClose" Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="24" Margin="0,0,10,0" VerticalAlignment="Center" Width="24"/>
             <Rectangle x:Name="rctBtnMinimize" Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="24" Margin="0,0,44,0" VerticalAlignment="Center" Width="24"/>
+            <TextBlock x:Name="tbHeaderTitle" HorizontalAlignment="Left" Margin="151,10,0,0" TextWrapping="Wrap" Text="Linguage" VerticalAlignment="Top"/>
+            <Image HorizontalAlignment="Left" Height="30" Margin="5,0,0,0" Width="30"/>
         </Grid>
         <Grid x:Name="grdMenu" HorizontalAlignment="Left" Margin="0,40,0,0" Width="{Binding Margin.Left, ElementName=cnvBase}" Background="#FF6473E2">
             <Grid x:Name="grdMenuItemTest" Height="40" Margin="0" VerticalAlignment="Top" Background="#FF5BA0DB">
@@ -113,7 +115,7 @@
         <Grid x:Name="grdHelp" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden">
             <RichTextBox x:Name="rtbHelpText" Margin="0" VerticalScrollBarVisibility="Auto" Background="{Binding Background, ElementName=cnvBase}" BorderThickness="0" Block.LineHeight="2" IsReadOnly="True"/>
         </Grid>
-        <Grid x:Name="grdAbout" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}">
+        <Grid x:Name="grdAbout" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden">
             <RichTextBox x:Name="rtbAboutText" Margin="0" Block.LineHeight="2" BorderThickness="0" Background="{Binding Background, ElementName=cnvBase}" IsReadOnly="True"/>
         </Grid>
     </Grid>
