@@ -20,15 +20,6 @@ namespace EnglishVocabulary
         public MainWindow()
         {
             InitializeComponent();
-
-            grdMenuItemTest.MouseEnter += (s, e) =>
-            {
-                grdMenuItemTest.Background = new SolidColorBrush(Color.FromRgb(0, 100, 0));
-            };
-            grdMenuItemTest.MouseLeave += (s, e) =>
-            {
-                grdMenuItemTest.Background = new SolidColorBrush(Color.FromRgb(100, 0, 0));
-            };
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

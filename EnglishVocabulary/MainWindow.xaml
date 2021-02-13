@@ -8,43 +8,62 @@
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0,0,0,1" CornerRadius="0"/>
     </WindowChrome.WindowChrome>
-    <Grid x:Name="grdMain" Background="White">
-        <Canvas x:Name="cnvBase" Margin="200,40,0,0" IsEnabled="False" Background="#FFF2F2F2" Visibility="Hidden"/>
-        <Grid x:Name="grdHeader" Height="{Binding Margin.Top, ElementName=cnvBase}" Margin="0" VerticalAlignment="Top" Background="#FF4D606E">
-            <Rectangle x:Name="rctBtnClose" Fill="WhiteSmoke" HorizontalAlignment="Right" Height="24" Margin="0,0,10,0" VerticalAlignment="Center" Width="24">
+    <Grid x:Name="grdMain">
+
+        <Rectangle x:Name="rsrcClrHeaderBackground" Fill="#FF4D606E" Visibility="Hidden"/>
+        <Rectangle x:Name="rsrcClrHeaderFont" Fill="#FFF5F5F5" Visibility="Hidden"/>
+        <Rectangle x:Name="rsrcClrHeaderButtons" Fill="#FFF5F5F5" Visibility="Hidden"/>
+        <Rectangle x:Name="rsrcClrHeaderButtonsEnter" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="rsrcClrHeaderButtonsClick" Fill="#fff" Visibility="Hidden"/>
+
+        <Rectangle x:Name="rsrcClrMenuBackground" Fill="#FF6356E5" Visibility="Hidden"/>
+        <Rectangle x:Name="rsrcClrMenuButton" Fill="#FF5685E5" Visibility="Hidden"/>
+        <Rectangle x:Name="rsrcClrMenuButtonEnter" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="rsrcClrMenuButtonClick" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="rsrcClrMenuButtonFont" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="rsrcClrMenuImage" Fill="#fff" Visibility="Hidden"/>
+
+        <Rectangle x:Name="rsrcClrMainBackground" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="rsrcClrMainFont" Fill="#fff" Visibility="Hidden"/>
+
+        <Rectangle x:Name="rsrcClrTestHeader" Fill="#fff" Visibility="Hidden"/>
+
+        <Canvas x:Name="cnvBase" Margin="200,40,0,0" IsEnabled="False" Background="{Binding Fill, ElementName=rsrcClrMainBackground}"/>
+        <Grid x:Name="grdHeader" Height="{Binding Margin.Top, ElementName=cnvBase}" Margin="0" VerticalAlignment="Top" Background="{Binding Fill, ElementName=rsrcClrHeaderBackground}">
+            <Rectangle x:Name="rctBtnClose" Fill="{Binding Fill, ElementName=rsrcClrHeaderButtons}" HorizontalAlignment="Right" Height="24" Margin="0,0,10,0" VerticalAlignment="Center" Width="24">
                 <Rectangle.OpacityMask>
                     <ImageBrush ImageSource="Assets/close.png"/>
                 </Rectangle.OpacityMask>
             </Rectangle>
-            <Rectangle x:Name="rctBtnMinimize" Fill="WhiteSmoke" HorizontalAlignment="Right" Height="24" Margin="0,0,44,0" VerticalAlignment="Center" Width="24">
+            <Rectangle x:Name="rctBtnMinimize" Fill="{Binding Fill, ElementName=rsrcClrHeaderButtons}" HorizontalAlignment="Right" Height="24" Margin="0,0,44,0" VerticalAlignment="Center" Width="24">
                 <Rectangle.OpacityMask>
                     <ImageBrush ImageSource="Assets/minimize.png"/>
                 </Rectangle.OpacityMask>
             </Rectangle>
-            <TextBlock x:Name="tbHeaderTitle" HorizontalAlignment="Left" Margin="40,0,0,0" TextWrapping="Wrap" Text="Linguage" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="16" Foreground="WhiteSmoke"/>
+            <TextBlock x:Name="tbHeaderTitle" HorizontalAlignment="Left" Margin="40,0,0,0" TextWrapping="Wrap" Text="Linguage" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="16" Foreground="{Binding Fill, ElementName=rsrcClrHeaderFont}"/>
             <Image HorizontalAlignment="Left" Height="30" Margin="5,0,0,0" Width="30" Source="Assets/logo.png" IsEnabled="False"/>
         </Grid>
-        <Grid x:Name="grdMenu" HorizontalAlignment="Left" Margin="0,40,0,0" Width="{Binding Margin.Left, ElementName=cnvBase}" Background="#FF6473E2">
-            <Grid x:Name="grdMenuItemTest" Height="40" Margin="0" VerticalAlignment="Top" Background="#FF5BA0DB">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Test" VerticalAlignment="Center"/>
+        <Grid x:Name="grdMenu" HorizontalAlignment="Left" Margin="0,40,0,0" Width="{Binding Margin.Left, ElementName=cnvBase}" Background="{Binding Fill, ElementName=rsrcClrMenuBackground}">
+            <Grid x:Name="grdMenuItemTest" Height="40" Margin="0" VerticalAlignment="Top" Background="{Binding Fill, ElementName=rsrcClrMenuButton}">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Test" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
             </Grid>
-            <Grid x:Name="grdMenuItemAddTopic" Height="40" Margin="0,40,0,0" VerticalAlignment="Top" Background="#FF5BA0DB">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Add topic" VerticalAlignment="Center"/>
+            <Grid x:Name="grdMenuItemAddTopic" Height="40" Margin="0,40,0,0" VerticalAlignment="Top" Background="{Binding Background, ElementName=grdMenuItemTest}">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Add topic" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
             </Grid>
-            <Grid x:Name="grdMenuItemEditTopic" Height="40" Margin="0,80,0,0" VerticalAlignment="Top" Background="#FF5BA0DB">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Edit topic" VerticalAlignment="Center"/>
+            <Grid x:Name="grdMenuItemEditTopic" Height="40" Margin="0,80,0,0" VerticalAlignment="Top" Background="{Binding Background, ElementName=grdMenuItemTest}">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Edit topic" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
             </Grid>
-            <Grid x:Name="grdMenuItemDeleteTopic" Height="40" Margin="0,120,0,0" VerticalAlignment="Top" Background="#FF5BA0DB">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Delete topic" VerticalAlignment="Center"/>
+            <Grid x:Name="grdMenuItemDeleteTopic" Height="40" Margin="0,120,0,0" VerticalAlignment="Top" Background="{Binding Background, ElementName=grdMenuItemTest}">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Delete topic" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
             </Grid>
-            <Grid x:Name="grdMenuItemColorTheme" Height="40" Margin="0,160,0,0" VerticalAlignment="Top" Background="#FF5BA0DB">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Change color theme" VerticalAlignment="Center"/>
+            <Grid x:Name="grdMenuItemColorTheme" Height="40" Margin="0,160,0,0" VerticalAlignment="Top" Background="{Binding Background, ElementName=grdMenuItemTest}">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Change color theme" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
             </Grid>
-            <Grid x:Name="grdMenuItemHelp" Height="40" Margin="0,200,0,0" VerticalAlignment="Top" Background="#FF5BA0DB">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Help" VerticalAlignment="Center"/>
+            <Grid x:Name="grdMenuItemHelp" Height="40" Margin="0,200,0,0" VerticalAlignment="Top" Background="{Binding Background, ElementName=grdMenuItemTest}">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Help" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
             </Grid>
-            <Grid x:Name="grdMenuItemAbout" Height="40" Margin="0,240,0,0" VerticalAlignment="Top" Background="#FF5BA0DB">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="About" VerticalAlignment="Center"/>
+            <Grid x:Name="grdMenuItemAbout" Height="40" Margin="0,240,0,0" VerticalAlignment="Top" Background="{Binding Background, ElementName=grdMenuItemTest}">
+                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="About" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
             </Grid>
         </Grid>
         <Grid x:Name="grdTest" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Focusable="True" Visibility="Hidden">
