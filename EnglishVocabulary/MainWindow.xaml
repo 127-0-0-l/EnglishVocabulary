@@ -10,10 +10,18 @@
     </WindowChrome.WindowChrome>
     <Grid x:Name="grdMain" Background="White">
         <Canvas x:Name="cnvBase" Margin="200,40,0,0" IsEnabled="False" Background="#FFF2F2F2" Visibility="Hidden"/>
-        <Grid x:Name="grdHeader" Height="{Binding Margin.Top, ElementName=cnvBase}" Margin="0" VerticalAlignment="Top" Background="#FFA6A9B6">
-            <Rectangle x:Name="rctBtnClose" Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="24" Margin="0,0,10,0" VerticalAlignment="Center" Width="24"/>
-            <Rectangle x:Name="rctBtnMinimize" Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="24" Margin="0,0,44,0" VerticalAlignment="Center" Width="24"/>
-            <TextBlock x:Name="tbHeaderTitle" HorizontalAlignment="Left" Margin="40,0,0,0" TextWrapping="Wrap" Text="Linguage" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="16"/>
+        <Grid x:Name="grdHeader" Height="{Binding Margin.Top, ElementName=cnvBase}" Margin="0" VerticalAlignment="Top" Background="#FF4D606E">
+            <Rectangle x:Name="rctBtnClose" Fill="WhiteSmoke" HorizontalAlignment="Right" Height="24" Margin="0,0,10,0" VerticalAlignment="Center" Width="24">
+                <Rectangle.OpacityMask>
+                    <ImageBrush ImageSource="Assets/close.png"/>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+            <Rectangle x:Name="rctBtnMinimize" Fill="WhiteSmoke" HorizontalAlignment="Right" Height="24" Margin="0,0,44,0" VerticalAlignment="Center" Width="24">
+                <Rectangle.OpacityMask>
+                    <ImageBrush ImageSource="Assets/minimize.png"/>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+            <TextBlock x:Name="tbHeaderTitle" HorizontalAlignment="Left" Margin="40,0,0,0" TextWrapping="Wrap" Text="Linguage" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="16" Foreground="WhiteSmoke"/>
             <Image HorizontalAlignment="Left" Height="30" Margin="5,0,0,0" Width="30" Source="Assets/logo.png" IsEnabled="False"/>
         </Grid>
         <Grid x:Name="grdMenu" HorizontalAlignment="Left" Margin="0,40,0,0" Width="{Binding Margin.Left, ElementName=cnvBase}" Background="#FF6473E2">
