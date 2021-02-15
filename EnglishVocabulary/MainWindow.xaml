@@ -7,6 +7,7 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:Collections="clr-namespace:System.Collections;assembly=mscorlib" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="EnglishVocabulary.MainWindow"
         mc:Ignorable="d" Height="400" Width="700" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowStyle="None" MinWidth="700" MinHeight="400" Icon="Assets/logo.png" Background="{x:Null}">
 
+    <!--
     <Window.Resources>
         <Color x:Key="res">#fff</Color>
         <SolidColorBrush x:Key="mouseOver" Color="{Binding Fill, ElementName=rsrcClrMenuBackground}"/>
@@ -199,6 +200,7 @@
             </Setter>
         </Style>
     </Window.Resources>
+    -->
 
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0,0,0,1" CornerRadius="0"/>
@@ -223,7 +225,55 @@
 
         <Rectangle x:Name="rsrcClrTestHeader" Fill="#fff" Visibility="Hidden"/>
 
-        <Canvas x:Name="cnvBase" Margin="200,40,0,0" IsEnabled="False" Background="{Binding Fill, ElementName=rsrcClrMainBackground}"/>
+        <Canvas x:Name="cnvBase" Margin="200,40,0,0" IsEnabled="False" Background="{Binding Fill, ElementName=rsrcClrMainBackground}">
+            <Grid x:Name="grdCustomComboBox" MinHeight="20" MinWidth="50" Width="200" Height="200">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="{Binding Height, ElementName=Row}"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Name="Row" Height="20"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox x:Name="SelectedElement" Grid.Column="0" IsReadOnly="True"/>
+                <Grid x:Name="Button" Grid.Column="1" Background="#FFA0A0A0">
+                    <Path x:Name="Arrow"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Data="M 0 0 L 4 4 L 8 0 Z" >
+                        <Path.Fill>
+                            <SolidColorBrush Color="Black"/>
+                        </Path.Fill>
+                    </Path>
+                </Grid>
+                <ScrollViewer x:Name="List" Grid.Row="1" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="0" Height="auto" Width="{Binding Width, ElementName=grdCustomComboBox}">
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoiewej</TextBlock>
+                        <TextBlock>ffoieo</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ieoifddddddddddddddddddddddddddddddddddddddddddddddddddddddwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                        <TextBlock>ffoieoifwej</TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+                
+            </Grid>
+        </Canvas>
         <Grid x:Name="grdHeader" Height="{Binding Margin.Top, ElementName=cnvBase}" Margin="0" VerticalAlignment="Top" Background="{Binding Fill, ElementName=rsrcClrHeaderBackground}">
             <Rectangle x:Name="rctBtnClose" Fill="{Binding Fill, ElementName=rsrcClrHeaderButtons}" HorizontalAlignment="Right" Height="24" Margin="0,0,10,0" VerticalAlignment="Center" Width="24">
                 <Rectangle.OpacityMask>
@@ -261,7 +311,7 @@
                 <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="About" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
             </Grid>
         </Grid>
-        <Grid x:Name="grdTest" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Focusable="True" Visibility="Visible">
+        <Grid x:Name="grdTest" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Focusable="True" Visibility="Hidden">
             <Grid x:Name="grdTestHeader" Height="40" Margin="0" VerticalAlignment="Top">
                 <ComboBox x:Name="cbTestHeaderTopic" HorizontalAlignment="Left" Margin="6,6,0,6" Width="150" FontSize="14" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two">
                     <System:String>asffw</System:String>
@@ -312,26 +362,6 @@
                     <Grid x:Name="grdTestResultWords" Height="100" VerticalAlignment="Top"/>
                 </ScrollViewer>
             </Grid>
-            <StackPanel HorizontalAlignment="Left" Margin="145,206,0,0" VerticalAlignment="Top" MinHeight="20" MinWidth="148" ScrollViewer.HorizontalScrollBarVisibility="Visible" CanVerticallyScroll="True" ScrollViewer.CanContentScroll="True" CanHorizontallyScroll="True">
-                <TextBlock Text="sdfwef"/>
-                <TextBlock Text="sdfwfwef"/>
-                <TextBlock Text="sdfwcvawevef"/>
-                <TextBlock Text="sdfwef"/>
-                <TextBlock Text="sdfwef"/>
-                <TextBlock Text="sdfwezdsvawvf"/>
-                <TextBlock Text="sdfwef"/>
-                <TextBlock Text="sdfwewevwevf"/>
-                <TextBlock Text="sdfwef"/>
-                <TextBlock Text="sdfwef"/>
-                <TextBlock Text="sdfwezsdvdvf"/>
-                <TextBlock Text="sdfwef"/>
-                <TextBlock Text="sdfwsdvsdvef"/>
-                <TextBlock Text="sdfwef"/>
-                <TextBlock Text="sdfwef"/>
-                <TextBlock Text="sdfwdvsdvsdef"/>
-                <TextBlock Text="sdfwef"/>
-                <TextBlock Text="sdfwesdvf"/>
-            </StackPanel>
         </Grid>
         <Grid x:Name="grdAddTopic" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden">
             <Grid x:Name="grdAddTopicBtnAdd" HorizontalAlignment="Right" Height="30" Margin="0,10,10,0" VerticalAlignment="Top" Width="80" Background="#FF5BA0DB">
