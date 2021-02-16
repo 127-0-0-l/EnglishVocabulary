@@ -76,6 +76,7 @@
     <Compile Include="Subtopic.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Topic.cs" />
+    <Compile Include="WindowChildrens.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

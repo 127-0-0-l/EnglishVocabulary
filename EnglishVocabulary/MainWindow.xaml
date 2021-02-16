@@ -31,7 +31,7 @@
         <Rectangle x:Name="rsrcClrTestHeader" Fill="#fff" Visibility="Hidden"/>
 
         <Canvas x:Name="cnvBase" Margin="200,40,0,0" IsEnabled="False" Background="{Binding Fill, ElementName=rsrcClrMainBackground}">
-            <Grid x:Name="grdCustomComboBox" MinHeight="20" MinWidth="50" Width="200" Height="200">
+            <Grid x:Name="grdCustomComboBoxTestHeaderTopic" MinHeight="20" MinWidth="50" Width="200" Height="200">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="{Binding Height, ElementName=Row}"/>
@@ -40,7 +40,7 @@
                     <RowDefinition x:Name="Row" Height="20"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBox x:Name="SelectedElement" Grid.Column="0" IsReadOnly="True"/>
+                <TextBox x:Name="CurrentItem" Grid.Column="0" IsEnabled="False"/>
                 <Grid x:Name="Button" Grid.Column="1" Background="#FFA0A0A0">
                     <Path x:Name="Arrow"
                           HorizontalAlignment="Center"
@@ -51,30 +51,8 @@
                         </Path.Fill>
                     </Path>
                 </Grid>
-                <ScrollViewer x:Name="List" Grid.Row="1" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-                    <StackPanel Margin="0" Height="auto" Width="{Binding Width, ElementName=grdCustomComboBox}">
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoiewej</TextBlock>
-                        <TextBlock>ffoieo</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ieoifddddddddddddddddddddddddddddddddddddddddddddddddddddddwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                        <TextBlock>ffoieoifwej</TextBlock>
-                    </StackPanel>
+                <ScrollViewer x:Name="Item" Grid.Row="1" Grid.ColumnSpan="2" Visibility="Hidden" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="0" Height="auto" Width="{Binding Width, ElementName=grdCustomComboBox}"/>
                 </ScrollViewer>
                 
             </Grid>
