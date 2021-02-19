@@ -106,24 +106,33 @@
     </Window.Resources>
 
     <Grid x:Name="grdMain">
+        <Rectangle x:Name="colorHeaderBackground" Fill="#FF4D606E" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderText" Fill="#FFF5F5F5" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderButton" Fill="#FFF5F5F5" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderButtonEnter" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderButtonClick" Fill="#fff" Visibility="Hidden"/>
 
-        <Rectangle x:Name="rsrcClrHeaderBackground" Fill="#FF4D606E" Visibility="Hidden"/>
-        <Rectangle x:Name="rsrcClrHeaderFont" Fill="#FFF5F5F5" Visibility="Hidden"/>
-        <Rectangle x:Name="rsrcClrHeaderButtons" Fill="#FFF5F5F5" Visibility="Hidden"/>
-        <Rectangle x:Name="rsrcClrHeaderButtonsEnter" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="rsrcClrHeaderButtonsClick" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorMenu" Fill="#FF6356E5" Visibility="Hidden"/>
+        <Rectangle x:Name="colorMenuButton" Fill="#FF5685E5" Visibility="Hidden"/>
+        <Rectangle x:Name="colorMenuButtonEnter" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorMenuButtonClick" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorMenuButtonText" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorMenuImage" Fill="#fff" Visibility="Hidden"/>
 
-        <Rectangle x:Name="rsrcClrMenuBackground" Fill="#FF6356E5" Visibility="Hidden"/>
-        <Rectangle x:Name="rsrcClrMenuButton" Fill="#FF5685E5" Visibility="Hidden"/>
-        <Rectangle x:Name="rsrcClrMenuButtonEnter" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="rsrcClrMenuButtonClick" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="rsrcClrMenuButtonFont" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="rsrcClrMenuImage" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorBackground" Fill="#FF4D606E" Visibility="Hidden"/>
+        <Rectangle x:Name="colorText" Fill="#fff" Visibility="Hidden"/>
 
-        <Rectangle x:Name="rsrcClrMainBackground" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="rsrcClrMainFont" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestHeader" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestGood" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestFail" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestUnknown" Fill="#fff" Visibility="Hidden"/>
 
-        <Rectangle x:Name="rsrcClrTestHeader" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorComboBox" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorComboBoxList" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorComboBoxText" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorComboBoxItemEnter" Fill="#fff" Visibility="Hidden"/>
+
+        <Rectangle x:Name="colorScrollViewer" Fill="#fff" Visibility="Hidden"/>
 
         <Canvas x:Name="cnvBase" Margin="200,40,0,0" IsEnabled="False" Background="{Binding Fill, ElementName=rsrcClrMainBackground}"/>
         <Grid x:Name="grdHeader" Height="{Binding Margin.Top, ElementName=cnvBase}" Margin="0" VerticalAlignment="Top" Background="{Binding Fill, ElementName=rsrcClrHeaderBackground}">
