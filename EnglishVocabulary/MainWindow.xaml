@@ -9,7 +9,7 @@
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0,0,0,1" CornerRadius="0"/>
     </WindowChrome.WindowChrome>
-    
+
     <Grid x:Name="grdMain">
 
         <Rectangle x:Name="rsrcClrHeaderBackground" Fill="#FF4D606E" Visibility="Hidden"/>
@@ -30,33 +30,7 @@
 
         <Rectangle x:Name="rsrcClrTestHeader" Fill="#fff" Visibility="Hidden"/>
 
-        <Canvas x:Name="cnvBase" Margin="200,40,0,0" IsEnabled="False" Background="{Binding Fill, ElementName=rsrcClrMainBackground}">
-            <Grid x:Name="grdCustomComboBoxTestHeaderTopic" MinHeight="20" MinWidth="50" Width="200" Height="200">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="{Binding Height, ElementName=Row}"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition x:Name="Row" Height="20"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBox x:Name="CurrentItem" Grid.Column="0" IsEnabled="False"/>
-                <Grid x:Name="Button" Grid.Column="1" Background="#FFA0A0A0">
-                    <Path x:Name="Arrow"
-                          HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          Data="M 0 0 L 4 4 L 8 0 Z" >
-                        <Path.Fill>
-                            <SolidColorBrush Color="Black"/>
-                        </Path.Fill>
-                    </Path>
-                </Grid>
-                <ScrollViewer x:Name="Item" Grid.Row="1" Grid.ColumnSpan="2" Visibility="Hidden" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-                    <StackPanel Margin="0" Height="auto" Width="{Binding Width, ElementName=grdCustomComboBox}"/>
-                </ScrollViewer>
-                
-            </Grid>
-        </Canvas>
+        <Canvas x:Name="cnvBase" Margin="200,40,0,0" IsEnabled="False" Background="{Binding Fill, ElementName=rsrcClrMainBackground}"/>
         <Grid x:Name="grdHeader" Height="{Binding Margin.Top, ElementName=cnvBase}" Margin="0" VerticalAlignment="Top" Background="{Binding Fill, ElementName=rsrcClrHeaderBackground}">
             <Rectangle x:Name="rctBtnClose" Fill="{Binding Fill, ElementName=rsrcClrHeaderButtons}" HorizontalAlignment="Right" Height="24" Margin="0,0,10,0" VerticalAlignment="Center" Width="24">
                 <Rectangle.OpacityMask>
@@ -94,13 +68,9 @@
                 <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="About" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
             </Grid>
         </Grid>
-        <Grid x:Name="grdTest" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Focusable="True" Visibility="Hidden">
-            <Grid x:Name="grdTestHeader" Height="40" Margin="0" VerticalAlignment="Top">
-                <Grid x:Name="grdTestHeaderBtnStart" HorizontalAlignment="Right" Height="22" Margin="0,6,6,6" Width="79" Background="#FF5BA0DB">
-                    <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Start" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"/>
-                </Grid>
-            </Grid>
-            <Grid x:Name="grdTestTest" Background="{Binding Background, ElementName=cnvBase}" Margin="0,40,0,0" Visibility="Hidden">
+
+        <Grid x:Name="grdTest" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Focusable="True" Visibility="Visible">
+            <Grid x:Name="grdTestTest" Background="{Binding Background, ElementName=cnvBase}" Margin="0,40,0,0" Visibility="Visible">
                 <TextBlock x:Name="tbTestTestWord" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
                 <RadioButton x:Name="rbtnTestTest4" Content="RadioButton" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top"/>
                 <RadioButton x:Name="rbtnTestTest2" Content="RadioButton" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top"/>
@@ -126,6 +96,84 @@
                 <ScrollViewer Margin="0,130,0,0" VerticalScrollBarVisibility="Auto">
                     <Grid x:Name="grdTestResultWords" Height="100" VerticalAlignment="Top"/>
                 </ScrollViewer>
+            </Grid>
+            <Grid>
+                <Grid x:Name="grdTestHeader" Height="40" Margin="0" VerticalAlignment="Top" Visibility="Visible" Background="#FFCECECE">
+                    <Grid x:Name="grdTestHeaderBtnStart" HorizontalAlignment="Right" Height="22" Margin="0,6,6,6" Width="79" Background="{Binding Fill, ElementName=rsrcClrMenuButton}">
+                        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Start" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
+                    </Grid>
+                </Grid>
+                <Grid x:Name="grdUserComboBoxTopic" MinHeight="20" MinWidth="50" Width="150" Height="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,9,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="{Binding Height, ElementName=RowCBTopic}"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="RowCBTopic" Height="22"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="tbCBTopicCurrentItem" Grid.Column="0" IsEnabled="False" BorderThickness="0"/>
+                    <Grid x:Name="grdCBTopicBtn" Grid.Column="1" Background="{Binding Fill, ElementName=rsrcClrMenuButton}">
+                        <Path HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 4 4 L 8 0 Z" >
+                            <Path.Fill>
+                                <SolidColorBrush Color="{Binding Fill.Color, ElementName=rsrcClrMenuButtonFont}"/>
+                            </Path.Fill>
+                        </Path>
+                    </Grid>
+                    <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Visibility="Hidden" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" Background="#FF515151">
+                        <StackPanel x:Name="stkpCBTopicList" Margin="0" Height="auto" Width="{Binding Width, ElementName=grdUserComboBoxTopic}"/>
+                    </ScrollViewer>
+                </Grid>
+
+                <Grid x:Name="grdUserComboBoxSubtopic" MinHeight="20" MinWidth="50" Width="150" Height="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="162,9,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="{Binding Height, ElementName=RowCBSubtopic}"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="RowCBSubtopic" Height="22"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="tbCBSubtopicCurrentItem" Grid.Column="0" IsEnabled="False" BorderBrush="{x:Null}" BorderThickness="0"/>
+                    <Grid x:Name="grdCBSubtopicBtn" Grid.Column="1" Background="{Binding Fill, ElementName=rsrcClrMenuButton}">
+                        <Path HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 4 4 L 8 0 Z" >
+                            <Path.Fill>
+                                <SolidColorBrush Color="{Binding Fill.Color, ElementName=rsrcClrMenuButtonFont}"/>
+                            </Path.Fill>
+                        </Path>
+                    </Grid>
+                    <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Visibility="Hidden" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+                        <StackPanel x:Name="stkpCBSubtopicList" Margin="0" Height="auto" Width="{Binding Width, ElementName=grdUserComboBoxTopic}"/>
+                    </ScrollViewer>
+                </Grid>
+
+                <Grid x:Name="grdUserComboBoxMode" MinHeight="20" MinWidth="50" Width="80" Height="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="318,9,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="{Binding Height, ElementName=RowCBMode}"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="RowCBMode" Height="22"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="tbCBModeCurrentItem" Grid.Column="0" IsEnabled="False" BorderBrush="{x:Null}" BorderThickness="0"/>
+                    <Grid x:Name="grdCBModeBtn" Grid.Column="1" Background="{Binding Fill, ElementName=rsrcClrMenuButton}">
+                        <Path HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 4 4 L 8 0 Z" >
+                            <Path.Fill>
+                                <SolidColorBrush Color="{Binding Fill.Color, ElementName=rsrcClrMenuButtonFont}"/>
+                            </Path.Fill>
+                        </Path>
+                    </Grid>
+                    <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Visibility="Hidden" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+                        <StackPanel x:Name="stkpCBModeList" Margin="0" Height="auto" Width="{Binding Width, ElementName=grdUserComboBoxTopic}"/>
+                    </ScrollViewer>
+                </Grid>
             </Grid>
         </Grid>
         <Grid x:Name="grdAddTopic" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden">

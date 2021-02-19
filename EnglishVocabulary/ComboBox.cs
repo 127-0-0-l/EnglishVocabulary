@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace EnglishVocabulary
 {
@@ -13,11 +14,7 @@ namespace EnglishVocabulary
     {
         public void ActivateComboBoxes()
         {
-            MessageBox.Show(this.GetChildren().OfType<ComboBox>().Count().ToString());
-            //foreach (ComboBox cb in this.GetChildren().OfType<ComboBox>())
-            //{
 
-            //}
         }
     }
 }
