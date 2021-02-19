@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,12 +27,38 @@ namespace EnglishVocabulary
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            grdMenuItemAbout.MouseDown += (s, a) =>
+            {
+                grdMenuItemAbout.Background = rsrcClrHeaderBackground.Fill;
+            };
+            grdMenuItemAbout.MouseUp += (s, a) =>
+            {
+                grdMenuItemAbout.Background = rsrcClrMenuButtonEnter.Fill;
+            };
+            grdMenuItemAbout.MouseEnter += (s, a) =>
+            {
+                grdMenuItemAbout.Background = rsrcClrMenuButtonEnter.Fill;
+            };
+            grdMenuItemAbout.MouseLeave += (s, a) =>
+            {
+                grdMenuItemAbout.Background = rsrcClrMenuButton.Fill;
+            };
+
+
+
+
+
+
+
+
+
+
             //DataBaseAccess.CreateTopic(new Topic());
 
-            foreach (var item in DataBaseAccess.GetData())
-            {
-                //MessageBox.Show(item);
-            }
+            //foreach (var item in DataBaseAccess.GetData())
+            //{
+            //    MessageBox.Show(item);
+            //}
         }
     }
 }
