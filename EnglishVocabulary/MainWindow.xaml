@@ -4,15 +4,730 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnglishVocabulary"
-        xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:Collections="clr-namespace:System.Collections;assembly=mscorlib" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="EnglishVocabulary.MainWindow"
-        mc:Ignorable="d" Height="400" Width="700" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowStyle="None" MinWidth="700" MinHeight="400" Icon="Assets/logo.png" Background="{x:Null}">
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:Collections="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
+        x:Class="EnglishVocabulary.MainWindow"
+        mc:Ignorable="d"
+        Height="400"
+        Width="700"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        MinWidth="700"
+        MinHeight="400"
+        Icon="Assets/logo.png"
+        Background="{x:Null}">
+
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0,0,0,1" CornerRadius="0"/>
     </WindowChrome.WindowChrome>
 
+    <Grid x:Name="grdMain">
+        <Rectangle x:Name="colorHeader" Fill="#FF4D606E" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderText" Fill="#FFF5F5F5" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderButton" Fill="#FFF5F5F5" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderButtonEnter" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderButtonClick" Fill="#fff" Visibility="Hidden"/>
+
+        <Rectangle x:Name="colorScrollViewer" Fill="#FFFE0000" Visibility="Hidden"/>
+        <Rectangle x:Name="colorMenu" Fill="#FF6356E5" Visibility="Hidden"/>
+
+        <Rectangle x:Name="colorButton" Fill="#FF5685E5" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonDisabled" Fill="#f00" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonEnter" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonClick" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonText" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorBackground" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorText" Fill="#fff000" Visibility="Hidden"/>
+        <Rectangle x:Name="colorImage" Fill="WhiteSmoke" Visibility="Hidden"/>
+
+        <Rectangle x:Name="colorTestHeader" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestGood" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestFail" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestUnknown" Fill="#fff" Visibility="Hidden"/>
+
+        <Rectangle x:Name="colorComboBox" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorComboBoxSelect" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorComboBoxList" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorComboBoxText" Fill="#000fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorComboBoxItemEnter" Fill="#fff" Visibility="Hidden"/>
+
+
+
+        <Grid x:Name="cnvBase"
+                Margin="200,40,0,0"
+                IsEnabled="False"
+                Background="{Binding Fill, ElementName=colorBackground}">
+            <Rectangle Fill="{Binding Fill, ElementName=colorImage}"
+                       Width="100"
+                       Height="100">
+                <Rectangle.OpacityMask>
+                    <ImageBrush ImageSource="Assets/company.png"/>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Grid>
+
+        <Grid x:Name="grdHeader"
+              Height="{Binding Margin.Top, ElementName=cnvBase}"
+              Margin="0"
+              VerticalAlignment="Top"
+              Background="{Binding Fill, ElementName=colorHeader}">
+            <Rectangle x:Name="rctBtnClose"
+                       Fill="{Binding Fill, ElementName=colorHeaderButton}"
+                       HorizontalAlignment="Right"
+                       Height="24"
+                       Margin="0,0,10,0"
+                       VerticalAlignment="Center"
+                       Width="24">
+                <Rectangle.OpacityMask>
+                    <ImageBrush ImageSource="Assets/close.png"/>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+            <Rectangle x:Name="rctBtnMinimize"
+                       Fill="{Binding Fill, ElementName=colorHeaderButton}"
+                       HorizontalAlignment="Right"
+                       Height="24"
+                       Margin="0,0,44,0"
+                       VerticalAlignment="Center"
+                       Width="24">
+                <Rectangle.OpacityMask>
+                    <ImageBrush ImageSource="Assets/minimize.png"/>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+            <TextBlock HorizontalAlignment="Left"
+                       Margin="40,0,0,0"
+                       TextWrapping="Wrap"
+                       Text="Linguage"
+                       VerticalAlignment="Center"
+                       FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
+                       FontSize="16" Foreground="{Binding Fill, ElementName=colorHeaderText}"/>
+            <Image HorizontalAlignment="Left"
+                   Height="30"
+                   Margin="5,0,0,0"
+                   Width="30"
+                   Source="Assets/logo.png"
+                   IsEnabled="False"/>
+        </Grid>
+
+        <Grid x:Name="grdMenu"
+              HorizontalAlignment="Left"
+              Margin="0,40,0,0"
+              Width="{Binding Margin.Left, ElementName=cnvBase}"
+              Background="{Binding Fill, ElementName=colorMenu}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="grdMenuItemTest"
+                  Margin="0"
+                  Background="{Binding Fill, ElementName=colorButton}">
+                <TextBlock HorizontalAlignment="Center"
+                           Margin="0"
+                           TextWrapping="Wrap"
+                           Text="Test"
+                           VerticalAlignment="Center"
+                           FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
+                           FontSize="13"
+                           Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+            </Grid>
+            <Grid x:Name="grdMenuItemAddTopic"
+                  Margin="0"
+                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="1">
+                <TextBlock HorizontalAlignment="Center"
+                           Margin="0"
+                           TextWrapping="Wrap"
+                           Text="Add topic"
+                           VerticalAlignment="Center"
+                           FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
+                           FontSize="13"
+                           Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+            </Grid>
+            <Grid x:Name="grdMenuItemEditTopic"
+                  Margin="0"
+                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="2">
+                <TextBlock HorizontalAlignment="Center"
+                           Margin="0"
+                           TextWrapping="Wrap"
+                           Text="Edit topic"
+                           VerticalAlignment="Center"
+                           FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
+                           FontSize="13"
+                           Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+            </Grid>
+            <Grid x:Name="grdMenuItemDeleteTopic"
+                  Margin="0"
+                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="3">
+                <TextBlock HorizontalAlignment="Center"
+                           Margin="0"
+                           TextWrapping="Wrap"
+                           Text="Delete topic"
+                           VerticalAlignment="Center"
+                           FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
+                           FontSize="13"
+                           Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+            </Grid>
+            <Grid x:Name="grdMenuItemColorTheme"
+                  Margin="0"
+                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="4">
+                <TextBlock HorizontalAlignment="Center"
+                           Margin="0"
+                           TextWrapping="Wrap"
+                           Text="Change color theme"
+                           VerticalAlignment="Center"
+                           FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
+                           FontSize="13"
+                           Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+            </Grid>
+            <Grid x:Name="grdMenuItemHelp"
+                  Margin="0"
+                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="5">
+                <TextBlock HorizontalAlignment="Center"
+                           Margin="0"
+                           TextWrapping="Wrap"
+                           Text="Help"
+                           VerticalAlignment="Center"
+                           FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
+                           FontSize="13"
+                           Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+            </Grid>
+            <Grid x:Name="grdMenuItemAbout"
+                  Margin="0"
+                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="6">
+                <TextBlock HorizontalAlignment="Center"
+                           Margin="0"
+                           TextWrapping="Wrap"
+                           Text="About"
+                           VerticalAlignment="Center"
+                           FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
+                           FontSize="13"
+                           Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+            </Grid>
+            <Rectangle x:Name="rctMenuImage"
+                       Grid.Row="7"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Width="50"
+                       Height="50">
+                <Rectangle.OpacityMask>
+                    <ImageBrush ImageSource="Assets/company.png"/>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Grid>
+
+        <Grid x:Name="grdTest"
+              Margin="{Binding Margin, ElementName=cnvBase}"
+              Focusable="True"
+              Visibility="Hidden"
+              Background="{Binding Fill, ElementName=colorBackground}">
+            <Grid x:Name="grdTestTest"
+                  Margin="0,40,0,0"
+                  Visibility="Visible"
+                  Background="{Binding Fill, ElementName=colorBackground}">
+                <TextBlock x:Name="tbTestTestWord"
+                           HorizontalAlignment="Left"
+                           Margin="10,10,0,0"
+                           TextWrapping="Wrap"
+                           Text="TextBlock"
+                           VerticalAlignment="Top"
+                           Foreground="{Binding Fill, ElementName=colorText}"/>
+                <RadioButton x:Name="rbtnTestTest1"
+                             Content="RadioButton"
+                             HorizontalAlignment="Left"
+                             Margin="10,91,0,0"
+                             VerticalAlignment="Top"
+                             Foreground="{Binding Fill, ElementName=colorText}"
+                             Background="{Binding Fill, ElementName=colorButton}"
+                             BorderBrush="{Binding Fill, ElementName=colorText}"/>
+                <RadioButton x:Name="rbtnTestTest2"
+                             Content="RadioButton"
+                             HorizontalAlignment="Left"
+                             Margin="10,51,0,0"
+                             VerticalAlignment="Top"
+                             Foreground="{Binding Fill, ElementName=colorText}"
+                             Background="{Binding Fill, ElementName=colorButton}"
+                             BorderBrush="{Binding Fill, ElementName=colorText}"/>
+                <RadioButton x:Name="rbtnTestTest3"
+                             Content="RadioButton"
+                             HorizontalAlignment="Left"
+                             Margin="10,71,0,0"
+                             VerticalAlignment="Top"
+                             Foreground="{Binding Fill, ElementName=colorText}"
+                             Background="{Binding Fill, ElementName=colorButton}"
+                             BorderBrush="{Binding Fill, ElementName=colorText}"/>
+                <RadioButton x:Name="rbtnTestTest4"
+                             Content="RadioButton"
+                             HorizontalAlignment="Left"
+                             Margin="10,31,0,0"
+                             VerticalAlignment="Top"
+                             Foreground="{Binding Fill, ElementName=colorText}"
+                             Background="{Binding Fill, ElementName=colorButton}"
+                             BorderBrush="{Binding Fill, ElementName=colorText}"/>
+                <Grid x:Name="grdTestTestBtnFinish"
+                      HorizontalAlignment="Right"
+                      Height="30"
+                      Margin="0,0,10,10"
+                      VerticalAlignment="Bottom"
+                      Width="80"
+                      Background="{Binding Fill, ElementName=colorButton}">
+                    <TextBlock HorizontalAlignment="Center"
+                               Margin="0"
+                               TextWrapping="Wrap"
+                               Text="Finish"
+                               VerticalAlignment="Center"
+                               Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+                </Grid>
+                <Grid x:Name="grdTestTestBtnNext"
+                      HorizontalAlignment="Right"
+                      Height="30"
+                      Margin="0,0,100,10"
+                      VerticalAlignment="Bottom"
+                      Width="80"
+                      Background="{Binding Fill, ElementName=colorButton}">
+                    <TextBlock HorizontalAlignment="Center"
+                               Margin="0"
+                               TextWrapping="Wrap"
+                               Text="Next"
+                               VerticalAlignment="Center"
+                               Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+                </Grid>
+            </Grid>
+            <Grid x:Name="grdTestResult"
+                  Background="{Binding Fill, ElementName=colorBackground}"
+                  Margin="{Binding Margin, ElementName=grdTestTest}"
+                  Visibility="Hidden">
+                <Rectangle x:Name="rctTestResultRightAnswers"
+                           Fill="{Binding Fill, ElementName=colorTestGood}"
+                           HorizontalAlignment="Left"
+                           Height="20"
+                           Margin="150,20,0,0"
+                           VerticalAlignment="Top"
+                           Width="200"/>
+                <Rectangle x:Name="rctTestResultWrongAnswers"
+                           Fill="{Binding Fill, ElementName=colorTestFail}"
+                           HorizontalAlignment="Left"
+                           Height="20"
+                           Margin="150,50,0,0"
+                           VerticalAlignment="Top"
+                           Width="200"/>
+                <Rectangle x:Name="rctTestResultUnknown"
+                           Fill="{Binding Fill, ElementName=colorTestUnknown}"
+                           HorizontalAlignment="Left"
+                           Height="20"
+                           Margin="150,80,0,0"
+                           VerticalAlignment="Top"
+                           Width="200"/>
+                <TextBlock HorizontalAlignment="Left"
+                           Margin="19,20,0,0"
+                           TextWrapping="Wrap"
+                           Text="right answers:"
+                           VerticalAlignment="Top"
+                           Foreground="{Binding Fill, ElementName=colorText}"/>
+                <TextBlock HorizontalAlignment="Left"
+                           Margin="10,50,0,0"
+                           TextWrapping="Wrap"
+                           Text="wrong answers:"
+                           VerticalAlignment="Top"
+                           Foreground="{Binding Fill, ElementName=colorText}"/>
+                <TextBlock HorizontalAlignment="Left"
+                           Margin="35,80,0,0"
+                           TextWrapping="Wrap"
+                           Text="no answer:"
+                           VerticalAlignment="Top"
+                           Foreground="{Binding Fill, ElementName=colorText}"/>
+                <TextBlock x:Name="tbTestResultWrongAnswers"
+                           HorizontalAlignment="Left"
+                           Margin="111,50,0,0"
+                           TextWrapping="Wrap"
+                           Text="0"
+                           VerticalAlignment="Top"
+                           Foreground="{Binding Fill, ElementName=colorText}"/>
+                <TextBlock x:Name="tbTestResultNoAnswer"
+                           HorizontalAlignment="Left"
+                           Margin="111,80,0,0"
+                           TextWrapping="Wrap"
+                           Text="0"
+                           VerticalAlignment="Top"
+                           Foreground="{Binding Fill, ElementName=colorText}"/>
+                <TextBlock x:Name="tbTestResultRightAnswers"
+                           HorizontalAlignment="Left"
+                           Margin="111,20,0,0"
+                           TextWrapping="Wrap"
+                           Text="0"
+                           VerticalAlignment="Top"
+                           Foreground="{Binding Fill, ElementName=colorText}"/>
+                <ScrollViewer Margin="0,130,0,0"
+                              VerticalScrollBarVisibility="Auto">
+                    <Grid x:Name="grdTestResultWords"
+                          Height="100"
+                          VerticalAlignment="Top"/>
+                </ScrollViewer>
+            </Grid>
+            <Grid>
+                <Grid x:Name="grdTestHeader"
+                      Height="40"
+                      Margin="0"
+                      VerticalAlignment="Top"
+                      Visibility="Visible"
+                      Background="{Binding Fill, ElementName=colorTestHeader}">
+                    <Grid x:Name="grdTestHeaderBtnStart"
+                          HorizontalAlignment="Right"
+                          Height="22"
+                          Margin="0,6,6,6"
+                          Width="79"
+                          Background="{Binding Fill, ElementName=colorButton}">
+                        <TextBlock HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="Start"
+                                   VerticalAlignment="Center"
+                                   FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
+                                   Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+                    </Grid>
+                </Grid>
+                <Grid x:Name="grdUserComboBoxTopic"
+                      MinHeight="20"
+                      MinWidth="50"
+                      Width="150"
+                      Height="200"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top"
+                      Margin="6,9,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="{Binding Height, ElementName=RowCBTopic}"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="RowCBTopic" Height="22"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="tbCBTopicCurrentItem"
+                             Grid.Column="0"
+                             IsEnabled="False"
+                             BorderThickness="0"
+                             Background="{Binding Fill, ElementName=colorComboBox}"
+                             Foreground="{Binding Fill, ElementName=colorComboBoxText}"
+                             SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
+                    <Grid x:Name="grdCBTopicBtn"
+                          Grid.Column="1"
+                          Background="{Binding Fill, ElementName=colorButton}">
+                        <Path HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Data="M 0 0 L 4 4 L 8 0 Z"
+                              Fill="{Binding Fill, ElementName=colorButtonText}" />
+                    </Grid>
+                    <ScrollViewer Grid.Row="1"
+                                  Grid.ColumnSpan="2"
+                                  Visibility="Hidden"
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Auto"
+                                  Background="{Binding Fill, ElementName=colorComboBoxList}">
+                        <StackPanel x:Name="stkpCBTopicList"
+                                    Margin="0"
+                                    Height="auto"
+                                    Width="{Binding Width, ElementName=grdUserComboBoxTopic}"/>
+                    </ScrollViewer>
+                </Grid>
+
+                <Grid x:Name="grdUserComboBoxSubtopic"
+                      MinHeight="20"
+                      MinWidth="50"
+                      Width="150"
+                      Height="200"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top"
+                      Margin="162,9,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="{Binding Height, ElementName=RowCBSubtopic}"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="RowCBSubtopic" Height="22"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="tbCBSubtopicCurrentItem"
+                             Grid.Column="0"
+                             IsEnabled="False"
+                             BorderThickness="0"
+                             Background="{Binding Fill, ElementName=colorComboBox}"
+                             Foreground="{Binding Fill, ElementName=colorComboBoxText}"
+                             SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
+                    <Grid x:Name="grdCBSubtopicBtn"
+                          Grid.Column="1"
+                          Background="{Binding Fill, ElementName=colorButton}">
+                        <Path HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Data="M 0 0 L 4 4 L 8 0 Z"
+                              Fill="{Binding Fill, ElementName=colorButtonText}" />
+                    </Grid>
+                    <ScrollViewer Grid.Row="1"
+                                  Grid.ColumnSpan="2"
+                                  Visibility="Hidden"
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Auto"
+                                  Background="{Binding Fill, ElementName=colorComboBoxList}">
+                        <StackPanel x:Name="stkpCBSubtopicList"
+                                    Margin="0"
+                                    Height="auto"
+                                    Width="{Binding Width, ElementName=grdUserComboBoxTopic}"/>
+                    </ScrollViewer>
+                </Grid>
+
+                <Grid x:Name="grdUserComboBoxMode"
+                      MinHeight="20"
+                      MinWidth="50"
+                      Width="80"
+                      Height="200"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top"
+                      Margin="318,9,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="{Binding Height, ElementName=RowCBMode}"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="RowCBMode" Height="22"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="tbCBModeCurrentItem"
+                             Grid.Column="0"
+                             IsEnabled="False"
+                             BorderThickness="0"
+                             Background="{Binding Fill, ElementName=colorComboBox}"
+                             Foreground="{Binding Fill, ElementName=colorComboBoxText}"
+                             SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
+                    <Grid x:Name="grdCBModeBtn"
+                          Grid.Column="1"
+                          Background="{Binding Fill, ElementName=colorButton}">
+                        <Path HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Data="M 0 0 L 4 4 L 8 0 Z"
+                              Fill="{Binding Fill, ElementName=colorButtonText}" />
+                    </Grid>
+                    <ScrollViewer Grid.Row="1"
+                                  Grid.ColumnSpan="2"
+                                  Visibility="Hidden"
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Auto"
+                                  Background="{Binding Fill, ElementName=colorComboBoxList}">
+                        <StackPanel x:Name="stkpCBModeList"
+                                    Margin="0"
+                                    Height="auto"
+                                    Width="{Binding Width, ElementName=grdUserComboBoxTopic}"/>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="grdAddTopic"
+              Margin="{Binding Margin, ElementName=cnvBase}"
+              Background="{Binding Fill, ElementName=colorBackground}"
+              Visibility="Hidden">
+            <Grid x:Name="grdAddTopicBtnAdd"
+                  HorizontalAlignment="Right"
+                  Height="30"
+                  Margin="0,10,10,0"
+                  VerticalAlignment="Top"
+                  Width="80"
+                  Background="{Binding Fill, ElementName=colorButton}">
+                <TextBlock HorizontalAlignment="Center"
+                           Margin="0"
+                           TextWrapping="Wrap"
+                           Text="Add"
+                           VerticalAlignment="Center"
+                           Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+            </Grid>
+            <TextBox x:Name="tbAddTopicTopic"
+                     HorizontalAlignment="Left"
+                     Height="23"
+                     Margin="57,16,0,0"
+                     TextWrapping="Wrap"
+                     VerticalAlignment="Top"
+                     Width="120"
+                     Background="{Binding Fill, ElementName=colorComboBox}"
+                     Foreground="{Binding Fill, ElementName=colorComboBoxText}"
+                     SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
+            <TextBlock HorizontalAlignment="Left"
+                       Margin="10,17,0,0"
+                       TextWrapping="Wrap"
+                       Text="Topic:"
+                       VerticalAlignment="Top"
+                       Foreground="{Binding Fill, ElementName=colorText}"/>
+            <RichTextBox x:Name="rtbAddTopicAllWords"
+                         Margin="10,50,10,40"
+                         VerticalScrollBarVisibility="Auto"
+                         Block.LineHeight="2"
+                         Background="{Binding Fill, ElementName=colorComboBox}"
+                         Foreground="{Binding Fill, ElementName=colorComboBoxText}"
+                         SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
+            <TextBlock HorizontalAlignment="Center"
+                       Margin="0,0,0,10"
+                       TextWrapping="Wrap"
+                       Text="Plese. Before adding new topic, read &quot;Help&quot;. It's important"
+                       VerticalAlignment="Bottom"
+                       Foreground="{Binding Fill, ElementName=colorText}"/>
+        </Grid>
+
+        <Grid x:Name="grdEditTopic"
+              Margin="{Binding Margin, ElementName=cnvBase}"
+              Background="{Binding Fill, ElementName=colorBackground}"
+              Visibility="Visible">
+            <ComboBox x:Name="cbEditTopicTopic"
+                      HorizontalAlignment="Left"
+                      Margin="10,31,0,0"
+                      VerticalAlignment="Top"
+                      Width="250"/>
+            <ComboBox x:Name="cbEditTopicSubtopic"
+                      HorizontalAlignment="Left"
+                      Margin="10,79,0,0"
+                      VerticalAlignment="Top"
+                      Width="250"/>
+            <ComboBox x:Name="cbEditTopicWord"
+                      HorizontalAlignment="Left"
+                      Margin="10,127,0,0"
+                      VerticalAlignment="Top"
+                      Width="250"/>
+            <TextBox x:Name="tbEditTopicEnglish"
+                     HorizontalAlignment="Left"
+                     Height="23" Margin="60,167,0,0"
+                     TextWrapping="Wrap"
+                     VerticalAlignment="Top"
+                     Width="200"/>
+            <TextBox x:Name="tbEditTopicRussian"
+                     HorizontalAlignment="Left"
+                     Height="23"
+                     Margin="60,215,0,0"
+                     TextWrapping="Wrap"
+                     VerticalAlignment="Top"
+                     Width="200"/>
+            <TextBlock HorizontalAlignment="Left"
+                       Margin="10,168,0,0"
+                       TextWrapping="Wrap"
+                       Text="English"
+                       VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left"
+                       Margin="10,216,0,0"
+                       TextWrapping="Wrap"
+                       Text="Russian"
+                       VerticalAlignment="Top"/>
+            <Grid x:Name="grdEditTopicBtnSaveChanges"
+                  HorizontalAlignment="Left"
+                  Height="30"
+                  Margin="10,254,0,0"
+                  VerticalAlignment="Top"
+                  Width="120"
+                  Background="#FF5BA0DB">
+                <TextBlock HorizontalAlignment="Center"
+                           Margin="0"
+                           TextWrapping="Wrap"
+                           Text="Save changes"
+                           VerticalAlignment="Center"/>
+            </Grid>
+            <TextBlock HorizontalAlignment="Left"
+                       Margin="10,10,0,0"
+                       TextWrapping="Wrap"
+                       Text="Topic"
+                       VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left"
+                       Margin="10,58,0,0"
+                       TextWrapping="Wrap"
+                       Text="Subtopic"
+                       VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left"
+                       Margin="10,106,0,0"
+                       TextWrapping="Wrap"
+                       Text="Word"
+                       VerticalAlignment="Top"/>
+        </Grid>
+
+        <Grid x:Name="grdDeleteTopic"
+              Margin="{Binding Margin, ElementName=cnvBase}"
+              Background="{Binding Background, ElementName=cnvBase}"
+              Visibility="Hidden">
+            <ComboBox x:Name="cbDeleteTopicTopic"
+                      HorizontalAlignment="Left"
+                      Margin="10,10,0,0"
+                      VerticalAlignment="Top"
+                      Width="250"/>
+            <Grid x:Name="grdDeleteTopicBtnDelete"
+                  HorizontalAlignment="Left"
+                  Height="30"
+                  Margin="10,37,0,0"
+                  VerticalAlignment="Top"
+                  Width="80"
+                  Background="#FF5BA0DB">
+                <TextBlock HorizontalAlignment="Center"
+                           Margin="0"
+                           TextWrapping="Wrap"
+                           Text="Delete"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="grdColorTheme"
+              Margin="{Binding Margin, ElementName=cnvBase}"
+              Background="{Binding Background, ElementName=cnvBase}"
+              Visibility="Hidden">
+            <ComboBox x:Name="cbColorThemeTheme"
+                      HorizontalAlignment="Left"
+                      Margin="10,10,0,0"
+                      VerticalAlignment="Top"
+                      Width="250"/>
+            <Grid x:Name="grdColorThemeBtnApply"
+                  HorizontalAlignment="Left"
+                  Height="30"
+                  Margin="10,37,0,0"
+                  VerticalAlignment="Top"
+                  Width="80"
+                  Background="#FF5BA0DB">
+                <TextBlock HorizontalAlignment="Center"
+                           Margin="0"
+                           TextWrapping="Wrap"
+                           Text="Apply"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="grdHelp"
+              Margin="{Binding Margin, ElementName=cnvBase}"
+              Background="{Binding Fill, ElementName=colorBackground}"
+              Visibility="Hidden">
+            <RichTextBox x:Name="rtbHelpText"
+                         Margin="0"
+                         VerticalScrollBarVisibility="Auto"
+                         Background="{Binding Fill, ElementName=colorBackground}"
+                         BorderThickness="0"
+                         Block.LineHeight="2"
+                         IsReadOnly="True"
+                         Foreground="{Binding Fill, ElementName=colorText}"
+                         SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
+        </Grid>
+
+        <Grid x:Name="grdAbout"
+              Margin="{Binding Margin, ElementName=cnvBase}"
+              Background="{Binding Fill, ElementName=colorBackground}"
+              Visibility="Hidden">
+            <RichTextBox x:Name="rtbAboutText"
+                         Margin="0"
+                         Block.LineHeight="2"
+                         BorderThickness="0"
+                         Background="{Binding Fill, ElementName=colorBackground}"
+                         IsReadOnly="True"
+                         Foreground="{Binding Fill, ElementName=colorText}"
+                         SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
+        </Grid>
+
+    </Grid>
+
     <Window.Resources>
 
-        <SolidColorBrush x:Key="ThumbColor" Color="#000"/>
+        <SolidColorBrush x:Key="ThumbColor"
+                         Color="{Binding Fill.Color, ElementName=colorScrollViewer}"/>
 
         <Style x:Key="ScrollBarLineButtonStyle" TargetType="{x:Type RepeatButton}">
             <Setter Property="Focusable" Value="False"/>
@@ -20,7 +735,9 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
                         <Canvas Height="18">
-                            <Polygon x:Name="plgn" Fill="#000" Points="1,16 15,16 8,5"/>
+                            <Polygon x:Name="plgn"
+                                     Points="1,16 15,16 8,5"
+                                     Fill="{DynamicResource ThumbColor}"/>
                         </Canvas>
                     </ControlTemplate>
                 </Setter.Value>
@@ -33,7 +750,8 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
                         <Canvas Height="18">
-                            <Polygon Fill="#000" Points="1,2 8,13 15,2"></Polygon>
+                            <Polygon Fill="{DynamicResource ThumbColor}"
+                                     Points="1,2 8,13 15,2"/>
                         </Canvas>
                     </ControlTemplate>
                 </Setter.Value>
@@ -46,7 +764,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Border BorderBrush="Transparent"></Border>
+                        <Border BorderBrush="Transparent"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -75,27 +793,24 @@
 
                 <RepeatButton Grid.Row="0" Height="18"
                           Style="{StaticResource ScrollBarLineButtonStyle}"
-                          Command="ScrollBar.LineUpCommand" >
-                </RepeatButton>
+                          Command="ScrollBar.LineUpCommand"/>
                 <Track Name="PART_Track" Grid.Row="1" 
                    IsDirectionReversed="True">
                     <Track.DecreaseRepeatButton>
-                        <RepeatButton Command="ScrollBar.PageUpCommand" Style="{StaticResource ScrollBarPageButtonStyle}">
-                        </RepeatButton>
+                        <RepeatButton Command="ScrollBar.PageUpCommand"
+                                      Style="{StaticResource ScrollBarPageButtonStyle}"/>
                     </Track.DecreaseRepeatButton>
                     <Track.Thumb>
-                        <Thumb Style="{StaticResource ScrollBarThumbStyle}">
-                        </Thumb>
+                        <Thumb Style="{StaticResource ScrollBarThumbStyle}"/>
                     </Track.Thumb>
                     <Track.IncreaseRepeatButton>
-                        <RepeatButton Command="ScrollBar.PageDownCommand" Style="{StaticResource ScrollBarPageButtonStyle}">
-                        </RepeatButton>
+                        <RepeatButton Command="ScrollBar.PageDownCommand"
+                                      Style="{StaticResource ScrollBarPageButtonStyle}"/>
                     </Track.IncreaseRepeatButton>
                 </Track>
                 <RepeatButton Grid.Row="3" Height="18"
-                          Style="{StaticResource ScrollBarLineButtonBottomStyle}"
-                          Command="ScrollBar.LineDownCommand">
-                </RepeatButton>
+                              Style="{StaticResource ScrollBarLineButtonBottomStyle}"
+                              Command="ScrollBar.LineDownCommand"/>
             </Grid>
         </ControlTemplate>
 
@@ -105,222 +820,4 @@
 
     </Window.Resources>
 
-    <Grid x:Name="grdMain">
-        <Rectangle x:Name="colorHeaderBackground" Fill="#FF4D606E" Visibility="Hidden"/>
-        <Rectangle x:Name="colorHeaderText" Fill="#FFF5F5F5" Visibility="Hidden"/>
-        <Rectangle x:Name="colorHeaderButton" Fill="#FFF5F5F5" Visibility="Hidden"/>
-        <Rectangle x:Name="colorHeaderButtonEnter" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorHeaderButtonClick" Fill="#fff" Visibility="Hidden"/>
-
-        <Rectangle x:Name="colorMenu" Fill="#FF6356E5" Visibility="Hidden"/>
-        <Rectangle x:Name="colorMenuButton" Fill="#FF5685E5" Visibility="Hidden"/>
-        <Rectangle x:Name="colorMenuButtonEnter" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorMenuButtonClick" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorMenuButtonText" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorMenuImage" Fill="#fff" Visibility="Hidden"/>
-
-        <Rectangle x:Name="colorBackground" Fill="#FF4D606E" Visibility="Hidden"/>
-        <Rectangle x:Name="colorText" Fill="#fff" Visibility="Hidden"/>
-
-        <Rectangle x:Name="colorTestHeader" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorTestGood" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorTestFail" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorTestUnknown" Fill="#fff" Visibility="Hidden"/>
-
-        <Rectangle x:Name="colorComboBox" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorComboBoxList" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorComboBoxText" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorComboBoxItemEnter" Fill="#fff" Visibility="Hidden"/>
-
-        <Rectangle x:Name="colorScrollViewer" Fill="#fff" Visibility="Hidden"/>
-
-        <Canvas x:Name="cnvBase" Margin="200,40,0,0" IsEnabled="False" Background="{Binding Fill, ElementName=rsrcClrMainBackground}"/>
-        <Grid x:Name="grdHeader" Height="{Binding Margin.Top, ElementName=cnvBase}" Margin="0" VerticalAlignment="Top" Background="{Binding Fill, ElementName=rsrcClrHeaderBackground}">
-            <Rectangle x:Name="rctBtnClose" Fill="{Binding Fill, ElementName=rsrcClrHeaderButtons}" HorizontalAlignment="Right" Height="24" Margin="0,0,10,0" VerticalAlignment="Center" Width="24">
-                <Rectangle.OpacityMask>
-                    <ImageBrush ImageSource="Assets/close.png"/>
-                </Rectangle.OpacityMask>
-            </Rectangle>
-            <Rectangle x:Name="rctBtnMinimize" Fill="{Binding Fill, ElementName=rsrcClrHeaderButtons}" HorizontalAlignment="Right" Height="24" Margin="0,0,44,0" VerticalAlignment="Center" Width="24">
-                <Rectangle.OpacityMask>
-                    <ImageBrush ImageSource="Assets/minimize.png"/>
-                </Rectangle.OpacityMask>
-            </Rectangle>
-            <TextBlock x:Name="tbHeaderTitle" HorizontalAlignment="Left" Margin="40,0,0,0" TextWrapping="Wrap" Text="Linguage" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="16" Foreground="{Binding Fill, ElementName=rsrcClrHeaderFont}"/>
-            <Image HorizontalAlignment="Left" Height="30" Margin="5,0,0,0" Width="30" Source="Assets/logo.png" IsEnabled="False"/>
-        </Grid>
-        <Grid x:Name="grdMenu" HorizontalAlignment="Left" Margin="0,40,0,0" Width="{Binding Margin.Left, ElementName=cnvBase}" Background="{Binding Fill, ElementName=rsrcClrMenuBackground}">
-            <Grid x:Name="grdMenuItemTest" Height="40" Margin="0" VerticalAlignment="Top" Background="{Binding Fill, ElementName=rsrcClrMenuButton}">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Test" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
-            </Grid>
-            <Grid x:Name="grdMenuItemAddTopic" Height="40" Margin="0,40,0,0" VerticalAlignment="Top" Background="{Binding Background, ElementName=grdMenuItemTest}">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Add topic" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
-            </Grid>
-            <Grid x:Name="grdMenuItemEditTopic" Height="40" Margin="0,80,0,0" VerticalAlignment="Top" Background="{Binding Background, ElementName=grdMenuItemTest}">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Edit topic" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
-            </Grid>
-            <Grid x:Name="grdMenuItemDeleteTopic" Height="40" Margin="0,120,0,0" VerticalAlignment="Top" Background="{Binding Background, ElementName=grdMenuItemTest}">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Delete topic" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
-            </Grid>
-            <Grid x:Name="grdMenuItemColorTheme" Height="40" Margin="0,160,0,0" VerticalAlignment="Top" Background="{Binding Background, ElementName=grdMenuItemTest}">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Change color theme" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
-            </Grid>
-            <Grid x:Name="grdMenuItemHelp" Height="40" Margin="0,200,0,0" VerticalAlignment="Top" Background="{Binding Background, ElementName=grdMenuItemTest}">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Help" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
-            </Grid>
-            <Grid x:Name="grdMenuItemAbout" Height="40" Margin="0,240,0,0" VerticalAlignment="Top" Background="{Binding Background, ElementName=grdMenuItemTest}">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="About" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" FontSize="13" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
-            </Grid>
-        </Grid>
-
-        <Grid x:Name="grdTest" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Focusable="True" Visibility="Visible">
-            <Grid x:Name="grdTestTest" Background="{Binding Background, ElementName=cnvBase}" Margin="0,40,0,0" Visibility="Visible">
-                <TextBlock x:Name="tbTestTestWord" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-                <RadioButton x:Name="rbtnTestTest4" Content="RadioButton" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top"/>
-                <RadioButton x:Name="rbtnTestTest2" Content="RadioButton" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top"/>
-                <RadioButton x:Name="rbtnTestTest3" Content="RadioButton" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top"/>
-                <RadioButton x:Name="rbtnTestTest1" Content="RadioButton" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top"/>
-                <Grid x:Name="grdTestTestBtnFinish" HorizontalAlignment="Right" Height="30" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="80" Background="#FF5BA0DB">
-                    <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Finish" VerticalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="grdTestTestBtnNext" HorizontalAlignment="Right" Height="30" Margin="0,0,100,10" VerticalAlignment="Bottom" Width="80" Background="#FF5BA0DB">
-                    <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Next" VerticalAlignment="Center"/>
-                </Grid>
-            </Grid>
-            <Grid x:Name="grdTestResult" Background="{Binding Background, ElementName=cnvBase}" Margin="{Binding Margin, ElementName=grdTestTest}" Visibility="Visible">
-                <Rectangle x:Name="rctTestResultRightAnswers" Fill="#FF00E544" HorizontalAlignment="Left" Height="20" Margin="150,20,0,0" VerticalAlignment="Top" Width="200"/>
-                <Rectangle x:Name="rctTestResultWrongAnswers" Fill="#FFE51C00" HorizontalAlignment="Left" Height="20" Margin="150,50,0,0" VerticalAlignment="Top" Width="200"/>
-                <Rectangle x:Name="rctTestResultNoAnswer" Fill="#FF898989" HorizontalAlignment="Left" Height="20" Margin="150,80,0,0" VerticalAlignment="Top" Width="200"/>
-                <TextBlock HorizontalAlignment="Left" Margin="19,20,0,0" TextWrapping="Wrap" Text="right answers:" VerticalAlignment="Top"/>
-                <TextBlock HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" Text="wrong answers:" VerticalAlignment="Top"/>
-                <TextBlock HorizontalAlignment="Left" Margin="35,80,0,0" TextWrapping="Wrap" Text="no answer:" VerticalAlignment="Top"/>
-                <TextBlock x:Name="tbTestResultWrongAnswers" HorizontalAlignment="Left" Margin="111,50,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-                <TextBlock x:Name="tbTestResultNoAnswer" HorizontalAlignment="Left" Margin="111,80,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-                <TextBlock x:Name="tbTestResultRightAnswers" HorizontalAlignment="Left" Margin="111,20,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-                <ScrollViewer Margin="0,130,0,0" VerticalScrollBarVisibility="Auto">
-                    <Grid x:Name="grdTestResultWords" Height="100" VerticalAlignment="Top"/>
-                </ScrollViewer>
-            </Grid>
-            <Grid>
-                <Grid x:Name="grdTestHeader" Height="40" Margin="0" VerticalAlignment="Top" Visibility="Visible" Background="#FFCECECE">
-                    <Grid x:Name="grdTestHeaderBtnStart" HorizontalAlignment="Right" Height="22" Margin="0,6,6,6" Width="79" Background="{Binding Fill, ElementName=rsrcClrMenuButton}">
-                        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Start" VerticalAlignment="Center" FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two" Foreground="{Binding Fill, ElementName=rsrcClrMenuButtonFont}"/>
-                    </Grid>
-                </Grid>
-                <Grid x:Name="grdUserComboBoxTopic" MinHeight="20" MinWidth="50" Width="150" Height="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,9,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="{Binding Height, ElementName=RowCBTopic}"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition x:Name="RowCBTopic" Height="22"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBox x:Name="tbCBTopicCurrentItem" Grid.Column="0" IsEnabled="False" BorderThickness="0"/>
-                    <Grid x:Name="grdCBTopicBtn" Grid.Column="1" Background="{Binding Fill, ElementName=rsrcClrMenuButton}">
-                        <Path HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"
-                                  Data="M 0 0 L 4 4 L 8 0 Z" >
-                            <Path.Fill>
-                                <SolidColorBrush Color="{Binding Fill.Color, ElementName=rsrcClrMenuButtonFont}"/>
-                            </Path.Fill>
-                        </Path>
-                    </Grid>
-                    <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Visibility="Hidden" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" Background="#FF515151">
-                        <StackPanel x:Name="stkpCBTopicList" Margin="0" Height="auto" Width="{Binding Width, ElementName=grdUserComboBoxTopic}"/>
-                    </ScrollViewer>
-                </Grid>
-
-                <Grid x:Name="grdUserComboBoxSubtopic" MinHeight="20" MinWidth="50" Width="150" Height="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="162,9,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="{Binding Height, ElementName=RowCBSubtopic}"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition x:Name="RowCBSubtopic" Height="22"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBox x:Name="tbCBSubtopicCurrentItem" Grid.Column="0" IsEnabled="False" BorderBrush="{x:Null}" BorderThickness="0"/>
-                    <Grid x:Name="grdCBSubtopicBtn" Grid.Column="1" Background="{Binding Fill, ElementName=rsrcClrMenuButton}">
-                        <Path HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"
-                                  Data="M 0 0 L 4 4 L 8 0 Z" >
-                            <Path.Fill>
-                                <SolidColorBrush Color="{Binding Fill.Color, ElementName=rsrcClrMenuButtonFont}"/>
-                            </Path.Fill>
-                        </Path>
-                    </Grid>
-                    <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Visibility="Hidden" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-                        <StackPanel x:Name="stkpCBSubtopicList" Margin="0" Height="auto" Width="{Binding Width, ElementName=grdUserComboBoxTopic}"/>
-                    </ScrollViewer>
-                </Grid>
-
-                <Grid x:Name="grdUserComboBoxMode" MinHeight="20" MinWidth="50" Width="80" Height="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="318,9,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="{Binding Height, ElementName=RowCBMode}"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition x:Name="RowCBMode" Height="22"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBox x:Name="tbCBModeCurrentItem" Grid.Column="0" IsEnabled="False" BorderBrush="{x:Null}" BorderThickness="0"/>
-                    <Grid x:Name="grdCBModeBtn" Grid.Column="1" Background="{Binding Fill, ElementName=rsrcClrMenuButton}">
-                        <Path HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"
-                                  Data="M 0 0 L 4 4 L 8 0 Z" >
-                            <Path.Fill>
-                                <SolidColorBrush Color="{Binding Fill.Color, ElementName=rsrcClrMenuButtonFont}"/>
-                            </Path.Fill>
-                        </Path>
-                    </Grid>
-                    <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Visibility="Hidden" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-                        <StackPanel x:Name="stkpCBModeList" Margin="0" Height="auto" Width="{Binding Width, ElementName=grdUserComboBoxTopic}"/>
-                    </ScrollViewer>
-                </Grid>
-            </Grid>
-        </Grid>
-        <Grid x:Name="grdAddTopic" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden">
-            <Grid x:Name="grdAddTopicBtnAdd" HorizontalAlignment="Right" Height="30" Margin="0,10,10,0" VerticalAlignment="Top" Width="80" Background="#FF5BA0DB">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Add" VerticalAlignment="Center"/>
-            </Grid>
-            <TextBox x:Name="tbAddTopicTopic" HorizontalAlignment="Left" Height="23" Margin="57,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,17,0,0" TextWrapping="Wrap" Text="Topic:" VerticalAlignment="Top"/>
-            <RichTextBox x:Name="rtbAddTopicAllWords" Margin="10,50,10,40" VerticalScrollBarVisibility="Auto" Block.LineHeight="2"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,0,0,10" TextWrapping="Wrap" Text="Plese. Before adding new topic, read &quot;Help&quot;. It's important" VerticalAlignment="Bottom"/>
-        </Grid>
-        <Grid x:Name="grdEditTopic" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden">
-            <ComboBox x:Name="cbEditTopicTopic" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="250"/>
-            <ComboBox x:Name="cbEditTopicSubtopic" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" Width="250"/>
-            <ComboBox x:Name="cbEditTopicWord" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="250"/>
-            <TextBox x:Name="tbEditTopicEnglish" HorizontalAlignment="Left" Height="23" Margin="60,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-            <TextBox x:Name="tbEditTopicRussian" HorizontalAlignment="Left" Height="23" Margin="60,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,168,0,0" TextWrapping="Wrap" Text="English" VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,216,0,0" TextWrapping="Wrap" Text="Russian" VerticalAlignment="Top"/>
-            <Grid x:Name="grdEditTopicBtnSaveChanges" HorizontalAlignment="Left" Height="30" Margin="10,254,0,0" VerticalAlignment="Top" Width="120" Background="#FF5BA0DB">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Save changes" VerticalAlignment="Center"/>
-            </Grid>
-            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Topic" VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,58,0,0" TextWrapping="Wrap" Text="Subtopic" VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,106,0,0" TextWrapping="Wrap" Text="Word" VerticalAlignment="Top"/>
-        </Grid>
-        <Grid x:Name="grdDeleteTopic" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden">
-            <ComboBox x:Name="cbDeleteTopicTopic" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="250"/>
-            <Grid x:Name="grdDeleteTopicBtnDelete" HorizontalAlignment="Left" Height="30" Margin="10,37,0,0" VerticalAlignment="Top" Width="80" Background="#FF5BA0DB">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Delete" VerticalAlignment="Center"/>
-            </Grid>
-        </Grid>
-        <Grid x:Name="grdColorTheme" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden">
-            <ComboBox x:Name="cbColorThemeTheme" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="250"/>
-            <Grid x:Name="grdColorThemeBtnApply" HorizontalAlignment="Left" Height="30" Margin="10,37,0,0" VerticalAlignment="Top" Width="80" Background="#FF5BA0DB">
-                <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Apply" VerticalAlignment="Center"/>
-            </Grid>
-        </Grid>
-        <Grid x:Name="grdHelp" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden">
-            <RichTextBox x:Name="rtbHelpText" Margin="0" VerticalScrollBarVisibility="Auto" Background="{Binding Background, ElementName=cnvBase}" BorderThickness="0" Block.LineHeight="2" IsReadOnly="True"/>
-        </Grid>
-        <Grid x:Name="grdAbout" Margin="{Binding Margin, ElementName=cnvBase}" Background="{Binding Background, ElementName=cnvBase}" Visibility="Hidden">
-            <RichTextBox x:Name="rtbAboutText" Margin="0" Block.LineHeight="2" BorderThickness="0" Background="{Binding Background, ElementName=cnvBase}" IsReadOnly="True"/>
-        </Grid>
-    </Grid>
 </Window>
