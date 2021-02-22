@@ -29,15 +29,15 @@
         <Rectangle x:Name="colorHeaderText" Fill="#FFF5F5F5" Visibility="Hidden"/>
         <Rectangle x:Name="colorHeaderButton" Fill="#FFF5F5F5" Visibility="Hidden"/>
         <Rectangle x:Name="colorHeaderButtonEnter" Fill="#000" Visibility="Hidden"/>
-        <Rectangle x:Name="colorHeaderButtonClick" Fill="#f00" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderButtonClick" Fill="#FF8A8A8A" Visibility="Hidden"/>
 
         <Rectangle x:Name="colorScrollViewer" Fill="#FF8A8A8A" Visibility="Hidden"/>
         <Rectangle x:Name="colorMenu" Fill="#FF6356E5" Visibility="Hidden"/>
 
         <Rectangle x:Name="colorButton" Fill="#FF5685E5" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonDisabled" Fill="#f00" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonEnter" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonClick" Fill="#f0f" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonDisabled" Fill="Gray" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonEnter" Fill="#FF8174FF" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonClick" Fill="#FF8A8A8A" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonText" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorBackground" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorText" Fill="#fff000" Visibility="Hidden"/>
@@ -596,7 +596,7 @@
         <Grid x:Name="grdEditTopic"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Background="{Binding Fill, ElementName=colorBackground}"
-              Visibility="Visible">
+              Visibility="Hidden">
             <ComboBox x:Name="cbEditTopicTopic"
                       HorizontalAlignment="Left"
                       Margin="10,31,0,0"

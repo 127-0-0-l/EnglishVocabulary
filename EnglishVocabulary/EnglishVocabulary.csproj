@@ -120,6 +120,8 @@
     <Resource Include="Assets\close.png" />
     <Resource Include="Assets\minimize.png" />
     <Resource Include="Assets\company.png" />
+    <Resource Include="Assets\Help.txt" />
+    <Resource Include="Assets\About.txt" />
     <Content Include="VocabularyDB.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
