@@ -20,17 +20,18 @@
         Background="{x:Null}">
 
     <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness="0,0,0,1" CornerRadius="0"/>
+        <WindowChrome GlassFrameThickness="0,0,0,1"
+                      CaptionHeight="1"/>
     </WindowChrome.WindowChrome>
 
     <Grid x:Name="grdMain">
         <Rectangle x:Name="colorHeader" Fill="#FF4D606E" Visibility="Hidden"/>
         <Rectangle x:Name="colorHeaderText" Fill="#FFF5F5F5" Visibility="Hidden"/>
         <Rectangle x:Name="colorHeaderButton" Fill="#FFF5F5F5" Visibility="Hidden"/>
-        <Rectangle x:Name="colorHeaderButtonEnter" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorHeaderButtonClick" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderButtonEnter" Fill="#000" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderButtonClick" Fill="#f00" Visibility="Hidden"/>
 
-        <Rectangle x:Name="colorScrollViewer" Fill="#FFFE0000" Visibility="Hidden"/>
+        <Rectangle x:Name="colorScrollViewer" Fill="#FF8A8A8A" Visibility="Hidden"/>
         <Rectangle x:Name="colorMenu" Fill="#FF6356E5" Visibility="Hidden"/>
 
         <Rectangle x:Name="colorButton" Fill="#FF5685E5" Visibility="Hidden"/>
@@ -70,44 +71,63 @@
 
         <Grid x:Name="grdHeader"
               Height="{Binding Margin.Top, ElementName=cnvBase}"
-              Margin="0"
               VerticalAlignment="Top"
               Background="{Binding Fill, ElementName=colorHeader}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="grdDragMove"
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Stretch"
+                  Background="{Binding Fill, ElementName=colorHeader}"
+                  MouseDown="grdDragMove_MouseDown">
+                <TextBlock HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="40,0,0,0"
+                           TextWrapping="Wrap"
+                           Text="Linguage"
+                           FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
+                           FontSize="16"
+                           Foreground="{Binding Fill, ElementName=colorHeaderText}"/>
+                <Image HorizontalAlignment="Left"
+                       Height="30"
+                       Margin="5,0,0,0"
+                       Width="30"
+                       Source="Assets/logo.png"
+                       IsEnabled="False"/>
+            </Grid>
             <Rectangle x:Name="rctBtnClose"
                        Fill="{Binding Fill, ElementName=colorHeaderButton}"
-                       HorizontalAlignment="Right"
+                       Grid.Column="2"
                        Height="24"
-                       Margin="0,0,10,0"
+                       Width="24"
+                       HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Width="24">
+                       MouseDown="rctBtnClose_MouseDown"
+                       MouseEnter="rctBtnClose_MouseEnter"
+                       MouseLeave="rctBtnClose_MouseLeave"
+                       MouseUp="rctBtnClose_MouseUp">
                 <Rectangle.OpacityMask>
                     <ImageBrush ImageSource="Assets/close.png"/>
                 </Rectangle.OpacityMask>
             </Rectangle>
             <Rectangle x:Name="rctBtnMinimize"
                        Fill="{Binding Fill, ElementName=colorHeaderButton}"
-                       HorizontalAlignment="Right"
+                       Grid.Column="1"
                        Height="24"
-                       Margin="0,0,44,0"
+                       Width="24"
+                       HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Width="24">
+                       MouseEnter="rctBtnMinimize_MouseEnter"
+                       MouseLeave="rctBtnMinimize_MouseLeave"
+                       MouseDown="rctBtnMinimize_MouseDown"
+                       MouseUp="rctBtnMinimize_MouseUp">
                 <Rectangle.OpacityMask>
                     <ImageBrush ImageSource="Assets/minimize.png"/>
                 </Rectangle.OpacityMask>
             </Rectangle>
-            <TextBlock HorizontalAlignment="Left"
-                       Margin="40,0,0,0"
-                       TextWrapping="Wrap"
-                       Text="Linguage"
-                       VerticalAlignment="Center"
-                       FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
-                       FontSize="16" Foreground="{Binding Fill, ElementName=colorHeaderText}"/>
-            <Image HorizontalAlignment="Left"
-                   Height="30"
-                   Margin="5,0,0,0"
-                   Width="30"
-                   Source="Assets/logo.png"
-                   IsEnabled="False"/>
         </Grid>
 
         <Grid x:Name="grdMenu"
@@ -581,7 +601,24 @@
                       HorizontalAlignment="Left"
                       Margin="10,31,0,0"
                       VerticalAlignment="Top"
-                      Width="250"/>
+                      Width="250">
+                <System:String>1</System:String>
+                <System:String>2</System:String>
+                <System:String>3</System:String>
+                <System:String>4</System:String>
+                <System:String>5</System:String>
+                <System:String>6</System:String>
+                <System:String>235423452eeeeeeeeeeeeeeeeeeeeeeeeeeeeee35</System:String>
+                <System:String>fghertherth</System:String>
+                <System:String>1</System:String>
+                <System:String>2</System:String>
+                <System:String>3</System:String>
+                <System:String>4</System:String>
+                <System:String>5</System:String>
+                <System:String>6</System:String>
+                <System:String>23542345235</System:String>
+                <System:String>fghertherth</System:String>
+            </ComboBox>
             <ComboBox x:Name="cbEditTopicSubtopic"
                       HorizontalAlignment="Left"
                       Margin="10,79,0,0"
@@ -725,78 +762,29 @@
     </Grid>
 
     <Window.Resources>
-        <Color x:Key="WindowColor">#FFE8EDF9</Color>
-        <Color x:Key="ContentAreaColorLight">#FFC5CBF9</Color>
-        <Color x:Key="ContentAreaColorDark">#FF7381F9</Color>
+        <SolidColorBrush x:Key="DisabledControlDarkColor" Color="#fff"/>
+        <SolidColorBrush x:Key="DisabledForegroundColor" Color="#FF888888"/>
 
-        <Color x:Key="DisabledControlLightColor">#FFE8EDF9</Color>
-        <Color x:Key="DisabledControlDarkColor">#FFC5CBF9</Color>
-        <Color x:Key="DisabledForegroundColor">#FF888888</Color>
+        <SolidColorBrush x:Key="SelectedBackgroundColor" Color="#FFC5CBF9"/>
+        <SolidColorBrush x:Key="SelectedUnfocusedColor" Color="#FFDDDDDD"/>
 
-        <Color x:Key="SelectedBackgroundColor">#FFC5CBF9</Color>
-        <Color x:Key="SelectedUnfocusedColor">#FFDDDDDD</Color>
+        <SolidColorBrush x:Key="ControlLightColor" Color="#fff"/>
+        <SolidColorBrush x:Key="ControlMediumColor" Color="#FF7381F9"/>
+        <SolidColorBrush x:Key="ControlDarkColor" Color="#FF211AA9"/>
 
-        <Color x:Key="ControlLightColor">White</Color>
-        <Color x:Key="ControlMediumColor">#FF7381F9</Color>
-        <Color x:Key="ControlDarkColor">#FF211AA9</Color>
+        <SolidColorBrush x:Key="ControlMouseOverColor" Color="{Binding Fill.Color, ElementName=colorButtonEnter}"/>
+        <SolidColorBrush x:Key="ControlPressedColor" Color="#FF211AA9"/>
 
-        <Color x:Key="ControlMouseOverColor">#FF3843C4</Color>
-        <Color x:Key="ControlPressedColor">#FF211AA9</Color>
-
-
-        <Color x:Key="GlyphColor">#FF444444</Color>
-        <Color x:Key="GlyphMouseOver">sc#1, 0.004391443, 0.002428215, 0.242281124</Color>
-
+        <SolidColorBrush x:Key="GlyphColor" Color="#FF444444"/>
         <!--Border colors-->
-        <Color x:Key="BorderLightColor">#FFCCCCCC</Color>
-        <Color x:Key="BorderMediumColor">#FF888888</Color>
-        <Color x:Key="BorderDarkColor">#FF444444</Color>
+        <SolidColorBrush x:Key="BorderLightColor" Color="#FFCCCCCC"/>
+        <SolidColorBrush x:Key="BorderMediumColor" Color="#FF888888"/>
+        <SolidColorBrush x:Key="BorderDarkColor" Color="#FF444444"/>
 
-        <Color x:Key="PressedBorderLightColor">#FF888888</Color>
-        <Color x:Key="PressedBorderDarkColor">#FF444444</Color>
+        <SolidColorBrush x:Key="DisabledBorderDarkColor" Color="#FF888888"/>
 
-        <Color x:Key="DisabledBorderLightColor">#FFAAAAAA</Color>
-        <Color x:Key="DisabledBorderDarkColor">#FF888888</Color>
-
-        <Color x:Key="DefaultBorderBrushDarkColor">Black</Color>
-
-        <!--Control-specific resources.-->
-        <Color x:Key="HeaderTopColor">#FFC5CBF9</Color>
-        <Color x:Key="DatagridCurrentCellBorderColor">Black</Color>
-        <Color x:Key="SliderTrackDarkColor">#FFC5CBF9</Color>
-
-        <Color x:Key="NavButtonFrameColor">#FF3843C4</Color>
-
-        <LinearGradientBrush x:Key="MenuPopupBrush"
-                     EndPoint="0.5,1"
-                     StartPoint="0.5,0">
-            <GradientStop Color="{DynamicResource ControlLightColor}"
-                Offset="0" />
-            <GradientStop Color="{DynamicResource ControlMediumColor}"
-                Offset="0.5" />
-            <GradientStop Color="{DynamicResource ControlLightColor}"
-                Offset="1" />
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="ProgressBarIndicatorAnimatedFill"
-                     StartPoint="0,0"
-                     EndPoint="1,0">
-            <LinearGradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="#000000FF"
-                    Offset="0" />
-                    <GradientStop Color="#600000FF"
-                    Offset="0.4" />
-                    <GradientStop Color="#600000FF"
-                    Offset="0.6" />
-                    <GradientStop Color="#000000FF"
-                    Offset="1" />
-                </GradientStopCollection>
-            </LinearGradientBrush.GradientStops>
-        </LinearGradientBrush>
-        
         <ControlTemplate x:Key="ComboBoxToggleButton"
-                 TargetType="{x:Type ToggleButton}">
+                         TargetType="{x:Type ToggleButton}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -808,10 +796,10 @@
                         <VisualState x:Name="MouseOver">
                             <Storyboard>
                                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
-                (GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                          Storyboard.TargetName="Border">
+                                                              (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                              Storyboard.TargetName="Border">
                                     <EasingColorKeyFrame KeyTime="0"
-                                   Value="{StaticResource ControlMouseOverColor}" />
+                                                         Value="{Binding Color, Source={StaticResource ControlMouseOverColor}}" />
                                 </ColorAnimationUsingKeyFrames>
                             </Storyboard>
                         </VisualState>
@@ -819,22 +807,22 @@
                         <VisualState x:Name="Disabled">
                             <Storyboard>
                                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
-                (GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                          Storyboard.TargetName="Border">
+                                                              (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                              Storyboard.TargetName="Border">
                                     <EasingColorKeyFrame KeyTime="0"
-                                   Value="{StaticResource DisabledControlDarkColor}" />
+                                                         Value="{Binding Color, Source={StaticResource DisabledControlDarkColor}}"/>
                                 </ColorAnimationUsingKeyFrames>
                                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).
-                (SolidColorBrush.Color)"
-                                          Storyboard.TargetName="Arrow">
+                                                              (SolidColorBrush.Color)"
+                                                              Storyboard.TargetName="Arrow">
                                     <EasingColorKeyFrame KeyTime="0"
-                                   Value="{StaticResource DisabledForegroundColor}" />
+                                                         Value="{Binding Color, Source={StaticResource DisabledForegroundColor}}"/>
                                 </ColorAnimationUsingKeyFrames>
                                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
-                (GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                          Storyboard.TargetName="Border">
+                                                              (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                              Storyboard.TargetName="Border">
                                     <EasingColorKeyFrame KeyTime="0"
-                                   Value="{StaticResource DisabledBorderDarkColor}" />
+                                                         Value="{Binding Color, Source={StaticResource DisabledBorderDarkColor}}" />
                                 </ColorAnimationUsingKeyFrames>
                             </Storyboard>
                         </VisualState>
@@ -843,10 +831,10 @@
                         <VisualState x:Name="Checked">
                             <Storyboard>
                                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
-                (GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                          Storyboard.TargetName="Border">
+                                                              (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                              Storyboard.TargetName="Border">
                                     <EasingColorKeyFrame KeyTime="0"
-                                   Value="{StaticResource ControlPressedColor}" />
+                                                         Value="{Binding Color, Source={StaticResource ControlPressedColor}}" />
                                 </ColorAnimationUsingKeyFrames>
                             </Storyboard>
                         </VisualState>
@@ -855,75 +843,73 @@
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
                 <Border x:Name="Border"
-            Grid.ColumnSpan="2"
-            CornerRadius="2"
-            BorderThickness="1">
+                        Grid.ColumnSpan="2"
+                        CornerRadius="0"
+                        BorderThickness="1">
                     <Border.BorderBrush>
                         <LinearGradientBrush EndPoint="0,1"
-                             StartPoint="0,0">
-                            <GradientStop Color="{DynamicResource BorderLightColor}"
-                        Offset="0" />
-                            <GradientStop Color="{DynamicResource BorderDarkColor}"
-                        Offset="1" />
+                                             StartPoint="0,0">
+                            <GradientStop Color="{Binding Color, Source={StaticResource BorderLightColor}}"
+                                          Offset="0" />
+                            <GradientStop Color="{Binding Color, Source={StaticResource BorderDarkColor}}"
+                                          Offset="1" />
                         </LinearGradientBrush>
                     </Border.BorderBrush>
                     <Border.Background>
 
                         <LinearGradientBrush StartPoint="0,0"
-                             EndPoint="0,1">
+                                             EndPoint="0,1">
                             <LinearGradientBrush.GradientStops>
                                 <GradientStopCollection>
-                                    <GradientStop Color="{DynamicResource ControlLightColor}" />
-                                    <GradientStop Color="{DynamicResource ControlMediumColor}"
-                            Offset="1.0" />
+                                    <GradientStop Color="{Binding Color, Source={StaticResource ControlLightColor}}"/>
+                                    <GradientStop Color="{Binding Color, Source={StaticResource ControlMediumColor}}"
+                                                  Offset="1.0"/>
                                 </GradientStopCollection>
                             </LinearGradientBrush.GradientStops>
                         </LinearGradientBrush>
 
                     </Border.Background>
                 </Border>
-                <Border Grid.Column="0"
-            CornerRadius="2,0,0,2"
-            Margin="1" >
+                <Border Margin="1" >
                     <Border.Background>
-                        <SolidColorBrush Color="{DynamicResource ControlLightColor}"/>
+                        <SolidColorBrush Color="{Binding Color, Source={StaticResource ControlLightColor}}"/>
                     </Border.Background>
                 </Border>
                 <Path x:Name="Arrow"
-          Grid.Column="1"
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center"
-          Data="M 0 0 L 4 4 L 8 0 Z" >
+                      Grid.Column="1"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Data="M 0 0 L 4 4 L 8 0 Z" >
                     <Path.Fill>
-                        <SolidColorBrush Color="{DynamicResource GlyphColor}"/>
+                        <SolidColorBrush Color="{Binding Color, Source={StaticResource GlyphColor}}"/>
                     </Path.Fill>
                 </Path>
             </Grid>
         </ControlTemplate>
 
         <ControlTemplate x:Key="ComboBoxTextBox"
-                 TargetType="{x:Type TextBox}">
+                         TargetType="{x:Type TextBox}">
             <Border x:Name="PART_ContentHost"
-          Focusable="False"
-          Background="{TemplateBinding Background}" />
+                    Focusable="False"
+                    Background="{TemplateBinding Background}" />
         </ControlTemplate>
 
         <Style x:Key="{x:Type ComboBox}"
-       TargetType="{x:Type ComboBox}">
+               TargetType="{x:Type ComboBox}">
             <Setter Property="SnapsToDevicePixels"
-          Value="true" />
+                    Value="true" />
             <Setter Property="OverridesDefaultStyle"
-          Value="true" />
+                    Value="true" />
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
-          Value="Auto" />
+                    Value="Auto" />
             <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
-          Value="Auto" />
+                    Value="Auto" />
             <Setter Property="ScrollViewer.CanContentScroll"
-          Value="true" />
+                    Value="true" />
             <Setter Property="MinWidth"
-          Value="120" />
+                    Value="120" />
             <Setter Property="MinHeight"
-          Value="20" />
+                    Value="20" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -935,10 +921,10 @@
                                     <VisualState x:Name="Disabled">
                                         <Storyboard>
                                             <ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_EditableTextBox"
-                                                Storyboard.TargetProperty="(TextElement.Foreground).
-                      (SolidColorBrush.Color)">
+                                                                          Storyboard.TargetProperty="(TextElement.Foreground).
+                                                                          (SolidColorBrush.Color)">
                                                 <EasingColorKeyFrame KeyTime="0"
-                                         Value="{StaticResource DisabledForegroundColor}" />
+                                                                     Value="{Binding Color, Source={StaticResource DisabledForegroundColor}}"/>
                                             </ColorAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
@@ -947,15 +933,14 @@
                                     <VisualState x:Name="Editable">
                                         <Storyboard>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
-                                                 Storyboard.TargetName="PART_EditableTextBox">
+                                                                           Storyboard.TargetName="PART_EditableTextBox">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
-                                            Value="{x:Static Visibility.Visible}" />
+                                                                        Value="{x:Static Visibility.Visible}" />
                                             </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames
-                      Storyboard.TargetProperty="(UIElement.Visibility)"
-                                                 Storyboard.TargetName="ContentSite">
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                                           Storyboard.TargetName="ContentSite">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
-                                            Value="{x:Static Visibility.Hidden}" />
+                                                                        Value="{x:Static Visibility.Hidden}" />
                                             </ObjectAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
@@ -963,79 +948,72 @@
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
                             <ToggleButton x:Name="ToggleButton"
-                        Template="{StaticResource ComboBoxToggleButton}"
-                        Grid.Column="2"
-                        Focusable="false"
-                        ClickMode="Press"
-                        IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, 
-              RelativeSource={RelativeSource TemplatedParent}}"/>
+                                          Template="{StaticResource ComboBoxToggleButton}"
+                                          Grid.Column="2"
+                                          Focusable="false"
+                                          ClickMode="Press"
+                                          IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, 
+                                          RelativeSource={RelativeSource TemplatedParent}}"/>
                             <ContentPresenter x:Name="ContentSite"
-                            IsHitTestVisible="False"
-                            Content="{TemplateBinding SelectionBoxItem}"
-                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                            Margin="3,3,23,3"
-                            VerticalAlignment="Stretch"
-                            HorizontalAlignment="Left">
+                                              IsHitTestVisible="False"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              Margin="3,3,23,3"
+                                              VerticalAlignment="Stretch"
+                                              HorizontalAlignment="Left">
                             </ContentPresenter>
                             <TextBox x:Name="PART_EditableTextBox"
-                   Style="{x:Null}"
-                   Template="{StaticResource ComboBoxTextBox}"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Bottom"
-                   Margin="3,3,23,3"
-                   Focusable="True"
-                   Background="Transparent"
-                   Visibility="Hidden"
-                   IsReadOnly="{TemplateBinding IsReadOnly}" />
+                                     Style="{x:Null}"
+                                     Template="{StaticResource ComboBoxTextBox}"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Bottom"
+                                     Margin="3,3,23,3"
+                                     Focusable="True"
+                                     Background="Transparent"
+                                     Visibility="Hidden"
+                                     IsReadOnly="{TemplateBinding IsReadOnly}" />
                             <Popup x:Name="Popup"
-                 Placement="Bottom"
-                 IsOpen="{TemplateBinding IsDropDownOpen}"
-                 AllowsTransparency="True"
-                 Focusable="False"
-                 PopupAnimation="Slide">
+                                   Placement="Bottom"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   AllowsTransparency="True"
+                                   Focusable="False"
+                                   PopupAnimation="Fade">
                                 <Grid x:Name="DropDown"
-                  SnapsToDevicePixels="True"
-                  MinWidth="{TemplateBinding ActualWidth}"
-                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                      SnapsToDevicePixels="True"
+                                      MinWidth="{TemplateBinding ActualWidth}"
+                                      MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                     <Border x:Name="DropDownBorder"
-                      BorderThickness="1">
+                                            BorderThickness="1">
                                         <Border.BorderBrush>
-                                            <SolidColorBrush Color="{DynamicResource BorderMediumColor}" />
+                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource BorderMediumColor}}" />
                                         </Border.BorderBrush>
                                         <Border.Background>
-                                            <SolidColorBrush Color="{DynamicResource ControlLightColor}" />
+                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource ControlLightColor}}" />
                                         </Border.Background>
                                     </Border>
-                                    <ScrollViewer Margin="4,6,4,6"
-                            SnapsToDevicePixels="True">
+                                    <ScrollViewer SnapsToDevicePixels="True">
                                         <StackPanel IsItemsHost="True"
-                            KeyboardNavigation.DirectionalNavigation="Contained" />
+                                                    KeyboardNavigation.DirectionalNavigation="Contained" />
                                     </ScrollViewer>
                                 </Grid>
                             </Popup>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="HasItems"
-                   Value="false">
+                                     Value="false">
                                 <Setter TargetName="DropDownBorder"
-                    Property="MinHeight"
-                    Value="95" />
+                                        Property="MinHeight"
+                                        Value="95" />
                             </Trigger>
                             <Trigger Property="IsGrouping"
-                   Value="true">
+                                     Value="true">
                                 <Setter Property="ScrollViewer.CanContentScroll"
-                    Value="false" />
+                                        Value="false" />
                             </Trigger>
                             <Trigger SourceName="Popup"
-                   Property="AllowsTransparency"
-                   Value="true">
-                                <Setter TargetName="DropDownBorder"
-                    Property="CornerRadius"
-                    Value="4" />
-                                <Setter TargetName="DropDownBorder"
-                    Property="Margin"
-                    Value="0,2,0,0" />
+                                     Property="AllowsTransparency"
+                                     Value="true">
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -1044,38 +1022,38 @@
         </Style>
 
         <Style x:Key="{x:Type ComboBoxItem}"
-       TargetType="{x:Type ComboBoxItem}">
+               TargetType="{x:Type ComboBoxItem}">
             <Setter Property="SnapsToDevicePixels"
-          Value="true" />
+                    Value="true" />
             <Setter Property="OverridesDefaultStyle"
-          Value="true" />
+                    Value="true" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ComboBoxItem}">
                         <Border x:Name="Border"
-                Padding="2"
-                SnapsToDevicePixels="true"
-                Background="Transparent">
+                                Padding="2"
+                                SnapsToDevicePixels="true"
+                                Background="Transparent">
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="SelectionStates">
                                     <VisualState x:Name="Unselected" />
                                     <VisualState x:Name="Selected">
                                         <Storyboard>
                                             <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                Storyboard.TargetProperty="(Panel.Background).
-                    (SolidColorBrush.Color)">
+                                                                          Storyboard.TargetProperty="(Panel.Background).
+                                                                          (SolidColorBrush.Color)">
                                                 <EasingColorKeyFrame KeyTime="0"
-                                         Value="{StaticResource SelectedBackgroundColor}" />
+                                                                     Value="{Binding Color, Source={StaticResource SelectedBackgroundColor}}" />
                                             </ColorAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
                                     <VisualState x:Name="SelectedUnfocused">
                                         <Storyboard>
                                             <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                Storyboard.TargetProperty="(Panel.Background).
-                    (SolidColorBrush.Color)">
+                                                                          Storyboard.TargetProperty="(Panel.Background).
+                                                                          (SolidColorBrush.Color)">
                                                 <EasingColorKeyFrame KeyTime="0"
-                                         Value="{StaticResource SelectedUnfocusedColor}" />
+                                                                     Value="{Binding Color, Source={StaticResource SelectedUnfocusedColor}}" />
                                             </ColorAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
@@ -1157,10 +1135,10 @@
                 </Grid.RowDefinitions>
 
                 <RepeatButton Grid.Row="0" Height="18"
-                          Style="{StaticResource ScrollBarLineButtonStyle}"
-                          Command="ScrollBar.LineUpCommand"/>
+                              Style="{StaticResource ScrollBarLineButtonStyle}"
+                              Command="ScrollBar.LineUpCommand"/>
                 <Track Name="PART_Track" Grid.Row="1" 
-                   IsDirectionReversed="True">
+                       IsDirectionReversed="True">
                     <Track.DecreaseRepeatButton>
                         <RepeatButton Command="ScrollBar.PageUpCommand"
                                       Style="{StaticResource ScrollBarPageButtonStyle}"/>

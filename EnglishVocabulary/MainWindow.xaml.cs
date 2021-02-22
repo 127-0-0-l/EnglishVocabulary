@@ -29,7 +29,7 @@ namespace EnglishVocabulary
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            GhangeImageColor();
+            ActivateCompanyLogo();
 
             
 
@@ -49,14 +49,17 @@ namespace EnglishVocabulary
             //}
         }
 
-        private void GhangeImageColor()
+        /// <summary>
+        /// Constantly changing color of company logo in menu grid.
+        /// </summary>
+        private void ActivateCompanyLogo()
         {
             DispatcherTimer t = new DispatcherTimer();
             t.Interval = new TimeSpan(0, 0, 0, 0, 50);
 
             byte maxValue = 255;
             byte minValue = 75;
-            byte speed = 5;
+            byte speed = 4;
             byte r = maxValue;
             byte g = minValue;
             byte b = minValue;
@@ -91,6 +94,7 @@ namespace EnglishVocabulary
 
                 rctMenuImage.Fill = new SolidColorBrush(Color.FromRgb(r, g, b));
             };
+
             t.Start();
         }
     }
