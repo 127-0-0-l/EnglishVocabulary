@@ -74,6 +74,7 @@
     <Compile Include="EditTopic.cs" />
     <Compile Include="Header.cs" />
     <Compile Include="Help.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Subtopic.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Topic.cs" />
