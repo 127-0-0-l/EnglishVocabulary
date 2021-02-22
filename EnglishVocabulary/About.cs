@@ -14,7 +14,7 @@ namespace EnglishVocabulary
 
             using (StreamReader file = new StreamReader(path))
             {
-                rtbHelpText.AppendText(file.ReadToEnd());
+                rtbAboutText.AppendText(file.ReadToEnd());
             }
         }
     }

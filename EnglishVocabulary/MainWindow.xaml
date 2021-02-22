@@ -40,7 +40,7 @@
         <Rectangle x:Name="colorButtonClick" Fill="#FF8A8A8A" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonText" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorBackground" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorText" Fill="#fff000" Visibility="Hidden"/>
+        <Rectangle x:Name="colorText" Fill="Black" Visibility="Hidden"/>
         <Rectangle x:Name="colorImage" Fill="WhiteSmoke" Visibility="Hidden"/>
 
         <Rectangle x:Name="colorTestHeader" Fill="#fff" Visibility="Hidden"/>
@@ -53,8 +53,6 @@
         <Rectangle x:Name="colorComboBoxList" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorComboBoxText" Fill="#000fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorComboBoxItemEnter" Fill="#fff" Visibility="Hidden"/>
-
-
 
         <Grid x:Name="cnvBase"
                 Margin="200,40,0,0"
