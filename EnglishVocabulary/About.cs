@@ -8,6 +8,9 @@ namespace EnglishVocabulary
 {
     public partial class MainWindow
     {
+        private void LoadAbout()
+        {
 
+        }
     }
 }

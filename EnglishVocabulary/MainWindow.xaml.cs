@@ -29,7 +29,8 @@ namespace EnglishVocabulary
         {
             ActivateCompanyLogo();
 
-            
+            LoadHelp();
+            LoadAbout();
 
             //DataBaseAccess.CreateTopic(new Topic());
 
