@@ -37,7 +37,7 @@
         <Rectangle x:Name="colorButton" Fill="#FF5685E5" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonDisabled" Fill="#f00" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonEnter" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonClick" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonClick" Fill="#f0f" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonText" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorBackground" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorText" Fill="#fff000" Visibility="Hidden"/>
@@ -147,7 +147,7 @@
             </Grid.RowDefinitions>
             <Grid x:Name="grdMenuItemTest"
                   Margin="0"
-                  Background="{Binding Fill, ElementName=colorButton}">
+                  Background="{Binding Fill, ElementName=colorButton}" MouseEnter="grdMenuItemTest_MouseEnter" MouseLeave="grdMenuItemTest_MouseLeave" MouseDown="grdMenuItemTest_MouseDown" MouseUp="grdMenuItemTest_MouseUp">
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
@@ -159,7 +159,7 @@
             </Grid>
             <Grid x:Name="grdMenuItemAddTopic"
                   Margin="0"
-                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="1">
+                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="1" MouseEnter="grdMenuItemAddTopic_MouseEnter" MouseLeave="grdMenuItemAddTopic_MouseLeave" MouseDown="grdMenuItemAddTopic_MouseDown" MouseUp="grdMenuItemAddTopic_MouseUp">
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
@@ -171,7 +171,7 @@
             </Grid>
             <Grid x:Name="grdMenuItemEditTopic"
                   Margin="0"
-                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="2">
+                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="2" MouseEnter="grdMenuItemEditTopic_MouseEnter" MouseLeave="grdMenuItemEditTopic_MouseLeave" MouseDown="grdMenuItemEditTopic_MouseDown" MouseUp="grdMenuItemEditTopic_MouseUp">
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
@@ -183,7 +183,7 @@
             </Grid>
             <Grid x:Name="grdMenuItemDeleteTopic"
                   Margin="0"
-                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="3">
+                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="3" MouseEnter="grdMenuItemDeleteTopic_MouseEnter" MouseLeave="grdMenuItemDeleteTopic_MouseLeave" MouseDown="grdMenuItemDeleteTopic_MouseDown" MouseUp="grdMenuItemDeleteTopic_MouseUp">
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
@@ -195,7 +195,7 @@
             </Grid>
             <Grid x:Name="grdMenuItemColorTheme"
                   Margin="0"
-                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="4">
+                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="4" MouseEnter="grdMenuItemColorTheme_MouseEnter" MouseLeave="grdMenuItemColorTheme_MouseLeave" MouseDown="grdMenuItemColorTheme_MouseDown" MouseUp="grdMenuItemColorTheme_MouseUp">
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
@@ -207,7 +207,7 @@
             </Grid>
             <Grid x:Name="grdMenuItemHelp"
                   Margin="0"
-                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="5">
+                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="5" MouseEnter="grdMenuItemHelp_MouseEnter" MouseLeave="grdMenuItemHelp_MouseLeave" MouseDown="grdMenuItemHelp_MouseDown" MouseUp="grdMenuItemHelp_MouseUp">
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
@@ -219,7 +219,7 @@
             </Grid>
             <Grid x:Name="grdMenuItemAbout"
                   Margin="0"
-                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="6">
+                  Background="{Binding Fill, ElementName=colorButton}" Grid.Row="6" MouseEnter="grdMenuItemAbout_MouseEnter" MouseLeave="grdMenuItemAbout_MouseLeave" MouseDown="grdMenuItemAbout_MouseDown" MouseUp="grdMenuItemAbout_MouseUp">
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
