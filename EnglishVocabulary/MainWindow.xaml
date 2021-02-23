@@ -54,6 +54,11 @@
         <Rectangle x:Name="colorComboBoxText" Fill="#000fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorComboBoxItemEnter" Fill="#fff" Visibility="Hidden"/>
 
+        <Rectangle x:Name="colorRadioButton" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorRadioButtonBorder" Fill="#000fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorRadioButtonSelected" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorRadioButtonBorderSelected" Fill="#fff" Visibility="Hidden"/>
+
         <Grid x:Name="cnvBase"
                 Margin="200,40,0,0"
                 IsEnabled="False"
@@ -288,7 +293,7 @@
                            HorizontalAlignment="Center"
                            Margin="0,10,0,0"
                            TextWrapping="Wrap"
-                           Text="word"
+                           Text="0 / 0"
                            VerticalAlignment="Top"
                            Foreground="{Binding Fill, ElementName=colorText}"
                            FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
@@ -311,7 +316,6 @@
                              VerticalAlignment="Top"
                              Foreground="{Binding Fill, ElementName=colorText}"
                              Background="{Binding Fill, ElementName=colorButton}"
-                             BorderBrush="{Binding Fill, ElementName=colorText}"
                              FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                              FontSize="14"/>
                 <RadioButton x:Name="rbtnTestTest2"
