@@ -84,8 +84,7 @@
                 <TextBlock HorizontalAlignment="Left"
                            VerticalAlignment="Center"
                            Margin="40,0,0,0"
-                           TextWrapping="Wrap"
-                           Text="Linguage"
+                           Text="LINGUAGE"
                            FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
                            FontSize="16"
                            Foreground="{Binding Fill, ElementName=colorHeaderText}"/>
@@ -153,7 +152,7 @@
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
-                           Text="Test"
+                           Text="TEST"
                            VerticalAlignment="Center"
                            FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
                            FontSize="13"
@@ -170,7 +169,7 @@
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
-                           Text="Add topic"
+                           Text="ADD TOPIC"
                            VerticalAlignment="Center"
                            FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
                            FontSize="13"
@@ -187,7 +186,7 @@
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
-                           Text="Edit topic"
+                           Text="EDIT TOPIC"
                            VerticalAlignment="Center"
                            FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
                            FontSize="13"
@@ -204,7 +203,7 @@
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
-                           Text="Delete topic"
+                           Text="DELETE TOPIC"
                            VerticalAlignment="Center"
                            FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
                            FontSize="13"
@@ -221,7 +220,7 @@
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
-                           Text="Change color theme"
+                           Text="CHANGE COLOR THEME"
                            VerticalAlignment="Center"
                            FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
                            FontSize="13"
@@ -238,7 +237,7 @@
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
-                           Text="Help"
+                           Text="HELP"
                            VerticalAlignment="Center"
                            FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
                            FontSize="13"
@@ -255,7 +254,7 @@
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
-                           Text="About"
+                           Text="ABOUT"
                            VerticalAlignment="Center"
                            FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
                            FontSize="13"
@@ -276,7 +275,7 @@
         <Grid x:Name="grdTest"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Focusable="True"
-              Visibility="Visible"
+              Visibility="Hidden"
               Background="{Binding Fill, ElementName=colorBackground}">
             <Grid x:Name="grdTestTest"
                   Margin="0,40,0,0"
@@ -295,8 +294,7 @@
                              Margin="10,91,0,0"
                              VerticalAlignment="Top"
                              Foreground="{Binding Fill, ElementName=colorText}"
-                             Background="{Binding Fill, ElementName=colorButton}"
-                             BorderBrush="{Binding Fill, ElementName=colorText}"/>
+                             Background="{Binding Fill, ElementName=colorButton}" BorderBrush="Red"/>
                 <RadioButton x:Name="rbtnTestTest2"
                              Content="RadioButton"
                              HorizontalAlignment="Left"
@@ -656,7 +654,9 @@
                          Block.LineHeight="2"
                          IsReadOnly="True"
                          Foreground="{Binding Fill, ElementName=colorText}"
-                         SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
+                         SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"
+                         FontFamily="/EnglishVocabulary;component/Fonts/#CyrillicRound"
+                         FontSize="14"/>
         </Grid>
 
         <Grid x:Name="grdAbout"
@@ -670,7 +670,9 @@
                          Background="{Binding Fill, ElementName=colorBackground}"
                          IsReadOnly="True"
                          Foreground="{Binding Fill, ElementName=colorText}"
-                         SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
+                         SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"
+                         FontFamily="/EnglishVocabulary;component/Fonts/#CyrillicRound"
+                         FontSize="14"/>
         </Grid>
 
     </Grid>
