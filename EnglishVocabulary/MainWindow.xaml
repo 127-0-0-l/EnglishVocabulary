@@ -41,7 +41,10 @@
         <Rectangle x:Name="colorButtonText" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonTextDisabled" Fill="#ffffff" Visibility="Hidden"/>
         <Rectangle x:Name="colorBackground" Fill="#fff" Visibility="Hidden"/>
+        
         <Rectangle x:Name="colorText" Fill="Black" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTextSelected" Fill="#FF005BFF" Visibility="Hidden"/>
+        
         <Rectangle x:Name="colorImage" Fill="WhiteSmoke" Visibility="Hidden"/>
         
         <Rectangle x:Name="colorTestHeader" Fill="#FF7E7E7E" Visibility="Hidden"/>
@@ -479,7 +482,7 @@
                            FontSize="14"/>
                 <RichTextBox x:Name="rtbTestResultWords"
                              Margin="0,110,0,0"
-                             Grid.Row="1" VerticalScrollBarVisibility="Auto" Background="{Binding Fill, ElementName=colorBackground}" BorderThickness="0,1,0,0" BorderBrush="{Binding Fill, ElementName=colorTestHeader}" CaretBrush="#FFE28109">
+                             Grid.Row="1" VerticalScrollBarVisibility="Auto" Background="{Binding Fill, ElementName=colorBackground}" BorderThickness="0,1,0,0" BorderBrush="{Binding Fill, ElementName=colorTestHeader}" Foreground="{Binding Fill, ElementName=colorText}">
                     <FlowDocument>
                         <Paragraph>
                             <Image Height="50"
