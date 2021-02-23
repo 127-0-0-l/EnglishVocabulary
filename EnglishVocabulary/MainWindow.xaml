@@ -44,7 +44,7 @@
         <Rectangle x:Name="colorText" Fill="Black" Visibility="Hidden"/>
         <Rectangle x:Name="colorImage" Fill="WhiteSmoke" Visibility="Hidden"/>
         
-        <Rectangle x:Name="colorTestHeader" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestHeader" Fill="#FF7E7E7E" Visibility="Hidden"/>
         <Rectangle x:Name="colorTestGood" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorTestFail" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorTestUnknown" Fill="#fff" Visibility="Hidden"/>
@@ -276,7 +276,7 @@
         <Grid x:Name="grdTest"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Focusable="True"
-              Visibility="Hidden"
+              Visibility="Visible"
               Background="{Binding Fill, ElementName=colorBackground}">
             <Grid x:Name="grdTestTest"
                   Margin="0,40,0,0"
@@ -421,157 +421,33 @@
                           VerticalAlignment="Top"/>
                 </ScrollViewer>
             </Grid>
-            <Grid>
-                <Grid x:Name="grdTestHeader"
-                      Height="40"
-                      Margin="0"
-                      VerticalAlignment="Top"
-                      Visibility="Visible"
-                      Background="{Binding Fill, ElementName=colorTestHeader}">
-                    <Grid x:Name="grdTestHeaderBtnStart"
-                          HorizontalAlignment="Right"
-                          Height="22"
-                          Margin="0,6,6,6"
-                          Width="79"
-                          Background="{Binding Fill, ElementName=colorButton}">
-                        <TextBlock HorizontalAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="Start"
-                                   VerticalAlignment="Center"
-                                   FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
-                                   Foreground="{Binding Fill, ElementName=colorButtonText}"/>
-                    </Grid>
-                </Grid>
-                <Grid x:Name="grdUserComboBoxTopic"
-                      MinHeight="20"
-                      MinWidth="50"
-                      Width="150"
-                      Height="200"
-                      HorizontalAlignment="Left"
-                      VerticalAlignment="Top"
-                      Margin="6,9,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="{Binding Height, ElementName=RowCBTopic}"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition x:Name="RowCBTopic" Height="22"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBox x:Name="tbCBTopicCurrentItem"
-                             Grid.Column="0"
-                             IsEnabled="False"
-                             BorderThickness="0"
-                             Background="{Binding Fill, ElementName=colorComboBox}"
-                             Foreground="{Binding Fill, ElementName=colorComboBoxText}"
-                             SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
-                    <Grid x:Name="grdCBTopicBtn"
-                          Grid.Column="1"
-                          Background="{Binding Fill, ElementName=colorButton}">
-                        <Path HorizontalAlignment="Center"
-                              VerticalAlignment="Center"
-                              Data="M 0 0 L 4 4 L 8 0 Z"
-                              Fill="{Binding Fill, ElementName=colorButtonText}" />
-                    </Grid>
-                    <ScrollViewer Grid.Row="1"
-                                  Grid.ColumnSpan="2"
-                                  Visibility="Hidden"
-                                  HorizontalScrollBarVisibility="Hidden"
-                                  VerticalScrollBarVisibility="Auto"
-                                  Background="{Binding Fill, ElementName=colorComboBoxList}">
-                        <StackPanel x:Name="stkpCBTopicList"
-                                    Margin="0"
-                                    Height="auto"
-                                    Width="{Binding Width, ElementName=grdUserComboBoxTopic}"/>
-                    </ScrollViewer>
-                </Grid>
+            <Grid x:Name="grdTestHeader"
+                  Height="40"
+                  Margin="0"
+                  VerticalAlignment="Top"
+                  Visibility="Visible"
+                  Background="{Binding Fill, ElementName=colorTestHeader}">
+                <ComboBox x:Name="cbTestHeaderTopic">
+                    
+                </ComboBox>
+                <ComboBox x:Name="cbTestHeaderSubtopic">
 
-                <Grid x:Name="grdUserComboBoxSubtopic"
-                      MinHeight="20"
-                      MinWidth="50"
-                      Width="150"
-                      Height="200"
-                      HorizontalAlignment="Left"
-                      VerticalAlignment="Top"
-                      Margin="162,9,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="{Binding Height, ElementName=RowCBSubtopic}"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition x:Name="RowCBSubtopic" Height="22"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBox x:Name="tbCBSubtopicCurrentItem"
-                             Grid.Column="0"
-                             IsEnabled="False"
-                             BorderThickness="0"
-                             Background="{Binding Fill, ElementName=colorComboBox}"
-                             Foreground="{Binding Fill, ElementName=colorComboBoxText}"
-                             SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
-                    <Grid x:Name="grdCBSubtopicBtn"
-                          Grid.Column="1"
-                          Background="{Binding Fill, ElementName=colorButton}">
-                        <Path HorizontalAlignment="Center"
-                              VerticalAlignment="Center"
-                              Data="M 0 0 L 4 4 L 8 0 Z"
-                              Fill="{Binding Fill, ElementName=colorButtonText}" />
-                    </Grid>
-                    <ScrollViewer Grid.Row="1"
-                                  Grid.ColumnSpan="2"
-                                  Visibility="Hidden"
-                                  HorizontalScrollBarVisibility="Hidden"
-                                  VerticalScrollBarVisibility="Auto"
-                                  Background="{Binding Fill, ElementName=colorComboBoxList}">
-                        <StackPanel x:Name="stkpCBSubtopicList"
-                                    Margin="0"
-                                    Height="auto"
-                                    Width="{Binding Width, ElementName=grdUserComboBoxTopic}"/>
-                    </ScrollViewer>
-                </Grid>
+                </ComboBox>
+                <ComboBox x:Name="cbTestHeaderMode">
 
-                <Grid x:Name="grdUserComboBoxMode"
-                      MinHeight="20"
-                      MinWidth="50"
-                      Width="80"
-                      Height="200"
-                      HorizontalAlignment="Left"
-                      VerticalAlignment="Top"
-                      Margin="318,9,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="{Binding Height, ElementName=RowCBMode}"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition x:Name="RowCBMode" Height="22"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBox x:Name="tbCBModeCurrentItem"
-                             Grid.Column="0"
-                             IsEnabled="False"
-                             BorderThickness="0"
-                             Background="{Binding Fill, ElementName=colorComboBox}"
-                             Foreground="{Binding Fill, ElementName=colorComboBoxText}"
-                             SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
-                    <Grid x:Name="grdCBModeBtn"
-                          Grid.Column="1"
-                          Background="{Binding Fill, ElementName=colorButton}">
-                        <Path HorizontalAlignment="Center"
-                              VerticalAlignment="Center"
-                              Data="M 0 0 L 4 4 L 8 0 Z"
-                              Fill="{Binding Fill, ElementName=colorButtonText}" />
-                    </Grid>
-                    <ScrollViewer Grid.Row="1"
-                                  Grid.ColumnSpan="2"
-                                  Visibility="Hidden"
-                                  HorizontalScrollBarVisibility="Hidden"
-                                  VerticalScrollBarVisibility="Auto"
-                                  Background="{Binding Fill, ElementName=colorComboBoxList}">
-                        <StackPanel x:Name="stkpCBModeList"
-                                    Margin="0"
-                                    Height="auto"
-                                    Width="{Binding Width, ElementName=grdUserComboBoxTopic}"/>
-                    </ScrollViewer>
+                </ComboBox>
+                <Grid x:Name="grdTestHeaderBtnStart"
+                      HorizontalAlignment="Right"
+                      Height="22"
+                      Margin="0,6,6,6"
+                      Width="79"
+                      Background="{Binding Fill, ElementName=colorButton}">
+                    <TextBlock HorizontalAlignment="Center"
+                               TextWrapping="Wrap"
+                               Text="Start"
+                               VerticalAlignment="Center"
+                               FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
+                               Foreground="{Binding Fill, ElementName=colorButtonText}"/>
                 </Grid>
             </Grid>
         </Grid>
