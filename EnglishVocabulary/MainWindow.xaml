@@ -427,15 +427,21 @@
                   VerticalAlignment="Top"
                   Visibility="Visible"
                   Background="{Binding Fill, ElementName=colorTestHeader}">
-                <ComboBox x:Name="cbTestHeaderTopic">
-                    
-                </ComboBox>
-                <ComboBox x:Name="cbTestHeaderSubtopic">
-
-                </ComboBox>
-                <ComboBox x:Name="cbTestHeaderMode">
-
-                </ComboBox>
+                <ComboBox x:Name="cbTestHeaderTopic"
+                          Width="150"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          Margin="6,0,0,0"/>
+                <ComboBox x:Name="cbTestHeaderSubtopic"
+                          Width="150"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          Margin="162,0,0,0"/>
+                <ComboBox x:Name="cbTestHeaderMode"
+                          Width="80"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          Margin="318,0,0,0"/>
                 <Grid x:Name="grdTestHeaderBtnStart"
                       HorizontalAlignment="Right"
                       Height="22"
