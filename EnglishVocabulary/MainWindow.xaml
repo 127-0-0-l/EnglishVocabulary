@@ -59,7 +59,7 @@
         <Rectangle x:Name="colorRadioButtonSelected" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorRadioButtonBorderSelected" Fill="#fff" Visibility="Hidden"/>
 
-        <Rectangle x:Name="colorCurret" Fill="#ff0" Visibility="Hidden"/>
+        <Rectangle x:Name="colorCaret" Fill="#ff0" Visibility="Hidden"/>
 
         <Grid x:Name="cnvBase"
                 Margin="200,40,0,0"
