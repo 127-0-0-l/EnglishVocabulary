@@ -602,12 +602,55 @@
         <Grid x:Name="grdEditTopic"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Background="{Binding Fill, ElementName=colorBackground}"
-              Visibility="Visible">
+              Visibility="Hidden">
+            <TextBlock HorizontalAlignment="Left"
+                       Margin="10,10,0,0"
+                       TextWrapping="Wrap"
+                       Text="Topic"
+                       VerticalAlignment="Top"
+                       FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                       FontSize="14"
+                       Foreground="{Binding Fill, ElementName=colorText}"/>
+            <TextBlock HorizontalAlignment="Left"
+                       Margin="10,58,0,0"
+                       TextWrapping="Wrap"
+                       Text="Subtopic"
+                       VerticalAlignment="Top"
+                       FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                       FontSize="14"
+                       Foreground="{Binding Fill, ElementName=colorText}"/>
+            <TextBlock HorizontalAlignment="Left"
+                       Margin="10,106,0,0"
+                       TextWrapping="Wrap"
+                       Text="Word"
+                       VerticalAlignment="Top"
+                       FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                       FontSize="14"
+                       Foreground="{Binding Fill, ElementName=colorText}"/>
+            <TextBlock HorizontalAlignment="Left"
+                       Margin="10,168,0,0"
+                       TextWrapping="Wrap"
+                       Text="English"
+                       VerticalAlignment="Top"
+                       FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                       FontSize="14"
+                       Foreground="{Binding Fill, ElementName=colorText}"/>
+            <TextBlock HorizontalAlignment="Left"
+                       Margin="10,216,0,0"
+                       TextWrapping="Wrap"
+                       Text="Russian"
+                       VerticalAlignment="Top"
+                       FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                       FontSize="14"
+                       Foreground="{Binding Fill, ElementName=colorText}"/>
             <ComboBox x:Name="cbEditTopicTopic"
                       HorizontalAlignment="Left"
                       Margin="10,31,0,0"
                       VerticalAlignment="Top"
-                      Width="250">
+                      Width="250"
+                      FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                      FontSize="14"
+                      Foreground="{Binding Fill, ElementName=colorText}">
                 <System:String>1</System:String>
                 <System:String>2</System:String>
                 <System:String>3</System:String>
@@ -629,63 +672,61 @@
                       HorizontalAlignment="Left"
                       Margin="10,79,0,0"
                       VerticalAlignment="Top"
-                      Width="250" IsEnabled="False"/>
+                      Width="250"
+                      IsEnabled="False"
+                      FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                      FontSize="14"
+                      Foreground="{Binding Fill, ElementName=colorText}"/>
             <ComboBox x:Name="cbEditTopicWord"
                       HorizontalAlignment="Left"
                       Margin="10,127,0,0"
                       VerticalAlignment="Top"
-                      Width="250"/>
+                      Width="250"
+                      FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                      FontSize="14"
+                      Foreground="{Binding Fill, ElementName=colorText}"/>
             <TextBox x:Name="tbEditTopicEnglish"
                      HorizontalAlignment="Left"
-                     Height="23" Margin="60,167,0,0"
-                     TextWrapping="Wrap"
+                     Height="23"
+                     Margin="60,167,0,0"
                      VerticalAlignment="Top"
-                     Width="200"/>
+                     Width="200"
+                     Background="{Binding Fill, ElementName=colorBackground}"
+                     BorderBrush="{Binding Fill, ElementName=colorButton}"
+                     CaretBrush="{Binding Fill, ElementName=colorCaret}"
+                     Foreground="{Binding Fill, ElementName=colorText}"
+                     SelectionBrush="{Binding Fill, ElementName=colorTextSelected}"
+                     FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                     FontSize="14"/>
             <TextBox x:Name="tbEditTopicRussian"
                      HorizontalAlignment="Left"
                      Height="23"
                      Margin="60,215,0,0"
-                     TextWrapping="Wrap"
                      VerticalAlignment="Top"
-                     Width="200"/>
-            <TextBlock HorizontalAlignment="Left"
-                       Margin="10,168,0,0"
-                       TextWrapping="Wrap"
-                       Text="English"
-                       VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Left"
-                       Margin="10,216,0,0"
-                       TextWrapping="Wrap"
-                       Text="Russian"
-                       VerticalAlignment="Top"/>
+                     Width="200"
+                     Background="{Binding Fill, ElementName=colorBackground}"
+                     BorderBrush="{Binding Fill, ElementName=colorButton}"
+                     CaretBrush="{Binding Fill, ElementName=colorCaret}"
+                     Foreground="{Binding Fill, ElementName=colorText}"
+                     SelectionBrush="{Binding Fill, ElementName=colorTextSelected}"
+                     FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                     FontSize="14"/>
             <Grid x:Name="grdEditTopicBtnSaveChanges"
                   HorizontalAlignment="Left"
                   Height="30"
                   Margin="10,254,0,0"
                   VerticalAlignment="Top"
                   Width="120"
-                  Background="#FF5BA0DB">
+                  Background="{Binding Fill, ElementName=colorButton}">
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
                            Text="Save changes"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center"
+                           Foreground="{Binding Fill, ElementName=colorButtonText}"
+                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                           FontSize="14"/>
             </Grid>
-            <TextBlock HorizontalAlignment="Left"
-                       Margin="10,10,0,0"
-                       TextWrapping="Wrap"
-                       Text="Topic"
-                       VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Left"
-                       Margin="10,58,0,0"
-                       TextWrapping="Wrap"
-                       Text="Subtopic"
-                       VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Left"
-                       Margin="10,106,0,0"
-                       TextWrapping="Wrap"
-                       Text="Word"
-                       VerticalAlignment="Top"/>
         </Grid>
 
         <Grid x:Name="grdDeleteTopic"
@@ -696,19 +737,25 @@
                       HorizontalAlignment="Left"
                       Margin="10,10,0,0"
                       VerticalAlignment="Top"
-                      Width="250"/>
+                      Width="250"
+                      Foreground="{Binding Fill, ElementName=colorText}"
+                      FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                      FontSize="14"/>
             <Grid x:Name="grdDeleteTopicBtnDelete"
                   HorizontalAlignment="Left"
                   Height="30"
                   Margin="10,37,0,0"
                   VerticalAlignment="Top"
                   Width="80"
-                  Background="#FF5BA0DB">
+                  Background="{Binding Fill, ElementName=colorButton}">
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
                            Text="Delete"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center"
+                           Foreground="{Binding Fill, ElementName=colorButtonText}"
+                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                           FontSize="14"/>
             </Grid>
         </Grid>
 
@@ -720,19 +767,25 @@
                       HorizontalAlignment="Left"
                       Margin="10,10,0,0"
                       VerticalAlignment="Top"
-                      Width="250"/>
+                      Width="250"
+                      FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                      FontSize="14"
+                      Foreground="{Binding Fill, ElementName=colorText}"/>
             <Grid x:Name="grdColorThemeBtnApply"
                   HorizontalAlignment="Left"
                   Height="30"
                   Margin="10,37,0,0"
                   VerticalAlignment="Top"
                   Width="80"
-                  Background="#FF5BA0DB">
+                  Background="{Binding Fill, ElementName=colorButton}">
                 <TextBlock HorizontalAlignment="Center"
                            Margin="0"
                            TextWrapping="Wrap"
                            Text="Apply"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center"
+                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                           FontSize="14"
+                           Foreground="{Binding Fill, ElementName=colorButtonText}"/>
             </Grid>
         </Grid>
 
@@ -749,7 +802,7 @@
                          IsReadOnly="True"
                          Foreground="{Binding Fill, ElementName=colorText}"
                          SelectionBrush="{Binding Fill, ElementName=colorTextSelected}"
-                         FontFamily="/EnglishVocabulary;component/Fonts/#CyrillicRound"
+                         FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                          FontSize="14"/>
         </Grid>
 
@@ -765,7 +818,7 @@
                          IsReadOnly="True"
                          Foreground="{Binding Fill, ElementName=colorText}"
                          SelectionBrush="{Binding Fill, ElementName=colorTextSelected}"
-                         FontFamily="/EnglishVocabulary;component/Fonts/#CyrillicRound"
+                         FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                          FontSize="14"/>
         </Grid>
 
