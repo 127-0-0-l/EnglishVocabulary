@@ -87,7 +87,7 @@
                            Text="LINGUAGE"
                            FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
                            FontSize="16"
-                           Foreground="{Binding Fill, ElementName=colorHeaderText}"/>
+                           Foreground="{Binding Fill, ElementName=colorHeaderText}" FontWeight="Bold"/>
                 <Image HorizontalAlignment="Left"
                        Height="30"
                        Margin="5,0,0,0"
@@ -285,40 +285,51 @@
                            HorizontalAlignment="Left"
                            Margin="10,10,0,0"
                            TextWrapping="Wrap"
-                           Text="TextBlock"
+                           Text="word"
                            VerticalAlignment="Top"
-                           Foreground="{Binding Fill, ElementName=colorText}"/>
+                           Foreground="{Binding Fill, ElementName=colorText}"
+                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                           FontSize="14"/>
                 <RadioButton x:Name="rbtnTestTest1"
-                             Content="RadioButton"
-                             HorizontalAlignment="Left"
-                             Margin="10,91,0,0"
-                             VerticalAlignment="Top"
-                             Foreground="{Binding Fill, ElementName=colorText}"
-                             Background="{Binding Fill, ElementName=colorButton}" BorderBrush="Red"/>
-                <RadioButton x:Name="rbtnTestTest2"
-                             Content="RadioButton"
-                             HorizontalAlignment="Left"
-                             Margin="10,51,0,0"
-                             VerticalAlignment="Top"
-                             Foreground="{Binding Fill, ElementName=colorText}"
-                             Background="{Binding Fill, ElementName=colorButton}"
-                             BorderBrush="{Binding Fill, ElementName=colorText}"/>
-                <RadioButton x:Name="rbtnTestTest3"
-                             Content="RadioButton"
-                             HorizontalAlignment="Left"
-                             Margin="10,71,0,0"
-                             VerticalAlignment="Top"
-                             Foreground="{Binding Fill, ElementName=colorText}"
-                             Background="{Binding Fill, ElementName=colorButton}"
-                             BorderBrush="{Binding Fill, ElementName=colorText}"/>
-                <RadioButton x:Name="rbtnTestTest4"
-                             Content="RadioButton"
+                             Content="variant1"
                              HorizontalAlignment="Left"
                              Margin="10,31,0,0"
                              VerticalAlignment="Top"
                              Foreground="{Binding Fill, ElementName=colorText}"
                              Background="{Binding Fill, ElementName=colorButton}"
-                             BorderBrush="{Binding Fill, ElementName=colorText}"/>
+                             BorderBrush="{Binding Fill, ElementName=colorText}"
+                             FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                             FontSize="14"/>
+                <RadioButton x:Name="rbtnTestTest2"
+                             Content="variant2"
+                             HorizontalAlignment="Left"
+                             Margin="10,51,0,0"
+                             VerticalAlignment="Top"
+                             Foreground="{Binding Fill, ElementName=colorText}"
+                             Background="{Binding Fill, ElementName=colorButton}"
+                             BorderBrush="{Binding Fill, ElementName=colorText}"
+                             FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                             FontSize="14"/>
+                <RadioButton x:Name="rbtnTestTest3"
+                             Content="variant3"
+                             HorizontalAlignment="Left"
+                             Margin="10,71,0,0"
+                             VerticalAlignment="Top"
+                             Foreground="{Binding Fill, ElementName=colorText}"
+                             Background="{Binding Fill, ElementName=colorButton}"
+                             BorderBrush="{Binding Fill, ElementName=colorText}"
+                             FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                             FontSize="14"/>
+                <RadioButton x:Name="rbtnTestTest4"
+                             Content="variant4"
+                             HorizontalAlignment="Left"
+                             Margin="10,91,0,0"
+                             VerticalAlignment="Top"
+                             Foreground="{Binding Fill, ElementName=colorText}"
+                             Background="{Binding Fill, ElementName=colorButton}"
+                             BorderBrush="{Binding Fill, ElementName=colorText}"
+                             FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                             FontSize="14"/>
                 <Grid x:Name="grdTestTestBtnFinish"
                       HorizontalAlignment="Right"
                       Height="30"
@@ -678,20 +689,29 @@
     </Grid>
 
     <Window.Resources>
-        <SolidColorBrush x:Key="DisabledButtonColor" Color="{Binding Fill.Color, ElementName=colorButtonDisabled}"/>
-        <SolidColorBrush x:Key="DisabledButtonArrowColor" Color="{Binding Fill.Color, ElementName=colorButtonTextDisabled}"/>
+        <SolidColorBrush x:Key="DisabledButtonColor"
+                         Color="{Binding Fill.Color, ElementName=colorButtonDisabled}"/>
+        <SolidColorBrush x:Key="DisabledButtonArrowColor"
+                         Color="{Binding Fill.Color, ElementName=colorButtonTextDisabled}"/>
 
-        <SolidColorBrush x:Key="SelectedBackgroundColor" Color="{Binding Fill.Color, ElementName=colorComboBoxSelect}"/>
+        <SolidColorBrush x:Key="SelectedBackgroundColor"
+                         Color="{Binding Fill.Color, ElementName=colorComboBoxSelect}"/>
 
-        <SolidColorBrush x:Key="BackgroundColor" Color="{Binding Fill.Color, ElementName=colorComboBox}"/>
-        <SolidColorBrush x:Key="ButtonColor" Color="{Binding Fill.Color, ElementName=colorButton}"/>
+        <SolidColorBrush x:Key="BackgroundColor"
+                         Color="{Binding Fill.Color, ElementName=colorComboBox}"/>
+        <SolidColorBrush x:Key="ButtonColor"
+                         Color="{Binding Fill.Color, ElementName=colorButton}"/>
 
-        <SolidColorBrush x:Key="ButtonMouseOverColor" Color="{Binding Fill.Color, ElementName=colorButtonEnter}"/>
-        <SolidColorBrush x:Key="ButtonPressedColor" Color="{Binding Fill.Color, ElementName=colorButtonClick}"/>
+        <SolidColorBrush x:Key="ButtonMouseOverColor"
+                         Color="{Binding Fill.Color, ElementName=colorButtonEnter}"/>
+        <SolidColorBrush x:Key="ButtonPressedColor"
+                         Color="{Binding Fill.Color, ElementName=colorButtonClick}"/>
 
-        <SolidColorBrush x:Key="ArrowColor" Color="{Binding Fill.Color, ElementName=colorButtonText}"/>
+        <SolidColorBrush x:Key="ArrowColor"
+                         Color="{Binding Fill.Color, ElementName=colorButtonText}"/>
 
-        <SolidColorBrush x:Key="BorderColor" Color="{Binding Fill.Color, ElementName=colorComboBoxText}"/>
+        <SolidColorBrush x:Key="BorderColor"
+                         Color="{Binding Fill.Color, ElementName=colorComboBoxText}"/>
 
         <ControlTemplate x:Key="ComboBoxToggleButton"
                          TargetType="{x:Type ToggleButton}">
@@ -947,8 +967,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-
 
 
         <SolidColorBrush x:Key="ThumbColor"

@@ -112,6 +112,8 @@
     </EmbeddedResource>
     <Resource Include="Fonts\Aqum 2 Small caps.otf" />
     <Resource Include="Fonts\18555.ttf" />
+    <Resource Include="Fonts\golos.ttf" />
+    <Resource Include="Fonts\DINRoundPro-Medi.otf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
