@@ -66,7 +66,7 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Grid>
-
+ 
         <Grid x:Name="grdHeader"
               Height="{Binding Margin.Top, ElementName=cnvBase}"
               VerticalAlignment="Top"
@@ -275,25 +275,39 @@
         <Grid x:Name="grdTest"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Focusable="True"
-              Visibility="Hidden"
+              Visibility="Visible"
               Background="{Binding Fill, ElementName=colorBackground}">
             <Grid x:Name="grdTestTest"
-                  Margin="0,40,0,0"
                   Visibility="Visible"
                   Background="{Binding Fill, ElementName=colorBackground}">
-                <TextBlock x:Name="tbTestTestWord"
-                           HorizontalAlignment="Left"
-                           Margin="10,10,0,0"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{Binding Height, ElementName=grdTestHeader}"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="tbTestTestCurrentWordNumber"
+                           HorizontalAlignment="Center"
+                           Margin="0,10,0,0"
                            TextWrapping="Wrap"
                            Text="word"
                            VerticalAlignment="Top"
                            Foreground="{Binding Fill, ElementName=colorText}"
                            FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                           FontSize="14"/>
+                           FontSize="15"/>
+                <TextBlock x:Name="tbTestTestWord"
+                           Grid.Row="1"
+                           HorizontalAlignment="Left"
+                           Margin="50,10,0,0"
+                           TextWrapping="Wrap"
+                           Text="word"
+                           VerticalAlignment="Top"
+                           Foreground="{Binding Fill, ElementName=colorText}"
+                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                           FontSize="15"/>
                 <RadioButton x:Name="rbtnTestTest1"
                              Content="variant1"
+                             Grid.Row="1"
                              HorizontalAlignment="Left"
-                             Margin="10,31,0,0"
+                             Margin="40,40,0,0"
                              VerticalAlignment="Top"
                              Foreground="{Binding Fill, ElementName=colorText}"
                              Background="{Binding Fill, ElementName=colorButton}"
@@ -302,8 +316,9 @@
                              FontSize="14"/>
                 <RadioButton x:Name="rbtnTestTest2"
                              Content="variant2"
+                             Grid.Row="1"
                              HorizontalAlignment="Left"
-                             Margin="10,51,0,0"
+                             Margin="40,60,0,0"
                              VerticalAlignment="Top"
                              Foreground="{Binding Fill, ElementName=colorText}"
                              Background="{Binding Fill, ElementName=colorButton}"
@@ -312,8 +327,9 @@
                              FontSize="14"/>
                 <RadioButton x:Name="rbtnTestTest3"
                              Content="variant3"
+                             Grid.Row="1"
                              HorizontalAlignment="Left"
-                             Margin="10,71,0,0"
+                             Margin="40,80,0,0"
                              VerticalAlignment="Top"
                              Foreground="{Binding Fill, ElementName=colorText}"
                              Background="{Binding Fill, ElementName=colorButton}"
@@ -322,8 +338,9 @@
                              FontSize="14"/>
                 <RadioButton x:Name="rbtnTestTest4"
                              Content="variant4"
+                             Grid.Row="1"
                              HorizontalAlignment="Left"
-                             Margin="10,91,0,0"
+                             Margin="40,100,0,0"
                              VerticalAlignment="Top"
                              Foreground="{Binding Fill, ElementName=colorText}"
                              Background="{Binding Fill, ElementName=colorButton}"
@@ -331,6 +348,7 @@
                              FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                              FontSize="14"/>
                 <Grid x:Name="grdTestTestBtnFinish"
+                      Grid.Row="1"
                       HorizontalAlignment="Right"
                       Height="30"
                       Margin="0,0,10,10"
@@ -345,6 +363,7 @@
                                Foreground="{Binding Fill, ElementName=colorButtonText}"/>
                 </Grid>
                 <Grid x:Name="grdTestTestBtnNext"
+                      Grid.Row="1"
                       HorizontalAlignment="Right"
                       Height="30"
                       Margin="0,0,100,10"
@@ -434,7 +453,7 @@
                   Height="40"
                   Margin="0"
                   VerticalAlignment="Top"
-                  Visibility="Visible"
+                  Visibility="Hidden"
                   Background="{Binding Fill, ElementName=colorTestHeader}">
                 <ComboBox x:Name="cbTestHeaderTopic"
                           Width="150"
