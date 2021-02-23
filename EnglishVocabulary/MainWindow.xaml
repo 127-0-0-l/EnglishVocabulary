@@ -39,10 +39,11 @@
         <Rectangle x:Name="colorButtonEnter" Fill="#FF8174FF" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonClick" Fill="#FF8A8A8A" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonText" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonTextDisabled" Fill="#ffffff" Visibility="Hidden"/>
         <Rectangle x:Name="colorBackground" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorText" Fill="Black" Visibility="Hidden"/>
         <Rectangle x:Name="colorImage" Fill="WhiteSmoke" Visibility="Hidden"/>
-
+        
         <Rectangle x:Name="colorTestHeader" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorTestGood" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorTestFail" Fill="#fff" Visibility="Hidden"/>
@@ -50,7 +51,6 @@
 
         <Rectangle x:Name="colorComboBox" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorComboBoxSelect" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorComboBoxList" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorComboBoxText" Fill="#000fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorComboBoxItemEnter" Fill="#fff" Visibility="Hidden"/>
 
@@ -640,7 +640,7 @@
                 <System:String>4</System:String>
                 <System:String>5</System:String>
                 <System:String>6</System:String>
-                <System:String>235423452eeeeeeeeeeeeeeeeeeeeeeeeeeeeee35</System:String>
+                <System:String>235423452eeeeeeeeeeeeeeeeeeeeeeeeeeee35</System:String>
                 <System:String>fghertherth</System:String>
                 <System:String>1</System:String>
                 <System:String>2</System:String>
@@ -655,7 +655,7 @@
                       HorizontalAlignment="Left"
                       Margin="10,79,0,0"
                       VerticalAlignment="Top"
-                      Width="250"/>
+                      Width="250" IsEnabled="False"/>
             <ComboBox x:Name="cbEditTopicWord"
                       HorizontalAlignment="Left"
                       Margin="10,127,0,0"
@@ -794,26 +794,20 @@
     </Grid>
 
     <Window.Resources>
-        <SolidColorBrush x:Key="DisabledControlDarkColor" Color="#fff"/>
-        <SolidColorBrush x:Key="DisabledForegroundColor" Color="#FF888888"/>
+        <SolidColorBrush x:Key="DisabledButtonColor" Color="{Binding Fill.Color, ElementName=colorButtonDisabled}"/>
+        <SolidColorBrush x:Key="DisabledButtonArrowColor" Color="{Binding Fill.Color, ElementName=colorButtonTextDisabled}"/>
 
-        <SolidColorBrush x:Key="SelectedBackgroundColor" Color="#FFC5CBF9"/>
-        <SolidColorBrush x:Key="SelectedUnfocusedColor" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="SelectedBackgroundColor" Color="{Binding Fill.Color, ElementName=colorComboBoxSelect}"/>
 
-        <SolidColorBrush x:Key="ControlLightColor" Color="#fff"/>
-        <SolidColorBrush x:Key="ControlMediumColor" Color="#FF7381F9"/>
-        <SolidColorBrush x:Key="ControlDarkColor" Color="#FF211AA9"/>
+        <SolidColorBrush x:Key="BackgroundColor" Color="{Binding Fill.Color, ElementName=colorComboBox}"/>
+        <SolidColorBrush x:Key="ButtonColor" Color="{Binding Fill.Color, ElementName=colorButton}"/>
 
-        <SolidColorBrush x:Key="ControlMouseOverColor" Color="{Binding Fill.Color, ElementName=colorButtonEnter}"/>
-        <SolidColorBrush x:Key="ControlPressedColor" Color="#FF211AA9"/>
+        <SolidColorBrush x:Key="ButtonMouseOverColor" Color="{Binding Fill.Color, ElementName=colorButtonEnter}"/>
+        <SolidColorBrush x:Key="ButtonPressedColor" Color="{Binding Fill.Color, ElementName=colorButtonClick}"/>
 
-        <SolidColorBrush x:Key="GlyphColor" Color="#FF444444"/>
-        <!--Border colors-->
-        <SolidColorBrush x:Key="BorderLightColor" Color="#FFCCCCCC"/>
-        <SolidColorBrush x:Key="BorderMediumColor" Color="#FF888888"/>
-        <SolidColorBrush x:Key="BorderDarkColor" Color="#FF444444"/>
+        <SolidColorBrush x:Key="ArrowColor" Color="{Binding Fill.Color, ElementName=colorButtonText}"/>
 
-        <SolidColorBrush x:Key="DisabledBorderDarkColor" Color="#FF888888"/>
+        <SolidColorBrush x:Key="BorderColor" Color="{Binding Fill.Color, ElementName=colorComboBoxText}"/>
 
         <ControlTemplate x:Key="ComboBoxToggleButton"
                          TargetType="{x:Type ToggleButton}">
@@ -831,7 +825,7 @@
                                                               (GradientBrush.GradientStops)[1].(GradientStop.Color)"
                                                               Storyboard.TargetName="Border">
                                     <EasingColorKeyFrame KeyTime="0"
-                                                         Value="{Binding Color, Source={StaticResource ControlMouseOverColor}}" />
+                                                         Value="{Binding Color, Source={StaticResource ButtonMouseOverColor}}" />
                                 </ColorAnimationUsingKeyFrames>
                             </Storyboard>
                         </VisualState>
@@ -842,19 +836,13 @@
                                                               (GradientBrush.GradientStops)[1].(GradientStop.Color)"
                                                               Storyboard.TargetName="Border">
                                     <EasingColorKeyFrame KeyTime="0"
-                                                         Value="{Binding Color, Source={StaticResource DisabledControlDarkColor}}"/>
+                                                         Value="{Binding Color, Source={StaticResource DisabledButtonColor}}"/>
                                 </ColorAnimationUsingKeyFrames>
                                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).
                                                               (SolidColorBrush.Color)"
                                                               Storyboard.TargetName="Arrow">
                                     <EasingColorKeyFrame KeyTime="0"
-                                                         Value="{Binding Color, Source={StaticResource DisabledForegroundColor}}"/>
-                                </ColorAnimationUsingKeyFrames>
-                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
-                                                              (GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                                              Storyboard.TargetName="Border">
-                                    <EasingColorKeyFrame KeyTime="0"
-                                                         Value="{Binding Color, Source={StaticResource DisabledBorderDarkColor}}" />
+                                                         Value="{Binding Color, Source={StaticResource DisabledButtonArrowColor}}"/>
                                 </ColorAnimationUsingKeyFrames>
                             </Storyboard>
                         </VisualState>
@@ -866,7 +854,7 @@
                                                               (GradientBrush.GradientStops)[1].(GradientStop.Color)"
                                                               Storyboard.TargetName="Border">
                                     <EasingColorKeyFrame KeyTime="0"
-                                                         Value="{Binding Color, Source={StaticResource ControlPressedColor}}" />
+                                                         Value="{Binding Color, Source={StaticResource ButtonPressedColor}}" />
                                 </ColorAnimationUsingKeyFrames>
                             </Storyboard>
                         </VisualState>
@@ -877,34 +865,23 @@
                 <Border x:Name="Border"
                         Grid.ColumnSpan="2"
                         CornerRadius="0"
-                        BorderThickness="1">
-                    <Border.BorderBrush>
-                        <LinearGradientBrush EndPoint="0,1"
-                                             StartPoint="0,0">
-                            <GradientStop Color="{Binding Color, Source={StaticResource BorderLightColor}}"
-                                          Offset="0" />
-                            <GradientStop Color="{Binding Color, Source={StaticResource BorderDarkColor}}"
-                                          Offset="1" />
-                        </LinearGradientBrush>
-                    </Border.BorderBrush>
+                        BorderThickness="0">
                     <Border.Background>
-
                         <LinearGradientBrush StartPoint="0,0"
                                              EndPoint="0,1">
                             <LinearGradientBrush.GradientStops>
                                 <GradientStopCollection>
-                                    <GradientStop Color="{Binding Color, Source={StaticResource ControlLightColor}}"/>
-                                    <GradientStop Color="{Binding Color, Source={StaticResource ControlMediumColor}}"
-                                                  Offset="1.0"/>
+                                    <GradientStop Color="#fff"/>
+                                    <GradientStop Color="{Binding Color, Source={StaticResource ButtonColor}}"/>
                                 </GradientStopCollection>
                             </LinearGradientBrush.GradientStops>
                         </LinearGradientBrush>
 
                     </Border.Background>
                 </Border>
-                <Border Margin="1" >
+                <Border Margin="0" >
                     <Border.Background>
-                        <SolidColorBrush Color="{Binding Color, Source={StaticResource ControlLightColor}}"/>
+                        <SolidColorBrush Color="{Binding Color, Source={StaticResource BackgroundColor}}"/>
                     </Border.Background>
                 </Border>
                 <Path x:Name="Arrow"
@@ -913,7 +890,7 @@
                       VerticalAlignment="Center"
                       Data="M 0 0 L 4 4 L 8 0 Z" >
                     <Path.Fill>
-                        <SolidColorBrush Color="{Binding Color, Source={StaticResource GlyphColor}}"/>
+                        <SolidColorBrush Color="{Binding Color, Source={StaticResource ArrowColor}}"/>
                     </Path.Fill>
                 </Path>
             </Grid>
@@ -921,9 +898,6 @@
 
         <ControlTemplate x:Key="ComboBoxTextBox"
                          TargetType="{x:Type TextBox}">
-            <Border x:Name="PART_ContentHost"
-                    Focusable="False"
-                    Background="{TemplateBinding Background}" />
         </ControlTemplate>
 
         <Style x:Key="{x:Type ComboBox}"
@@ -939,7 +913,7 @@
             <Setter Property="ScrollViewer.CanContentScroll"
                     Value="true" />
             <Setter Property="MinWidth"
-                    Value="120" />
+                    Value="80" />
             <Setter Property="MinHeight"
                     Value="20" />
             <Setter Property="Template">
@@ -956,7 +930,7 @@
                                                                           Storyboard.TargetProperty="(TextElement.Foreground).
                                                                           (SolidColorBrush.Color)">
                                                 <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{Binding Color, Source={StaticResource DisabledForegroundColor}}"/>
+                                                                     Value="{Binding Color, Source={StaticResource DisabledButtonArrowColor}}"/>
                                             </ColorAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
@@ -1018,10 +992,10 @@
                                     <Border x:Name="DropDownBorder"
                                             BorderThickness="1">
                                         <Border.BorderBrush>
-                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource BorderMediumColor}}" />
+                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource BorderColor}}" />
                                         </Border.BorderBrush>
                                         <Border.Background>
-                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource ControlLightColor}}" />
+                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource BackgroundColor}}" />
                                         </Border.Background>
                                     </Border>
                                     <ScrollViewer SnapsToDevicePixels="True">
@@ -1080,14 +1054,6 @@
                                         </Storyboard>
                                     </VisualState>
                                     <VisualState x:Name="SelectedUnfocused">
-                                        <Storyboard>
-                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                                          Storyboard.TargetProperty="(Panel.Background).
-                                                                          (SolidColorBrush.Color)">
-                                                <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{Binding Color, Source={StaticResource SelectedUnfocusedColor}}" />
-                                            </ColorAnimationUsingKeyFrames>
-                                        </Storyboard>
                                     </VisualState>
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
