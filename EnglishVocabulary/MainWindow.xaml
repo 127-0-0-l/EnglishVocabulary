@@ -52,10 +52,7 @@
         <Rectangle x:Name="colorTestFail" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorTestUnknown" Fill="#fff" Visibility="Hidden"/>
 
-        <Rectangle x:Name="colorComboBox" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorComboBoxSelect" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorComboBoxText" Fill="#000fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorComboBoxItemEnter" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorComboBox" Fill="#FFB7B7B7" Visibility="Hidden"/>
 
         <Rectangle x:Name="colorRadioButton" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorRadioButtonBorder" Fill="#000fff" Visibility="Hidden"/>
@@ -285,7 +282,7 @@
         <Grid x:Name="grdTest"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Focusable="True"
-              Visibility="Visible"
+              Visibility="Hidden"
               Background="{Binding Fill, ElementName=colorBackground}">
             <Grid x:Name="grdTestTest"
                   Visibility="Hidden"
@@ -482,15 +479,17 @@
                            FontSize="14"/>
                 <RichTextBox x:Name="rtbTestResultWords"
                              Margin="0,110,0,0"
-                             Grid.Row="1" VerticalScrollBarVisibility="Auto" Background="{Binding Fill, ElementName=colorBackground}" BorderThickness="0,1,0,0" BorderBrush="{Binding Fill, ElementName=colorTestHeader}" Foreground="{Binding Fill, ElementName=colorText}">
-                    <FlowDocument>
-                        <Paragraph>
-                            <Image Height="50"
-                                   Width="50"
-                                   Source="Assets/company.png"/>
-                        </Paragraph>
-                    </FlowDocument>
-                </RichTextBox>
+                             Grid.Row="1"
+                             IsReadOnly="True"
+                             VerticalScrollBarVisibility="Auto"
+                             BorderThickness="0,1,0,0"
+                             Block.LineHeight="2"
+                             Background="{Binding Fill, ElementName=colorBackground}"
+                             BorderBrush="{Binding Fill, ElementName=colorTestHeader}"
+                             Foreground="{Binding Fill, ElementName=colorText}"
+                             SelectionBrush="{Binding Fill, ElementName=colorTextSelected}"
+                             FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                             FontSize="14"/>
             </Grid>
             <Grid x:Name="grdTestHeader"
                   Height="40"
@@ -502,17 +501,26 @@
                           Width="150"
                           HorizontalAlignment="Left"
                           VerticalAlignment="Center"
-                          Margin="6,0,0,0"/>
+                          Margin="6,0,0,0"
+                          Foreground="{Binding Fill, ElementName=colorText}"
+                          FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                          FontSize="14"/>
                 <ComboBox x:Name="cbTestHeaderSubtopic"
                           Width="150"
                           HorizontalAlignment="Left"
                           VerticalAlignment="Center"
-                          Margin="162,0,0,0"/>
+                          Margin="162,0,0,0"
+                          Foreground="{Binding Fill, ElementName=colorText}"
+                          FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                          FontSize="14"/>
                 <ComboBox x:Name="cbTestHeaderMode"
                           Width="80"
                           HorizontalAlignment="Left"
                           VerticalAlignment="Center"
-                          Margin="318,0,0,0"/>
+                          Margin="318,0,0,0"
+                          Foreground="{Binding Fill, ElementName=colorText}"
+                          FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                          FontSize="14"/>
                 <Grid x:Name="grdTestHeaderBtnStart"
                       HorizontalAlignment="Right"
                       Height="22"
@@ -523,8 +531,9 @@
                                TextWrapping="Wrap"
                                Text="Start"
                                VerticalAlignment="Center"
-                               FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
-                               Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+                               FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                               Foreground="{Binding Fill, ElementName=colorButtonText}"
+                               FontSize="14"/>
                 </Grid>
             </Grid>
         </Grid>
@@ -545,7 +554,7 @@
                            TextWrapping="Wrap"
                            Text="Add"
                            VerticalAlignment="Center"
-                           Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+                           Foreground="{Binding Fill, ElementName=colorButtonText}" FontSize="14" FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"/>
             </Grid>
             <TextBox x:Name="tbAddTopicTopic"
                      HorizontalAlignment="Left"
@@ -554,34 +563,46 @@
                      TextWrapping="Wrap"
                      VerticalAlignment="Top"
                      Width="120"
-                     Background="{Binding Fill, ElementName=colorComboBox}"
-                     Foreground="{Binding Fill, ElementName=colorComboBoxText}"
-                     SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
+                     Background="{Binding Fill, ElementName=colorBackground}"
+                     BorderBrush="{Binding Fill, ElementName=colorButton}"
+                     CaretBrush="{Binding Fill, ElementName=colorCaret}"
+                     Foreground="{Binding Fill, ElementName=colorText}"
+                     SelectionBrush="{Binding Fill, ElementName=colorTextSelected}"
+                     FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                     FontSize="14"/>
             <TextBlock HorizontalAlignment="Left"
                        Margin="10,17,0,0"
                        TextWrapping="Wrap"
                        Text="Topic:"
                        VerticalAlignment="Top"
-                       Foreground="{Binding Fill, ElementName=colorText}"/>
+                       Foreground="{Binding Fill, ElementName=colorText}"
+                       FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                       FontSize="14"/>
             <RichTextBox x:Name="rtbAddTopicAllWords"
                          Margin="10,50,10,40"
                          VerticalScrollBarVisibility="Auto"
                          Block.LineHeight="2"
-                         Background="{Binding Fill, ElementName=colorComboBox}"
-                         Foreground="{Binding Fill, ElementName=colorComboBoxText}"
-                         SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"/>
+                         FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                         FontSize="14"
+                         Background="{Binding Fill, ElementName=colorBackground}"
+                         BorderBrush="{Binding Fill, ElementName=colorButton}"
+                         CaretBrush="{Binding Fill, ElementName=colorCaret}"
+                         Foreground="{Binding Fill, ElementName=colorText}"
+                         SelectionBrush="{Binding Fill, ElementName=colorTextSelected}"/>
             <TextBlock HorizontalAlignment="Center"
                        Margin="0,0,0,10"
                        TextWrapping="Wrap"
                        Text="Plese. Before adding new topic, read &quot;Help&quot;. It's important"
                        VerticalAlignment="Bottom"
-                       Foreground="{Binding Fill, ElementName=colorText}"/>
+                       Foreground="{Binding Fill, ElementName=colorText}"
+                       FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                       FontSize="14"/>
         </Grid>
 
         <Grid x:Name="grdEditTopic"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Background="{Binding Fill, ElementName=colorBackground}"
-              Visibility="Hidden">
+              Visibility="Visible">
             <ComboBox x:Name="cbEditTopicTopic"
                       HorizontalAlignment="Left"
                       Margin="10,31,0,0"
@@ -727,7 +748,7 @@
                          Block.LineHeight="2"
                          IsReadOnly="True"
                          Foreground="{Binding Fill, ElementName=colorText}"
-                         SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"
+                         SelectionBrush="{Binding Fill, ElementName=colorTextSelected}"
                          FontFamily="/EnglishVocabulary;component/Fonts/#CyrillicRound"
                          FontSize="14"/>
         </Grid>
@@ -743,7 +764,7 @@
                          Background="{Binding Fill, ElementName=colorBackground}"
                          IsReadOnly="True"
                          Foreground="{Binding Fill, ElementName=colorText}"
-                         SelectionBrush="{Binding Fill, ElementName=colorComboBoxSelect}"
+                         SelectionBrush="{Binding Fill, ElementName=colorTextSelected}"
                          FontFamily="/EnglishVocabulary;component/Fonts/#CyrillicRound"
                          FontSize="14"/>
         </Grid>
@@ -757,7 +778,7 @@
                          Color="{Binding Fill.Color, ElementName=colorButtonTextDisabled}"/>
 
         <SolidColorBrush x:Key="SelectedBackgroundColor"
-                         Color="{Binding Fill.Color, ElementName=colorComboBoxSelect}"/>
+                         Color="{Binding Fill.Color, ElementName=colorTextSelected}"/>
 
         <SolidColorBrush x:Key="BackgroundColor"
                          Color="{Binding Fill.Color, ElementName=colorComboBox}"/>
@@ -773,7 +794,7 @@
                          Color="{Binding Fill.Color, ElementName=colorButtonText}"/>
 
         <SolidColorBrush x:Key="BorderColor"
-                         Color="{Binding Fill.Color, ElementName=colorComboBoxText}"/>
+                         Color="{Binding Fill.Color, ElementName=colorButton}"/>
 
         <ControlTemplate x:Key="ComboBoxToggleButton"
                          TargetType="{x:Type ToggleButton}">
