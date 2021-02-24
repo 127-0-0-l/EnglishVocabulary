@@ -21,7 +21,7 @@
 
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0,0,0,1"
-                      CaptionHeight="1"/>
+                      CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
 
     <Grid x:Name="grdMain">
@@ -35,11 +35,11 @@
         <Rectangle x:Name="colorMenu" Fill="#FF6356E5" Visibility="Hidden"/>
 
         <Rectangle x:Name="colorButton" Fill="#FF5685E5" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonDisabled" Fill="Red" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonDisabled" Fill="#FF8AA6DE" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonEnter" Fill="#FF225FDC" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonClick" Fill="#FF8A8A8A" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonText" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonTextDisabled" Fill="Red" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonTextDisabled" Fill="#FFC6C6C6" Visibility="Hidden"/>
         <Rectangle x:Name="colorBackground" Fill="#fff" Visibility="Hidden"/>
         
         <Rectangle x:Name="colorText" Fill="Black" Visibility="Hidden"/>
@@ -59,7 +59,7 @@
         <Rectangle x:Name="colorRadioButtonSelected" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorRadioButtonBorderSelected" Fill="#fff" Visibility="Hidden"/>
 
-        <Rectangle x:Name="colorCaret" Fill="#ff0" Visibility="Hidden"/>
+        <Rectangle x:Name="colorCaret" Fill="#FFFFA400" Visibility="Hidden"/>
 
         <Grid x:Name="cnvBase"
                 Margin="200,40,0,0"
@@ -67,8 +67,7 @@
                 Background="{Binding Fill, ElementName=colorBackground}">
             <Rectangle Fill="{Binding Fill, ElementName=colorImage}"
                        Width="100"
-                       Height="100"
-                       Visibility="Hidden">
+                       Height="100">
                 <Rectangle.OpacityMask>
                     <ImageBrush ImageSource="Assets/company.png"/>
                 </Rectangle.OpacityMask>
@@ -150,22 +149,14 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid x:Name="grdMenuItemTest"
-                  Margin="0"
-                  Background="{Binding Fill, ElementName=colorButton}"
-                  MouseEnter="grdMenuItemTest_MouseEnter"
-                  MouseLeave="grdMenuItemTest_MouseLeave"
-                  MouseDown="grdMenuItemTest_MouseDown"
-                  MouseUp="grdMenuItemTest_MouseUp">
-                <TextBlock HorizontalAlignment="Center"
-                           Margin="0"
-                           TextWrapping="Wrap"
-                           Text="TEST"
-                           VerticalAlignment="Center"
-                           FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
-                           FontSize="13"
-                           Foreground="{Binding Fill, ElementName=colorButtonText}"/>
-            </Grid>
+            <Button x:Name="btnMenuTest"
+                    Margin="0"
+                    Background="{Binding Fill, ElementName=colorButton}"
+                    Content="TEST"
+                    FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
+                    FontSize="13"
+                    Foreground="{Binding Fill, ElementName=colorButtonText}">
+            </Button>
             <Grid x:Name="grdMenuItemAddTopic"
                   Margin="0"
                   Background="{Binding Fill, ElementName=colorButton}"
@@ -283,7 +274,7 @@
         <Grid x:Name="grdTest"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Focusable="True"
-              Visibility="Visible"
+              Visibility="Hidden"
               Background="{Binding Fill, ElementName=colorBackground}">
             <Grid x:Name="grdTestTest"
                   Visibility="Visible"
@@ -389,8 +380,6 @@
                                FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                                FontSize="14"/>
                 </Grid>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="301,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="301,94,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" IsEnabled="False"/>
             </Grid>
             <Grid x:Name="grdTestResult"
                   Background="{Binding Fill, ElementName=colorBackground}"
