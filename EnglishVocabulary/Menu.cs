@@ -9,39 +9,60 @@ namespace EnglishVocabulary
 {
     public partial class MainWindow
     {
+        /// <summary>
+        /// Show Test section.
+        /// </summary>
         private void btnMenuTest_Click(object sender, RoutedEventArgs e)
         {
-
+            SetActiveSection(grdTest);
         }
 
+        /// <summary>
+        /// Show AddTopic section.
+        /// </summary>
         private void btnMenuAddTopic_Click(object sender, RoutedEventArgs e)
         {
-
+            SetActiveSection(grdAddTopic);
         }
 
+        /// <summary>
+        /// Show EditTopic section.
+        /// </summary>
         private void btnMenuEditTopic_Click(object sender, RoutedEventArgs e)
         {
-
+            SetActiveSection(grdEditTopic);
         }
 
+        /// <summary>
+        /// Show DeleteTopic section.
+        /// </summary>
         private void btnMenuDeleteTopic_Click(object sender, RoutedEventArgs e)
         {
-
+            SetActiveSection(grdDeleteTopic);
         }
 
+        /// <summary>
+        /// Show ColorTheme section.
+        /// </summary>
         private void btnMenuColorTheme_Click(object sender, RoutedEventArgs e)
         {
-
+            SetActiveSection(grdColorTheme);
         }
 
+        /// <summary>
+        /// Show Help section.
+        /// </summary>
         private void btnMenuHelp_Click(object sender, RoutedEventArgs e)
         {
-
+            SetActiveSection(grdHelp);
         }
 
+        /// <summary>
+        /// Show About section.
+        /// </summary>
         private void btnMenuAbout_Click(object sender, RoutedEventArgs e)
         {
-
+            SetActiveSection(grdAbout);
         }
 
         /// <summary>
