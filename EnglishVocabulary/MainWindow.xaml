@@ -35,11 +35,11 @@
         <Rectangle x:Name="colorMenu" Fill="#FF6356E5" Visibility="Hidden"/>
 
         <Rectangle x:Name="colorButton" Fill="#FF5685E5" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonDisabled" Fill="Gray" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonEnter" Fill="#FF8174FF" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonDisabled" Fill="Red" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonEnter" Fill="#FF225FDC" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonClick" Fill="#FF8A8A8A" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonText" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonTextDisabled" Fill="#ffffff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonTextDisabled" Fill="Red" Visibility="Hidden"/>
         <Rectangle x:Name="colorBackground" Fill="#fff" Visibility="Hidden"/>
         
         <Rectangle x:Name="colorText" Fill="Black" Visibility="Hidden"/>
@@ -48,9 +48,9 @@
         <Rectangle x:Name="colorImage" Fill="WhiteSmoke" Visibility="Hidden"/>
         
         <Rectangle x:Name="colorTestHeader" Fill="#FF7E7E7E" Visibility="Hidden"/>
-        <Rectangle x:Name="colorTestGood" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorTestFail" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorTestUnknown" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestGood" Fill="#FF00D804" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestFail" Fill="#FFE20700" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestUnknown" Fill="#FFCFE600" Visibility="Hidden"/>
 
         <Rectangle x:Name="colorComboBox" Fill="#FFB7B7B7" Visibility="Hidden"/>
 
@@ -526,8 +526,10 @@
                       Height="22"
                       Margin="0,6,6,6"
                       Width="79"
-                      Background="{Binding Fill, ElementName=colorButton}">
-                    <TextBlock HorizontalAlignment="Center"
+                      Background="{Binding Fill, ElementName=colorButton}"
+                      IsEnabledChanged="grdTestHeaderBtnStart_IsEnabledChanged" MouseEnter="grdTestHeaderBtnStart_MouseEnter" MouseLeave="grdTestHeaderBtnStart_MouseLeave" MouseDown="grdTestHeaderBtnStart_MouseDown" MouseUp="grdTestHeaderBtnStart_MouseUp">
+                    <TextBlock x:Name="tbTestHeaderBtnStartText"
+                               HorizontalAlignment="Center"
                                TextWrapping="Wrap"
                                Text="Start"
                                VerticalAlignment="Center"
