@@ -1217,17 +1217,6 @@
                     Value="{StaticResource VerticalScrollBar}"/>
         </Style>
 
-
-        
-        
-        <Color x:Key="DisabledControlDarkColor">#FFC5CBF9</Color>
-        <Color x:Key="DisabledForegroundColor">#FF888888</Color>
-
-        <Color x:Key="ControlMediumColor">#FF7381F9</Color>
-
-        <Color x:Key="ControlMouseOverColor">#FF3843C4</Color>
-        <Color x:Key="ControlPressedColor">#FF211AA9</Color>
-
         <!-- Button -->
         <Style TargetType="Button">
             <Setter Property="SnapsToDevicePixels"
@@ -1244,7 +1233,7 @@
                         <Border TextBlock.Foreground="{TemplateBinding Foreground}"
                                 x:Name="Border">
                             <Border.Background>
-                                <SolidColorBrush Color="{DynamicResource ControlMediumColor}"/>
+                                <SolidColorBrush Color="{Binding Color, Source={StaticResource ButtonColor}}"/>
                             </Border.Background>
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="CommonStates">
@@ -1254,7 +1243,7 @@
                                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
                                                                           (SolidColorBrush.Color)">
                                                 <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{StaticResource ControlMouseOverColor}" />
+                                                                     Value="{Binding Color, Source={StaticResource ButtonMouseOverColor}}" />
                                             </ColorAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
@@ -1263,7 +1252,7 @@
                                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
                                                                           (SolidColorBrush.Color)">
                                                 <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{StaticResource ControlPressedColor}" />
+                                                                     Value="{Binding Color, Source={StaticResource ButtonPressedColor}}" />
                                             </ColorAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
@@ -1272,12 +1261,12 @@
                                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
                                                                           (SolidColorBrush.Color)">
                                                 <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{StaticResource DisabledControlDarkColor}" />
+                                                                     Value="{Binding Color, Source={StaticResource DisabledButtonColor}}" />
                                             </ColorAnimationUsingKeyFrames>
                                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
                                                                           Storyboard.TargetName="Border">
                                                 <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{StaticResource DisabledForegroundColor}" />
+                                                                     Value="{Binding Color, Source={StaticResource DisabledButtonTextColor}}" />
                                             </ColorAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
