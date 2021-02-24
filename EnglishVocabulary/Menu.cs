@@ -9,6 +9,41 @@ namespace EnglishVocabulary
 {
     public partial class MainWindow
     {
+        private void btnMenuTest_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMenuAddTopic_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMenuEditTopic_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMenuDeleteTopic_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMenuColorTheme_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMenuHelp_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMenuAbout_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         /// <summary>
         /// Constantly changing color of company logo in menu grid.
         /// </summary>
