@@ -757,7 +757,7 @@
         <Grid x:Name="grdAbout"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Background="{Binding Fill, ElementName=colorBackground}"
-              Visibility="Hidden">
+              Visibility="Visible">
             <RichTextBox x:Name="rtbAboutText"
                          Margin="0"
                          Block.LineHeight="2"
@@ -767,7 +767,8 @@
                          Foreground="{Binding Fill, ElementName=colorText}"
                          SelectionBrush="{Binding Fill, ElementName=colorTextSelected}"
                          FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                         FontSize="14"/>
+                         FontSize="14"
+                         VerticalScrollBarVisibility="Auto"/>
         </Grid>
 
     </Grid>
@@ -1062,11 +1063,14 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Canvas Height="18">
-                            <Polygon x:Name="plgn"
+                        <Border BorderThickness="0,0,0,1"
+                                BorderBrush="{Binding Fill, ElementName=colorButton}">
+                            <Canvas Height="18" VerticalAlignment="Center">
+                                <Polygon x:Name="plgn"
                                      Points="1,16 15,16 8,5"
                                      Fill="{DynamicResource ThumbColor}"/>
-                        </Canvas>
+                            </Canvas>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -1079,10 +1083,13 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Canvas Height="18">
-                            <Polygon Fill="{DynamicResource ThumbColor}"
+                        <Border BorderThickness="0,1,0,0"
+                                BorderBrush="{Binding Fill, ElementName=colorButton}">
+                            <Canvas Height="18">
+                                <Polygon Fill="{DynamicResource ThumbColor}"
                                      Points="1,2 8,13 15,2"/>
-                        </Canvas>
+                            </Canvas>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -1123,34 +1130,38 @@
 
         <ControlTemplate x:Key="VerticalScrollBar"
                          TargetType="{x:Type ScrollBar}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition MaxHeight="18"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition MaxHeight="18"/>
-                </Grid.RowDefinitions>
+            <Border BorderThickness="1,0,1,0"
+                                BorderBrush="{StaticResource ButtonColor}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition MaxHeight="18"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition MaxHeight="18"/>
+                    </Grid.RowDefinitions>
 
-                <RepeatButton Grid.Row="0" Height="18"
+                    <RepeatButton Grid.Row="0"
+                              Height="18"
                               Style="{StaticResource ScrollBarLineButtonStyle}"
                               Command="ScrollBar.LineUpCommand"/>
-                <Track Name="PART_Track" Grid.Row="1" 
+                    <Track Name="PART_Track" Grid.Row="1" 
                        IsDirectionReversed="True">
-                    <Track.DecreaseRepeatButton>
-                        <RepeatButton Command="ScrollBar.PageUpCommand"
+                        <Track.DecreaseRepeatButton>
+                            <RepeatButton Command="ScrollBar.PageUpCommand"
                                       Style="{StaticResource ScrollBarPageButtonStyle}"/>
-                    </Track.DecreaseRepeatButton>
-                    <Track.Thumb>
-                        <Thumb Style="{StaticResource ScrollBarThumbStyle}"/>
-                    </Track.Thumb>
-                    <Track.IncreaseRepeatButton>
-                        <RepeatButton Command="ScrollBar.PageDownCommand"
+                        </Track.DecreaseRepeatButton>
+                        <Track.Thumb>
+                            <Thumb Style="{StaticResource ScrollBarThumbStyle}"/>
+                        </Track.Thumb>
+                        <Track.IncreaseRepeatButton>
+                            <RepeatButton Command="ScrollBar.PageDownCommand"
                                       Style="{StaticResource ScrollBarPageButtonStyle}"/>
-                    </Track.IncreaseRepeatButton>
-                </Track>
-                <RepeatButton Grid.Row="3" Height="18"
+                        </Track.IncreaseRepeatButton>
+                    </Track>
+                    <RepeatButton Grid.Row="3" Height="18"
                               Style="{StaticResource ScrollBarLineButtonBottomStyle}"
                               Command="ScrollBar.LineDownCommand"/>
-            </Grid>
+                </Grid>
+            </Border>
         </ControlTemplate>
 
         <Style TargetType="{x:Type ScrollBar}">
