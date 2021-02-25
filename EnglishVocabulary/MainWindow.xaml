@@ -40,7 +40,7 @@
         <Rectangle x:Name="colorButtonClick" Fill="#FF8A8A8A" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonText" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonTextDisabled" Fill="#FFC6C6C6" Visibility="Hidden"/>
-        <Rectangle x:Name="colorBackground" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorBackground" Fill="White" Visibility="Hidden"/>
         
         <Rectangle x:Name="colorText" Fill="Black" Visibility="Hidden"/>
         <Rectangle x:Name="colorTextSelected" Fill="#FF005BFF" Visibility="Hidden"/>
@@ -226,7 +226,7 @@
         <Grid x:Name="grdTest"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Focusable="True"
-              Visibility="Visible"
+              Visibility="Hidden"
               Background="{Binding Fill, ElementName=colorBackground}">
             <Grid x:Name="grdTestTest"
                   Visibility="Hidden"
@@ -468,23 +468,17 @@
         <Grid x:Name="grdAddTopic"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Background="{Binding Fill, ElementName=colorBackground}"
-              Visibility="Hidden">
-            <Grid x:Name="grdAddTopicBtnAdd"
-                  HorizontalAlignment="Right"
-                  Height="30"
-                  Margin="0,10,10,0"
-                  VerticalAlignment="Top"
-                  Width="80"
-                  Background="{Binding Fill, ElementName=colorButton}">
-                <TextBlock HorizontalAlignment="Center"
-                           Margin="0"
-                           TextWrapping="Wrap"
-                           Text="Add"
-                           VerticalAlignment="Center"
-                           Foreground="{Binding Fill, ElementName=colorButtonText}"
-                           FontSize="14"
-                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"/>
-            </Grid>
+              Visibility="Visible">
+            <Button x:Name="btnAddTopicAdd"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Height="30"
+                    Width="80"
+                    Margin="0,10,10,0"
+                    Content="Add"
+                    Foreground="{Binding Fill, ElementName=colorButtonText}"
+                    FontSize="14"
+                    FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"/>
             <TextBox x:Name="tbAddTopicTopic"
                      HorizontalAlignment="Left"
                      Height="23"
