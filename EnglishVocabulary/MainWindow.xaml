@@ -275,7 +275,7 @@
                              BorderBrush="{Binding Fill, ElementName=colorRadioButtonBorder}"
                              Foreground="{Binding Fill, ElementName=colorText}"
                              FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                             FontSize="14" IsEnabled="False"/>
+                             FontSize="14"/>
                 <RadioButton x:Name="rbtnTestTest3"
                              Content="variant3"
                              Grid.Row="1"
@@ -1275,7 +1275,7 @@
                                                                           Storyboard.TargetProperty="(Shape.Fill).
                                                                           (SolidColorBrush.Color)">
                                                 <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{Binding Color, Source={StaticResource ButtonMouseOverColor}}" />
+                                                                     Value="{Binding Color, Source={StaticResource ButtonPressedColor}}" />
                                             </ColorAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
@@ -1285,7 +1285,7 @@
                                                                           Storyboard.TargetProperty="(Shape.Fill).
                                                                           (SolidColorBrush.Color)">
                                                 <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{Binding Color, Source={StaticResource ButtonPressedColor}}" />
+                                                                     Value="{Binding Color, Source={StaticResource ButtonColor}}" />
                                             </ColorAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
