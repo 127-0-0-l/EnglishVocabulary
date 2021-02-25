@@ -525,7 +525,7 @@
         <Grid x:Name="grdEditTopic"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Background="{Binding Fill, ElementName=colorBackground}"
-              Visibility="Visible">
+              Visibility="Hidden">
             <TextBlock HorizontalAlignment="Left"
                        Margin="10,10,0,0"
                        TextWrapping="Wrap"
@@ -658,22 +658,16 @@
                       Foreground="{Binding Fill, ElementName=colorText}"
                       FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                       FontSize="14"/>
-            <Grid x:Name="grdDeleteTopicBtnDelete"
-                  HorizontalAlignment="Left"
-                  Height="30"
-                  Margin="10,37,0,0"
-                  VerticalAlignment="Top"
-                  Width="80"
-                  Background="{Binding Fill, ElementName=colorButton}">
-                <TextBlock HorizontalAlignment="Center"
-                           Margin="0"
-                           TextWrapping="Wrap"
-                           Text="Delete"
-                           VerticalAlignment="Center"
-                           Foreground="{Binding Fill, ElementName=colorButtonText}"
-                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                           FontSize="14"/>
-            </Grid>
+            <Button x:Name="btnDeleteTopicDelete"
+                    HorizontalAlignment="Left"
+                    Height="30"
+                    Margin="10,37,0,0"
+                    VerticalAlignment="Top"
+                    Width="80"
+                    Content="Delete"
+                    Foreground="{Binding Fill, ElementName=colorButtonText}"
+                    FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                    FontSize="14"/>
         </Grid>
 
         <Grid x:Name="grdColorTheme"
@@ -688,22 +682,16 @@
                       FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                       FontSize="14"
                       Foreground="{Binding Fill, ElementName=colorText}"/>
-            <Grid x:Name="grdColorThemeBtnApply"
-                  HorizontalAlignment="Left"
-                  Height="30"
-                  Margin="10,37,0,0"
-                  VerticalAlignment="Top"
-                  Width="80"
-                  Background="{Binding Fill, ElementName=colorButton}">
-                <TextBlock HorizontalAlignment="Center"
-                           Margin="0"
-                           TextWrapping="Wrap"
-                           Text="Apply"
-                           VerticalAlignment="Center"
-                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                           FontSize="14"
-                           Foreground="{Binding Fill, ElementName=colorButtonText}"/>
-            </Grid>
+            <Button x:Name="btnColorThemeApply"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Height="30"
+                    Width="80"
+                    Margin="10,37,0,0"
+                    Content="Apply"
+                    FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                    FontSize="14"
+                    Foreground="{Binding Fill, ElementName=colorButtonText}"/>
         </Grid>
 
         <Grid x:Name="grdHelp"
