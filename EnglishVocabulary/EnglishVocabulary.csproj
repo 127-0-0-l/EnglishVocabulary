@@ -66,18 +66,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="About.cs" />
-    <Compile Include="AddTopic.cs" />
-    <Compile Include="ColorThemes.cs" />
-    <Compile Include="ComboBox.cs" />
-    <Compile Include="DeleteTopic.cs" />
-    <Compile Include="EditTopic.cs" />
-    <Compile Include="Header.cs" />
-    <Compile Include="Help.cs" />
-    <Compile Include="Menu.cs" />
-    <Compile Include="Subtopic.cs" />
-    <Compile Include="Test.cs" />
-    <Compile Include="Topic.cs" />
+    <Compile Include="MainWindow\Sections\About.cs" />
+    <Compile Include="MainWindow\Sections\AddTopic.cs" />
+    <Compile Include="MainWindow\Sections\ColorThemes.cs" />
+    <Compile Include="MainWindow\Sections\DeleteTopic.cs" />
+    <Compile Include="MainWindow\Sections\EditTopic.cs" />
+    <Compile Include="MainWindow\Header.cs" />
+    <Compile Include="MainWindow\Sections\Help.cs" />
+    <Compile Include="MainWindow\Menu.cs" />
+    <Compile Include="DB\Subtopic.cs" />
+    <Compile Include="MainWindow\Sections\Test.cs" />
+    <Compile Include="DB\Topic.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,7 +85,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataBaseAccess.cs" />
+    <Compile Include="DB\DataBaseAccess.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -123,7 +122,7 @@
     <Resource Include="Assets\company.png" />
     <Resource Include="Assets\Help.txt" />
     <Resource Include="Assets\About.txt" />
-    <Content Include="VocabularyDB.db">
+    <Content Include="DB\VocabularyDB.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
