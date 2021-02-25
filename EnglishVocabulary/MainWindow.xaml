@@ -179,7 +179,7 @@
                     Grid.Row="3"
                     Margin="0"
                     Background="{Binding Fill, ElementName=colorButton}"
-                    Content="Delete TOPIC"
+                    Content="DELETE TOPIC"
                     FontFamily="/EnglishVocabulary;component/Fonts/#Aqum two"
                     FontSize="13"
                     Foreground="{Binding Fill, ElementName=colorButtonText}"
@@ -468,7 +468,7 @@
         <Grid x:Name="grdAddTopic"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Background="{Binding Fill, ElementName=colorBackground}"
-              Visibility="Visible">
+              Visibility="Hidden">
             <Button x:Name="btnAddTopicAdd"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
@@ -525,7 +525,7 @@
         <Grid x:Name="grdEditTopic"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Background="{Binding Fill, ElementName=colorBackground}"
-              Visibility="Hidden">
+              Visibility="Visible">
             <TextBlock HorizontalAlignment="Left"
                        Margin="10,10,0,0"
                        TextWrapping="Wrap"
@@ -634,22 +634,16 @@
                      SelectionBrush="{Binding Fill, ElementName=colorTextSelected}"
                      FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                      FontSize="14"/>
-            <Grid x:Name="grdEditTopicBtnSaveChanges"
-                  HorizontalAlignment="Left"
-                  Height="30"
-                  Margin="10,254,0,0"
-                  VerticalAlignment="Top"
-                  Width="120"
-                  Background="{Binding Fill, ElementName=colorButton}">
-                <TextBlock HorizontalAlignment="Center"
-                           Margin="0"
-                           TextWrapping="Wrap"
-                           Text="Save changes"
-                           VerticalAlignment="Center"
-                           Foreground="{Binding Fill, ElementName=colorButtonText}"
-                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                           FontSize="14"/>
-            </Grid>
+            <Button x:Name="btnEditTopicSaveChanges"
+                    HorizontalAlignment="Left"
+                    Height="30"
+                    Margin="10,254,0,0"
+                    VerticalAlignment="Top"
+                    Width="120"
+                    Content="Save changes"
+                    Foreground="{Binding Fill, ElementName=colorButtonText}"
+                    FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                    FontSize="14"/>
         </Grid>
 
         <Grid x:Name="grdDeleteTopic"
