@@ -15,6 +15,7 @@ namespace EnglishVocabulary
         private void btnMenuTest_Click(object sender, RoutedEventArgs e)
         {
             SetActiveSection(grdTest);
+            btnMenuTest.IsEnabled = false;
         }
 
         /// <summary>

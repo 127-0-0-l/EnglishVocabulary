@@ -39,7 +39,7 @@
         <Rectangle x:Name="colorButtonEnter" Fill="#FF225FDC" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonClick" Fill="#FF8A8A8A" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonText" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonTextDisabled" Fill="#FFC6C6C6" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonTextDisabled" Fill="#FFC20000" Visibility="Hidden"/>
         <Rectangle x:Name="colorBackground" Fill="White" Visibility="Hidden"/>
         
         <Rectangle x:Name="colorText" Fill="Black" Visibility="Hidden"/>
@@ -323,7 +323,7 @@
             </Grid>
             <Grid x:Name="grdTestResult"
                   Background="{Binding Fill, ElementName=colorBackground}"
-                  Visibility="Visible">
+                  Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="{Binding Height, ElementName=grdTestHeader}"/>
                     <RowDefinition Height="*"/>
@@ -444,7 +444,8 @@
                           Margin="162,0,0,0"
                           Foreground="{Binding Fill, ElementName=colorText}"
                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                          FontSize="14"/>
+                          FontSize="14"
+                          IsEnabled="False"/>
                 <ComboBox x:Name="cbTestHeaderMode"
                           Width="80"
                           HorizontalAlignment="Left"
@@ -452,7 +453,8 @@
                           Margin="318,0,0,0"
                           Foreground="{Binding Fill, ElementName=colorText}"
                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                          FontSize="14"/>
+                          FontSize="14"
+                          IsEnabled="False"/>
                 <Button x:Name="btnTestHeaderStart"
                         HorizontalAlignment="Right"
                         Height="22"
@@ -1126,70 +1128,7 @@
                     Value="{StaticResource VerticalScrollBar}"/>
         </Style>
 
-        <!-- Button -->
-        <Style TargetType="Button">
-            <Setter Property="SnapsToDevicePixels"
-                    Value="true" />
-            <Setter Property="OverridesDefaultStyle"
-                    Value="true" />
-            <Setter Property="MinHeight"
-                    Value="23" />
-            <Setter Property="MinWidth"
-                    Value="75" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border TextBlock.Foreground="{TemplateBinding Foreground}"
-                                x:Name="Border">
-                            <Border.Background>
-                                <SolidColorBrush Color="{Binding Color, Source={StaticResource ButtonColor}}"/>
-                            </Border.Background>
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Normal"/>
-                                    <VisualState x:Name="MouseOver">
-                                        <Storyboard>
-                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
-                                                                          (SolidColorBrush.Color)">
-                                                <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{Binding Color, Source={StaticResource ButtonMouseOverColor}}" />
-                                            </ColorAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Pressed">
-                                        <Storyboard>
-                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
-                                                                          (SolidColorBrush.Color)">
-                                                <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{Binding Color, Source={StaticResource ButtonPressedColor}}" />
-                                            </ColorAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Disabled">
-                                        <Storyboard>
-                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
-                                                                          (SolidColorBrush.Color)">
-                                                <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{Binding Color, Source={StaticResource DisabledButtonColor}}" />
-                                            </ColorAnimationUsingKeyFrames>
-                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
-                                                                          Storyboard.TargetName="Border">
-                                                <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{Binding Color, Source={StaticResource DisabledButtonTextColor}}" />
-                                            </ColorAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                            <ContentPresenter Margin="2"
-                                              HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"
-                                              RecognizesAccessKey="True" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        
 
         <Style x:Key="{x:Type RadioButton}"
                TargetType="{x:Type RadioButton}">
