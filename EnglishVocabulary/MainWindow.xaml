@@ -693,6 +693,7 @@
                     Foreground="{Binding Fill, ElementName=colorButtonText}"
                     Click="btnMenuAddTopic_Click"/>
             <Button x:Name="btnMenuEditTopic"
+                    Template="{StaticResource CustomButton}"
                     Grid.Row="2"
                     Margin="0"
                     Background="{Binding Fill, ElementName=colorButton}"
@@ -702,6 +703,7 @@
                     Foreground="{Binding Fill, ElementName=colorButtonText}"
                     Click="btnMenuEditTopic_Click"/>
             <Button x:Name="btnMenuDeleteTopic"
+                    Template="{StaticResource CustomButton}"
                     Grid.Row="3"
                     Margin="0"
                     Background="{Binding Fill, ElementName=colorButton}"
@@ -711,6 +713,7 @@
                     Foreground="{Binding Fill, ElementName=colorButtonText}"
                     Click="btnMenuDeleteTopic_Click"/>
             <Button x:Name="btnMenuColorTheme"
+                    Template="{StaticResource CustomButton}"
                     Grid.Row="4"
                     Margin="0"
                     Background="{Binding Fill, ElementName=colorButton}"
@@ -720,6 +723,7 @@
                     Foreground="{Binding Fill, ElementName=colorButtonText}"
                     Click="btnMenuColorTheme_Click"/>
             <Button x:Name="btnMenuHelp"
+                    Template="{StaticResource CustomButton}"
                     Grid.Row="5"
                     Margin="0"
                     Background="{Binding Fill, ElementName=colorButton}"
@@ -729,6 +733,7 @@
                     Foreground="{Binding Fill, ElementName=colorButtonText}"
                     Click="btnMenuHelp_Click"/>
             <Button x:Name="btnMenuAbout"
+                    Template="{StaticResource CustomButton}"
                     Grid.Row="6"
                     Margin="0"
                     Background="{Binding Fill, ElementName=colorButton}"
@@ -825,6 +830,7 @@
                              FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                              FontSize="14"/>
                 <Button x:Name="btnTestTestNext"
+                        Template="{StaticResource CustomButton}"
                         Grid.Row="1"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
@@ -834,8 +840,9 @@
                         Content="Next"
                         Foreground="{Binding Fill, ElementName=colorButtonText}"
                         FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                        FontSize="14"/>
+                        FontSize="14" Background="{Binding Fill, ElementName=colorButton}"/>
                 <Button x:Name="btnTestTestFinish"
+                        Template="{StaticResource CustomButton}"
                         Grid.Row="1"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
@@ -845,7 +852,7 @@
                         Content="Finish"
                         Foreground="{Binding Fill, ElementName=colorButtonText}"
                         FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                        FontSize="14"/>
+                        FontSize="14" Background="{Binding Fill, ElementName=colorButton}"/>
             </Grid>
             <Grid x:Name="grdTestResult"
                   Background="{Binding Fill, ElementName=colorBackground}"
@@ -982,6 +989,7 @@
                           FontSize="14"
                           IsEnabled="False"/>
                 <Button x:Name="btnTestHeaderStart"
+                        Template="{StaticResource CustomButton}"
                         HorizontalAlignment="Right"
                         Height="22"
                         Margin="0,6,6,6"
@@ -989,7 +997,8 @@
                         Content="Start"
                         FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                         Foreground="{Binding Fill, ElementName=colorButtonText}"
-                        FontSize="14"/>
+                        FontSize="14"
+                        Background="{Binding Fill, ElementName=colorButton}"/>
             </Grid>
         </Grid>
 
@@ -998,6 +1007,7 @@
               Background="{Binding Fill, ElementName=colorBackground}"
               Visibility="Hidden">
             <Button x:Name="btnAddTopicAdd"
+                    Template="{StaticResource CustomButton}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Height="30"
@@ -1006,7 +1016,7 @@
                     Content="Add"
                     Foreground="{Binding Fill, ElementName=colorButtonText}"
                     FontSize="14"
-                    FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"/>
+                    FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro" Background="{Binding Fill, ElementName=colorButton}"/>
             <TextBox x:Name="tbAddTopicTopic"
                      HorizontalAlignment="Left"
                      Height="23"
@@ -1163,6 +1173,7 @@
                      FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                      FontSize="14"/>
             <Button x:Name="btnEditTopicSaveChanges"
+                    Template="{StaticResource CustomButton}"
                     HorizontalAlignment="Left"
                     Height="30"
                     Margin="10,254,0,0"
@@ -1171,7 +1182,8 @@
                     Content="Save changes"
                     Foreground="{Binding Fill, ElementName=colorButtonText}"
                     FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                    FontSize="14"/>
+                    FontSize="14"
+                    Background="{Binding Fill, ElementName=colorButton}"/>
         </Grid>
 
         <Grid x:Name="grdDeleteTopic"
@@ -1187,6 +1199,7 @@
                       FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                       FontSize="14"/>
             <Button x:Name="btnDeleteTopicDelete"
+                    Template="{StaticResource CustomButton}"
                     HorizontalAlignment="Left"
                     Height="30"
                     Margin="10,37,0,0"
@@ -1195,7 +1208,8 @@
                     Content="Delete"
                     Foreground="{Binding Fill, ElementName=colorButtonText}"
                     FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                    FontSize="14"/>
+                    FontSize="14"
+                    Background="{Binding Fill, ElementName=colorButton}"/>
         </Grid>
 
         <Grid x:Name="grdColorTheme"
@@ -1211,6 +1225,7 @@
                       FontSize="14"
                       Foreground="{Binding Fill, ElementName=colorText}"/>
             <Button x:Name="btnColorThemeApply"
+                    Template="{StaticResource CustomButton}"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left"
                     Height="30"
@@ -1219,7 +1234,8 @@
                     Content="Apply"
                     FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                     FontSize="14"
-                    Foreground="{Binding Fill, ElementName=colorButtonText}"/>
+                    Foreground="{Binding Fill, ElementName=colorButtonText}"
+                    Background="{Binding Fill, ElementName=colorButton}"/>
         </Grid>
 
         <Grid x:Name="grdHelp"
