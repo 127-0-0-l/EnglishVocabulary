@@ -1005,7 +1005,7 @@
         <Grid x:Name="grdAddTopic"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Background="{Binding Fill, ElementName=colorBackground}"
-              Visibility="Hidden">
+              Visibility="Visible">
             <Button x:Name="btnAddTopicAdd"
                     Template="{StaticResource CustomButton}"
                     HorizontalAlignment="Right"
@@ -1016,7 +1016,8 @@
                     Content="Add"
                     Foreground="{Binding Fill, ElementName=colorButtonText}"
                     FontSize="14"
-                    FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro" Background="{Binding Fill, ElementName=colorButton}"/>
+                    FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                    Background="{Binding Fill, ElementName=colorButton}" Click="btnAddTopicAdd_Click"/>
             <TextBox x:Name="tbAddTopicTopic"
                      HorizontalAlignment="Left"
                      Height="23"
