@@ -32,7 +32,7 @@ namespace EnglishVocabulary
             LoadHelp();
             LoadAbout();
 
-            DataBaseAccess.CreateTopic(new Topic());
+            //DataBaseAccess.CreateTopic(new Topic());
 
             foreach (var item in DataBaseAccess.GetData())
             {

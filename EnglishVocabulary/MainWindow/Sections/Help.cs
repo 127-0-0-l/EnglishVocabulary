@@ -10,7 +10,7 @@ namespace EnglishVocabulary
         /// </summary>
         private void LoadHelp()
         {
-            string path = Environment.CurrentDirectory + @"\..\..\Assets\Help.txt";
+            string path = @".\..\..\Assets\Help.txt";
             
             using (StreamReader file = new StreamReader(path))
             {
