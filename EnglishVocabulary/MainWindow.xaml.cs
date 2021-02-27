@@ -32,12 +32,12 @@ namespace EnglishVocabulary
             LoadHelp();
             LoadAbout();
 
-            //DataBaseAccess.CreateTopic(new Topic());
+            DataBaseAccess.CreateTopic(new Topic());
 
-            //foreach (var item in DataBaseAccess.GetData())
-            //{
-            //    MessageBox.Show(item);
-            //}
+            foreach (var item in DataBaseAccess.GetData())
+            {
+                MessageBox.Show(item);
+            }
         }
 
         

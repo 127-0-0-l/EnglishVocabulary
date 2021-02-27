@@ -16,7 +16,7 @@ namespace EnglishVocabulary
         {
             using(IDbConnection db = new SQLiteConnection(ConfigurationManager.ConnectionStrings["VocabularyDBConnectionString"].ConnectionString))
             {
-                db.Execute("insert into Vocabulary (Topic) values (@t)", new { t = "hello"});
+                db.Execute("insert into Topics (Topic) values (@t)", new { t = "hello"});
             }
         }
 
@@ -24,7 +24,7 @@ namespace EnglishVocabulary
         {
             using(IDbConnection db = new SQLiteConnection(ConfigurationManager.ConnectionStrings["VocabularyDBConnectionString"].ConnectionString))
             {
-                var output = db.Query<string>("select Topic from Vocabulary");
+                var output = db.Query<string>("select Topic from Topics");
                 return output.ToList();
             }
         }
