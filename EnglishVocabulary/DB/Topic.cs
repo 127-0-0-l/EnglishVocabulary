@@ -9,6 +9,6 @@ namespace EnglishVocabulary
     class Topic
     {
         public string TopicName { get; set; }
-        public List<Subtopic> Subtopics { get; set; }
+        public Subtopic Subtopic { get; set; }
     }
 }
