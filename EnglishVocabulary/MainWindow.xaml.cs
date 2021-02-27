@@ -14,6 +14,11 @@ namespace EnglishVocabulary
             ActivateCompanyLogo();
             LoadHelp();
             LoadAbout();
+
+            foreach (var item in DataBase.GetWords("SubtopicFirst"))
+            {
+                rtbAddTopicAllWords.AppendText($"{item.eng} - {item.rus}\n");
+            }
         }
     }
 }
