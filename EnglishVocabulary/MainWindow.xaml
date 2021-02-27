@@ -24,6 +24,530 @@
                       CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
 
+    <Window.Resources>
+        <SolidColorBrush x:Key="DisabledButtonColor"
+                         Color="{Binding Fill.Color, ElementName=colorButtonDisabled}"/>
+        <SolidColorBrush x:Key="DisabledButtonTextColor"
+                         Color="{Binding Fill.Color, ElementName=colorButtonTextDisabled}"/>
+
+        <SolidColorBrush x:Key="SelectedBackgroundColor"
+                         Color="{Binding Fill.Color, ElementName=colorTextSelected}"/>
+
+        <SolidColorBrush x:Key="BackgroundColor"
+                         Color="{Binding Fill.Color, ElementName=colorComboBox}"/>
+        <SolidColorBrush x:Key="ButtonColor"
+                         Color="{Binding Fill.Color, ElementName=colorButton}"/>
+
+        <SolidColorBrush x:Key="ButtonMouseOverColor"
+                         Color="{Binding Fill.Color, ElementName=colorButtonEnter}"/>
+        <SolidColorBrush x:Key="ButtonPressedColor"
+                         Color="{Binding Fill.Color, ElementName=colorButtonClick}"/>
+
+        <SolidColorBrush x:Key="ArrowColor"
+                         Color="{Binding Fill.Color, ElementName=colorButtonText}"/>
+
+        <SolidColorBrush x:Key="BorderColor"
+                         Color="{Binding Fill.Color, ElementName=colorButton}"/>
+
+        <ControlTemplate x:Key="ComboBoxToggleButton"
+                         TargetType="{x:Type ToggleButton}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="MouseOver">
+                            <Storyboard>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                                                              (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                              Storyboard.TargetName="Border">
+                                    <EasingColorKeyFrame KeyTime="0"
+                                                         Value="{Binding Color, Source={StaticResource ButtonMouseOverColor}}" />
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Pressed" />
+                        <VisualState x:Name="Disabled">
+                            <Storyboard>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                                                              (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                              Storyboard.TargetName="Border">
+                                    <EasingColorKeyFrame KeyTime="0"
+                                                         Value="{Binding Color, Source={StaticResource DisabledButtonColor}}"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).
+                                                              (SolidColorBrush.Color)"
+                                                              Storyboard.TargetName="Arrow">
+                                    <EasingColorKeyFrame KeyTime="0"
+                                                         Value="{Binding Color, Source={StaticResource DisabledButtonTextColor}}"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                    <VisualStateGroup x:Name="CheckStates">
+                        <VisualState x:Name="Checked">
+                            <Storyboard>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                                                              (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                              Storyboard.TargetName="Border">
+                                    <EasingColorKeyFrame KeyTime="0"
+                                                         Value="{Binding Color, Source={StaticResource ButtonPressedColor}}" />
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Unchecked" />
+                        <VisualState x:Name="Indeterminate" />
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Border x:Name="Border"
+                        Grid.ColumnSpan="2"
+                        CornerRadius="0"
+                        BorderThickness="0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0"
+                                             EndPoint="0,1">
+                            <LinearGradientBrush.GradientStops>
+                                <GradientStopCollection>
+                                    <GradientStop Color="#fff"/>
+                                    <GradientStop Color="{Binding Color, Source={StaticResource ButtonColor}}"/>
+                                </GradientStopCollection>
+                            </LinearGradientBrush.GradientStops>
+                        </LinearGradientBrush>
+
+                    </Border.Background>
+                </Border>
+                <Border Margin="0" >
+                    <Border.Background>
+                        <SolidColorBrush Color="{Binding Color, Source={StaticResource BackgroundColor}}"/>
+                    </Border.Background>
+                </Border>
+                <Path x:Name="Arrow"
+                      Grid.Column="1"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Data="M 0 0 L 4 4 L 8 0 Z" >
+                    <Path.Fill>
+                        <SolidColorBrush Color="{Binding Color, Source={StaticResource ArrowColor}}"/>
+                    </Path.Fill>
+                </Path>
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ComboBoxTextBox"
+                         TargetType="{x:Type TextBox}">
+        </ControlTemplate>
+
+        <Style x:Key="{x:Type ComboBox}"
+               TargetType="{x:Type ComboBox}">
+            <Setter Property="SnapsToDevicePixels"
+                    Value="true" />
+            <Setter Property="OverridesDefaultStyle"
+                    Value="true" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+                    Value="Auto" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+                    Value="Auto" />
+            <Setter Property="ScrollViewer.CanContentScroll"
+                    Value="true" />
+            <Setter Property="MinWidth"
+                    Value="80" />
+            <Setter Property="MinHeight"
+                    Value="20" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver" />
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_EditableTextBox"
+                                                                          Storyboard.TargetProperty="(TextElement.Foreground).
+                                                                          (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                                                                     Value="{Binding Color, Source={StaticResource DisabledButtonTextColor}}"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="EditStates">
+                                    <VisualState x:Name="Editable">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                                           Storyboard.TargetName="PART_EditableTextBox">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{x:Static Visibility.Visible}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                                           Storyboard.TargetName="ContentSite">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{x:Static Visibility.Hidden}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Uneditable" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ToggleButton x:Name="ToggleButton"
+                                          Template="{StaticResource ComboBoxToggleButton}"
+                                          Grid.Column="2"
+                                          Focusable="false"
+                                          ClickMode="Press"
+                                          IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, 
+                                          RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <ContentPresenter x:Name="ContentSite"
+                                              IsHitTestVisible="False"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              Margin="3,3,23,3"
+                                              VerticalAlignment="Stretch"
+                                              HorizontalAlignment="Left">
+                            </ContentPresenter>
+                            <TextBox x:Name="PART_EditableTextBox"
+                                     Style="{x:Null}"
+                                     Template="{StaticResource ComboBoxTextBox}"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Bottom"
+                                     Margin="3,3,23,3"
+                                     Focusable="True"
+                                     Background="Transparent"
+                                     Visibility="Hidden"
+                                     IsReadOnly="{TemplateBinding IsReadOnly}" />
+                            <Popup x:Name="Popup"
+                                   Placement="Bottom"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   AllowsTransparency="True"
+                                   Focusable="False"
+                                   PopupAnimation="Fade">
+                                <Grid x:Name="DropDown"
+                                      SnapsToDevicePixels="True"
+                                      MinWidth="{TemplateBinding ActualWidth}"
+                                      MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border x:Name="DropDownBorder"
+                                            BorderThickness="1">
+                                        <Border.BorderBrush>
+                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource BorderColor}}" />
+                                        </Border.BorderBrush>
+                                        <Border.Background>
+                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource BackgroundColor}}" />
+                                        </Border.Background>
+                                    </Border>
+                                    <ScrollViewer SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True"
+                                                    KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasItems"
+                                     Value="false">
+                                <Setter TargetName="DropDownBorder"
+                                        Property="MinHeight"
+                                        Value="95" />
+                            </Trigger>
+                            <Trigger Property="IsGrouping"
+                                     Value="true">
+                                <Setter Property="ScrollViewer.CanContentScroll"
+                                        Value="false" />
+                            </Trigger>
+                            <Trigger SourceName="Popup"
+                                     Property="AllowsTransparency"
+                                     Value="true">
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="{x:Type ComboBoxItem}"
+               TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="SnapsToDevicePixels"
+                    Value="true" />
+            <Setter Property="OverridesDefaultStyle"
+                    Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border x:Name="Border"
+                                Padding="2"
+                                SnapsToDevicePixels="true"
+                                Background="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected" />
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                                          Storyboard.TargetProperty="(Panel.Background).
+                                                                          (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                                                                     Value="{Binding Color, Source={StaticResource SelectedBackgroundColor}}" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedUnfocused">
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <SolidColorBrush x:Key="ThumbColor"
+                         Color="{Binding Fill.Color, ElementName=colorScrollViewer}"/>
+
+        <Style x:Key="ScrollBarLineButtonStyle"
+               TargetType="{x:Type RepeatButton}">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border BorderThickness="0,0,0,1"
+                                BorderBrush="{Binding Fill, ElementName=colorButton}">
+                            <Canvas Height="18" VerticalAlignment="Center">
+                                <Polygon x:Name="plgn"
+                                     Points="1,16 15,16 8,5"
+                                     Fill="{DynamicResource ThumbColor}"/>
+                            </Canvas>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ScrollBarLineButtonBottomStyle"
+               TargetType="{x:Type RepeatButton}">
+            <Setter Property="Focusable"
+                    Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border BorderThickness="0,1,0,0"
+                                BorderBrush="{Binding Fill, ElementName=colorButton}">
+                            <Canvas Height="18">
+                                <Polygon Fill="{DynamicResource ThumbColor}"
+                                     Points="1,2 8,13 15,2"/>
+                            </Canvas>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ScrollBarPageButtonStyle"
+               TargetType="{x:Type RepeatButton}">
+            <Setter Property="IsTabStop"
+                    Value="False"/>
+            <Setter Property="Focusable"
+                    Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border BorderBrush="Transparent"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ScrollBarThumbStyle"
+               TargetType="{x:Type Thumb}">
+            <Setter Property="IsTabStop"
+                    Value="False"/>
+            <Setter Property="Focusable"
+                    Value="False"/>
+            <Setter Property="Margin"
+                    Value="1,0,1,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Rectangle Margin="0,0,1,0"
+                                   Fill="{DynamicResource ThumbColor}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="VerticalScrollBar"
+                         TargetType="{x:Type ScrollBar}">
+            <Border BorderThickness="1,0,1,0"
+                                BorderBrush="{StaticResource ButtonColor}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition MaxHeight="18"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition MaxHeight="18"/>
+                    </Grid.RowDefinitions>
+
+                    <RepeatButton Grid.Row="0"
+                              Height="18"
+                              Style="{StaticResource ScrollBarLineButtonStyle}"
+                              Command="ScrollBar.LineUpCommand"/>
+                    <Track Name="PART_Track" Grid.Row="1" 
+                       IsDirectionReversed="True">
+                        <Track.DecreaseRepeatButton>
+                            <RepeatButton Command="ScrollBar.PageUpCommand"
+                                      Style="{StaticResource ScrollBarPageButtonStyle}"/>
+                        </Track.DecreaseRepeatButton>
+                        <Track.Thumb>
+                            <Thumb Style="{StaticResource ScrollBarThumbStyle}"/>
+                        </Track.Thumb>
+                        <Track.IncreaseRepeatButton>
+                            <RepeatButton Command="ScrollBar.PageDownCommand"
+                                      Style="{StaticResource ScrollBarPageButtonStyle}"/>
+                        </Track.IncreaseRepeatButton>
+                    </Track>
+                    <RepeatButton Grid.Row="3" Height="18"
+                              Style="{StaticResource ScrollBarLineButtonBottomStyle}"
+                              Command="ScrollBar.LineDownCommand"/>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+        <Style TargetType="{x:Type ScrollBar}">
+            <Setter Property="Template"
+                    Value="{StaticResource VerticalScrollBar}"/>
+        </Style>
+
+        <!--Button-->
+        <ControlTemplate x:Key="CustomButton" TargetType="Button">
+            <Grid x:Name="button">
+                <Rectangle x:Name="BackgroundElement"
+                           Fill="{TemplateBinding Background}"/>
+                <ContentPresenter VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Fill"
+                            TargetName="BackgroundElement"
+                            Value="{DynamicResource ButtonMouseOverColor}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Fill"
+                            TargetName="BackgroundElement"
+                            Value="{DynamicResource DisabledButtonColor}"/>
+                    <Setter Property="TextElement.Foreground"
+                            TargetName="button"
+                            Value="{DynamicResource DisabledButtonTextColor}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter Property="Fill"
+                            TargetName="BackgroundElement"
+                            Value="{DynamicResource ButtonPressedColor}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="{x:Type RadioButton}"
+               TargetType="{x:Type RadioButton}">
+            <Setter Property="SnapsToDevicePixels"
+                    Value="true" />
+            <Setter Property="OverridesDefaultStyle"
+                    Value="true" />
+            <Setter Property="FocusVisualStyle"
+                    Value="{DynamicResource RadioButtonFocusVisual}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <BulletDecorator Background="Transparent">
+                            <BulletDecorator.Bullet>
+                                <Grid Width="13"
+                                      Height="13">
+                                    <Ellipse x:Name="Border"
+                                             StrokeThickness="2">
+                                        <Ellipse.Stroke>
+                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource ButtonColor}}"/>
+                                        </Ellipse.Stroke>
+                                        <Ellipse.Fill>
+                                            <SolidColorBrush Color="Transparent"/>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <Ellipse x:Name="CheckMark"
+                                             Visibility="Collapsed">
+                                        <Ellipse.Fill>
+                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource ButtonColor}}" />
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                </Grid>
+                            </BulletDecorator.Bullet>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                                          Storyboard.TargetProperty="(Shape.Fill).
+                                                                          (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                                                                     Value="{Binding Color, Source={StaticResource ButtonPressedColor}}" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                                          Storyboard.TargetProperty="(Shape.Fill).
+                                                                          (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                                                                     Value="{Binding Color, Source={StaticResource ButtonColor}}" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                                          Storyboard.TargetProperty="(Shape.Fill).
+                                                                          (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                                                                     Value="Transparent" />
+                                            </ColorAnimationUsingKeyFrames>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                                          Storyboard.TargetProperty="(Shape.Stroke).
+                                                                          (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                                                                     Value="{Binding Color, Source={StaticResource DisabledButtonColor}}" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                                           Storyboard.TargetName="CheckMark">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{x:Static Visibility.Visible}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked" />
+                                    <VisualState x:Name="Indeterminate" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter Margin="4,0,0,0"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Left"
+                                              RecognizesAccessKey="True" />
+                        </BulletDecorator>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
     <Grid x:Name="grdMain">
         <Rectangle x:Name="colorHeader" Fill="#FF4D606E" Visibility="Hidden"/>
         <Rectangle x:Name="colorHeaderText" Fill="#FFF5F5F5" Visibility="Hidden"/>
@@ -41,12 +565,12 @@
         <Rectangle x:Name="colorButtonText" Fill="#fff" Visibility="Hidden"/>
         <Rectangle x:Name="colorButtonTextDisabled" Fill="#FFC20000" Visibility="Hidden"/>
         <Rectangle x:Name="colorBackground" Fill="White" Visibility="Hidden"/>
-        
+
         <Rectangle x:Name="colorText" Fill="Black" Visibility="Hidden"/>
         <Rectangle x:Name="colorTextSelected" Fill="#FF005BFF" Visibility="Hidden"/>
-        
+
         <Rectangle x:Name="colorImage" Fill="WhiteSmoke" Visibility="Hidden"/>
-        
+
         <Rectangle x:Name="colorTestHeader" Fill="#FF7E7E7E" Visibility="Hidden"/>
         <Rectangle x:Name="colorTestGood" Fill="#FF00D804" Visibility="Hidden"/>
         <Rectangle x:Name="colorTestFail" Fill="#FFE20700" Visibility="Hidden"/>
@@ -73,7 +597,7 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Grid>
- 
+
         <Grid x:Name="grdHeader"
               Height="{Binding Margin.Top, ElementName=cnvBase}"
               VerticalAlignment="Top"
@@ -150,6 +674,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Button x:Name="btnMenuTest"
+                    Template="{StaticResource CustomButton}"
                     Margin="0"
                     Background="{Binding Fill, ElementName=colorButton}"
                     Content="TEST"
@@ -158,6 +683,7 @@
                     Foreground="{Binding Fill, ElementName=colorButtonText}"
                     Click="btnMenuTest_Click"/>
             <Button x:Name="btnMenuAddTopic"
+                    Template="{StaticResource CustomButton}"
                     Grid.Row="1"
                     Margin="0"
                     Background="{Binding Fill, ElementName=colorButton}"
@@ -731,501 +1257,5 @@
         </Grid>
 
     </Grid>
-
-    <Window.Resources>
-        <SolidColorBrush x:Key="DisabledButtonColor"
-                         Color="{Binding Fill.Color, ElementName=colorButtonDisabled}"/>
-        <SolidColorBrush x:Key="DisabledButtonTextColor"
-                         Color="{Binding Fill.Color, ElementName=colorButtonTextDisabled}"/>
-
-        <SolidColorBrush x:Key="SelectedBackgroundColor"
-                         Color="{Binding Fill.Color, ElementName=colorTextSelected}"/>
-
-        <SolidColorBrush x:Key="BackgroundColor"
-                         Color="{Binding Fill.Color, ElementName=colorComboBox}"/>
-        <SolidColorBrush x:Key="ButtonColor"
-                         Color="{Binding Fill.Color, ElementName=colorButton}"/>
-
-        <SolidColorBrush x:Key="ButtonMouseOverColor"
-                         Color="{Binding Fill.Color, ElementName=colorButtonEnter}"/>
-        <SolidColorBrush x:Key="ButtonPressedColor"
-                         Color="{Binding Fill.Color, ElementName=colorButtonClick}"/>
-
-        <SolidColorBrush x:Key="ArrowColor"
-                         Color="{Binding Fill.Color, ElementName=colorButtonText}"/>
-
-        <SolidColorBrush x:Key="BorderColor"
-                         Color="{Binding Fill.Color, ElementName=colorButton}"/>
-
-        <ControlTemplate x:Key="ComboBoxToggleButton"
-                         TargetType="{x:Type ToggleButton}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="20" />
-                </Grid.ColumnDefinitions>
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal" />
-                        <VisualState x:Name="MouseOver">
-                            <Storyboard>
-                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
-                                                              (GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                                              Storyboard.TargetName="Border">
-                                    <EasingColorKeyFrame KeyTime="0"
-                                                         Value="{Binding Color, Source={StaticResource ButtonMouseOverColor}}" />
-                                </ColorAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="Pressed" />
-                        <VisualState x:Name="Disabled">
-                            <Storyboard>
-                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
-                                                              (GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                                              Storyboard.TargetName="Border">
-                                    <EasingColorKeyFrame KeyTime="0"
-                                                         Value="{Binding Color, Source={StaticResource DisabledButtonColor}}"/>
-                                </ColorAnimationUsingKeyFrames>
-                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).
-                                                              (SolidColorBrush.Color)"
-                                                              Storyboard.TargetName="Arrow">
-                                    <EasingColorKeyFrame KeyTime="0"
-                                                         Value="{Binding Color, Source={StaticResource DisabledButtonTextColor}}"/>
-                                </ColorAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </VisualState>
-                    </VisualStateGroup>
-                    <VisualStateGroup x:Name="CheckStates">
-                        <VisualState x:Name="Checked">
-                            <Storyboard>
-                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
-                                                              (GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                                              Storyboard.TargetName="Border">
-                                    <EasingColorKeyFrame KeyTime="0"
-                                                         Value="{Binding Color, Source={StaticResource ButtonPressedColor}}" />
-                                </ColorAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="Unchecked" />
-                        <VisualState x:Name="Indeterminate" />
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
-                <Border x:Name="Border"
-                        Grid.ColumnSpan="2"
-                        CornerRadius="0"
-                        BorderThickness="0">
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0,0"
-                                             EndPoint="0,1">
-                            <LinearGradientBrush.GradientStops>
-                                <GradientStopCollection>
-                                    <GradientStop Color="#fff"/>
-                                    <GradientStop Color="{Binding Color, Source={StaticResource ButtonColor}}"/>
-                                </GradientStopCollection>
-                            </LinearGradientBrush.GradientStops>
-                        </LinearGradientBrush>
-
-                    </Border.Background>
-                </Border>
-                <Border Margin="0" >
-                    <Border.Background>
-                        <SolidColorBrush Color="{Binding Color, Source={StaticResource BackgroundColor}}"/>
-                    </Border.Background>
-                </Border>
-                <Path x:Name="Arrow"
-                      Grid.Column="1"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center"
-                      Data="M 0 0 L 4 4 L 8 0 Z" >
-                    <Path.Fill>
-                        <SolidColorBrush Color="{Binding Color, Source={StaticResource ArrowColor}}"/>
-                    </Path.Fill>
-                </Path>
-            </Grid>
-        </ControlTemplate>
-
-        <ControlTemplate x:Key="ComboBoxTextBox"
-                         TargetType="{x:Type TextBox}">
-        </ControlTemplate>
-
-        <Style x:Key="{x:Type ComboBox}"
-               TargetType="{x:Type ComboBox}">
-            <Setter Property="SnapsToDevicePixels"
-                    Value="true" />
-            <Setter Property="OverridesDefaultStyle"
-                    Value="true" />
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
-                    Value="Auto" />
-            <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
-                    Value="Auto" />
-            <Setter Property="ScrollViewer.CanContentScroll"
-                    Value="true" />
-            <Setter Property="MinWidth"
-                    Value="80" />
-            <Setter Property="MinHeight"
-                    Value="20" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ComboBox}">
-                        <Grid>
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Normal" />
-                                    <VisualState x:Name="MouseOver" />
-                                    <VisualState x:Name="Disabled">
-                                        <Storyboard>
-                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_EditableTextBox"
-                                                                          Storyboard.TargetProperty="(TextElement.Foreground).
-                                                                          (SolidColorBrush.Color)">
-                                                <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{Binding Color, Source={StaticResource DisabledButtonTextColor}}"/>
-                                            </ColorAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                </VisualStateGroup>
-                                <VisualStateGroup x:Name="EditStates">
-                                    <VisualState x:Name="Editable">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
-                                                                           Storyboard.TargetName="PART_EditableTextBox">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                                        Value="{x:Static Visibility.Visible}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
-                                                                           Storyboard.TargetName="ContentSite">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                                        Value="{x:Static Visibility.Hidden}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Uneditable" />
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                            <ToggleButton x:Name="ToggleButton"
-                                          Template="{StaticResource ComboBoxToggleButton}"
-                                          Grid.Column="2"
-                                          Focusable="false"
-                                          ClickMode="Press"
-                                          IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, 
-                                          RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <ContentPresenter x:Name="ContentSite"
-                                              IsHitTestVisible="False"
-                                              Content="{TemplateBinding SelectionBoxItem}"
-                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                              Margin="3,3,23,3"
-                                              VerticalAlignment="Stretch"
-                                              HorizontalAlignment="Left">
-                            </ContentPresenter>
-                            <TextBox x:Name="PART_EditableTextBox"
-                                     Style="{x:Null}"
-                                     Template="{StaticResource ComboBoxTextBox}"
-                                     HorizontalAlignment="Left"
-                                     VerticalAlignment="Bottom"
-                                     Margin="3,3,23,3"
-                                     Focusable="True"
-                                     Background="Transparent"
-                                     Visibility="Hidden"
-                                     IsReadOnly="{TemplateBinding IsReadOnly}" />
-                            <Popup x:Name="Popup"
-                                   Placement="Bottom"
-                                   IsOpen="{TemplateBinding IsDropDownOpen}"
-                                   AllowsTransparency="True"
-                                   Focusable="False"
-                                   PopupAnimation="Fade">
-                                <Grid x:Name="DropDown"
-                                      SnapsToDevicePixels="True"
-                                      MinWidth="{TemplateBinding ActualWidth}"
-                                      MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                    <Border x:Name="DropDownBorder"
-                                            BorderThickness="1">
-                                        <Border.BorderBrush>
-                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource BorderColor}}" />
-                                        </Border.BorderBrush>
-                                        <Border.Background>
-                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource BackgroundColor}}" />
-                                        </Border.Background>
-                                    </Border>
-                                    <ScrollViewer SnapsToDevicePixels="True">
-                                        <StackPanel IsItemsHost="True"
-                                                    KeyboardNavigation.DirectionalNavigation="Contained" />
-                                    </ScrollViewer>
-                                </Grid>
-                            </Popup>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="HasItems"
-                                     Value="false">
-                                <Setter TargetName="DropDownBorder"
-                                        Property="MinHeight"
-                                        Value="95" />
-                            </Trigger>
-                            <Trigger Property="IsGrouping"
-                                     Value="true">
-                                <Setter Property="ScrollViewer.CanContentScroll"
-                                        Value="false" />
-                            </Trigger>
-                            <Trigger SourceName="Popup"
-                                     Property="AllowsTransparency"
-                                     Value="true">
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="{x:Type ComboBoxItem}"
-               TargetType="{x:Type ComboBoxItem}">
-            <Setter Property="SnapsToDevicePixels"
-                    Value="true" />
-            <Setter Property="OverridesDefaultStyle"
-                    Value="true" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
-                        <Border x:Name="Border"
-                                Padding="2"
-                                SnapsToDevicePixels="true"
-                                Background="Transparent">
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="SelectionStates">
-                                    <VisualState x:Name="Unselected" />
-                                    <VisualState x:Name="Selected">
-                                        <Storyboard>
-                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                                          Storyboard.TargetProperty="(Panel.Background).
-                                                                          (SolidColorBrush.Color)">
-                                                <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{Binding Color, Source={StaticResource SelectedBackgroundColor}}" />
-                                            </ColorAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="SelectedUnfocused">
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                            <ContentPresenter />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-
-        <SolidColorBrush x:Key="ThumbColor"
-                         Color="{Binding Fill.Color, ElementName=colorScrollViewer}"/>
-
-        <Style x:Key="ScrollBarLineButtonStyle"
-               TargetType="{x:Type RepeatButton}">
-            <Setter Property="Focusable" Value="False"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Border BorderThickness="0,0,0,1"
-                                BorderBrush="{Binding Fill, ElementName=colorButton}">
-                            <Canvas Height="18" VerticalAlignment="Center">
-                                <Polygon x:Name="plgn"
-                                     Points="1,16 15,16 8,5"
-                                     Fill="{DynamicResource ThumbColor}"/>
-                            </Canvas>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="ScrollBarLineButtonBottomStyle"
-               TargetType="{x:Type RepeatButton}">
-            <Setter Property="Focusable"
-                    Value="False"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Border BorderThickness="0,1,0,0"
-                                BorderBrush="{Binding Fill, ElementName=colorButton}">
-                            <Canvas Height="18">
-                                <Polygon Fill="{DynamicResource ThumbColor}"
-                                     Points="1,2 8,13 15,2"/>
-                            </Canvas>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="ScrollBarPageButtonStyle"
-               TargetType="{x:Type RepeatButton}">
-            <Setter Property="IsTabStop"
-                    Value="False"/>
-            <Setter Property="Focusable"
-                    Value="False"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Border BorderBrush="Transparent"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="ScrollBarThumbStyle"
-               TargetType="{x:Type Thumb}">
-            <Setter Property="IsTabStop"
-                    Value="False"/>
-            <Setter Property="Focusable"
-                    Value="False"/>
-            <Setter Property="Margin"
-                    Value="1,0,1,0" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Thumb}">
-                        <Rectangle Margin="0,0,1,0"
-                                   Fill="{DynamicResource ThumbColor}"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <ControlTemplate x:Key="VerticalScrollBar"
-                         TargetType="{x:Type ScrollBar}">
-            <Border BorderThickness="1,0,1,0"
-                                BorderBrush="{StaticResource ButtonColor}">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition MaxHeight="18"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition MaxHeight="18"/>
-                    </Grid.RowDefinitions>
-
-                    <RepeatButton Grid.Row="0"
-                              Height="18"
-                              Style="{StaticResource ScrollBarLineButtonStyle}"
-                              Command="ScrollBar.LineUpCommand"/>
-                    <Track Name="PART_Track" Grid.Row="1" 
-                       IsDirectionReversed="True">
-                        <Track.DecreaseRepeatButton>
-                            <RepeatButton Command="ScrollBar.PageUpCommand"
-                                      Style="{StaticResource ScrollBarPageButtonStyle}"/>
-                        </Track.DecreaseRepeatButton>
-                        <Track.Thumb>
-                            <Thumb Style="{StaticResource ScrollBarThumbStyle}"/>
-                        </Track.Thumb>
-                        <Track.IncreaseRepeatButton>
-                            <RepeatButton Command="ScrollBar.PageDownCommand"
-                                      Style="{StaticResource ScrollBarPageButtonStyle}"/>
-                        </Track.IncreaseRepeatButton>
-                    </Track>
-                    <RepeatButton Grid.Row="3" Height="18"
-                              Style="{StaticResource ScrollBarLineButtonBottomStyle}"
-                              Command="ScrollBar.LineDownCommand"/>
-                </Grid>
-            </Border>
-        </ControlTemplate>
-
-        <Style TargetType="{x:Type ScrollBar}">
-            <Setter Property="Template"
-                    Value="{StaticResource VerticalScrollBar}"/>
-        </Style>
-
-        
-
-        <Style x:Key="{x:Type RadioButton}"
-               TargetType="{x:Type RadioButton}">
-            <Setter Property="SnapsToDevicePixels"
-                    Value="true" />
-            <Setter Property="OverridesDefaultStyle"
-                    Value="true" />
-            <Setter Property="FocusVisualStyle"
-                    Value="{DynamicResource RadioButtonFocusVisual}" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type RadioButton}">
-                        <BulletDecorator Background="Transparent">
-                            <BulletDecorator.Bullet>
-                                <Grid Width="13"
-                                      Height="13">
-                                    <Ellipse x:Name="Border"
-                                             StrokeThickness="2">
-                                        <Ellipse.Stroke>
-                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource ButtonColor}}"/>
-                                        </Ellipse.Stroke>
-                                        <Ellipse.Fill>
-                                            <SolidColorBrush Color="Transparent"/>
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-                                    <Ellipse x:Name="CheckMark"
-                                             Visibility="Collapsed">
-                                        <Ellipse.Fill>
-                                            <SolidColorBrush Color="{Binding Color, Source={StaticResource ButtonColor}}" />
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-                                </Grid>
-                            </BulletDecorator.Bullet>
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Normal" />
-                                    <VisualState x:Name="MouseOver">
-                                        <Storyboard>
-                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                                          Storyboard.TargetProperty="(Shape.Fill).
-                                                                          (SolidColorBrush.Color)">
-                                                <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{Binding Color, Source={StaticResource ButtonPressedColor}}" />
-                                            </ColorAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Pressed">
-                                        <Storyboard>
-                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                                          Storyboard.TargetProperty="(Shape.Fill).
-                                                                          (SolidColorBrush.Color)">
-                                                <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{Binding Color, Source={StaticResource ButtonColor}}" />
-                                            </ColorAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Disabled">
-                                        <Storyboard>
-                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                                          Storyboard.TargetProperty="(Shape.Fill).
-                                                                          (SolidColorBrush.Color)">
-                                                <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="Transparent" />
-                                            </ColorAnimationUsingKeyFrames>
-                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                                          Storyboard.TargetProperty="(Shape.Stroke).
-                                                                          (SolidColorBrush.Color)">
-                                                <EasingColorKeyFrame KeyTime="0"
-                                                                     Value="{Binding Color, Source={StaticResource DisabledButtonColor}}" />
-                                            </ColorAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                </VisualStateGroup>
-                                <VisualStateGroup x:Name="CheckStates">
-                                    <VisualState x:Name="Checked">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
-                                                                           Storyboard.TargetName="CheckMark">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                                        Value="{x:Static Visibility.Visible}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Unchecked" />
-                                    <VisualState x:Name="Indeterminate" />
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                            <ContentPresenter Margin="4,0,0,0"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Left"
-                                              RecognizesAccessKey="True" />
-                        </BulletDecorator>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-    </Window.Resources>
 
 </Window>
