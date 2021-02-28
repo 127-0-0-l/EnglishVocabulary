@@ -1,1 +1,39 @@
-﻿help information
+﻿***Test***
+
+
+***Add topic***
+
+In "ADD TOPIC" section you can:
+1. add new topic, new subtpics in this topic and words for this subtopic
+2. add new subtopics in already existing topic
+3. add new words in already existing subtopics
+
+If you will write already exitsting topic name in "Topic" field, then subtopics will be added in this topic (without creating new topic with the same name)
+The same things with subtopics. If written subtopic already exist in this topic, then words will be added in this subtopic.
+
+It is important to follow the format of adding words:
+- topic should be written in "Topic" field
+- subtopics with words should be written in big field below
+You can add more than one subtopics at the same time.
+Subtopics and each "word-translate" should be written on new line.
+Between word and translate should be written "=".
+
+Example:
+Topic: Nature
+______________________________
+|  animals
+|  dog = собака
+|  cat = кот
+|  chicken = курица
+|  cow = корова
+|
+|  trees
+|  oak = дуб
+|  pine = сосна(но это не точно)
+|
+|_____________________________
+
+And this will create/add topic "Nature", two subtopics "animals" and "trees" in this topic, and words for this subtopics below.
+
+
+***Edit topic***

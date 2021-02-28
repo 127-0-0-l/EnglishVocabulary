@@ -1005,7 +1005,7 @@
         <Grid x:Name="grdAddTopic"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Background="{Binding Fill, ElementName=colorBackground}"
-              Visibility="Visible">
+              Visibility="Hidden">
             <Button x:Name="btnAddTopicAdd"
                     Template="{StaticResource CustomButton}"
                     HorizontalAlignment="Right"
