@@ -40,11 +40,20 @@ namespace RegexTester
         {
             try
             {
-                tbResult.Text = new Regex(tbRegexExpr.Text).
+                rtbMatches.Document.Blocks.Clear();
+
+                MatchCollection matches = new Regex(tbRegexExpr.Text).
                     Matches(new TextRange(
                         rtbText.Document.ContentStart,
-                        rtbText.Document.ContentEnd).Text).
-                    Count.ToString();
+                        rtbText.Document.ContentEnd).Text);
+
+                tbResult.Text = matches.Count.ToString();
+
+                rtbMatches.AppendText(Environment.NewLine);
+                foreach (var item in matches)
+                {
+                    rtbMatches.AppendText(item.ToString() + Environment.NewLine);
+                }
             }
             catch
             {
