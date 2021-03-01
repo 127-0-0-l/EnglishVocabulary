@@ -1,0 +1,15 @@
+﻿<Window x:Class="RegexTester.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RegexTester"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="300">
+    <Grid>
+        <TextBox x:Name="tbRegexExpr" Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="tbRegexExpr_TextChanged"/>
+        <RichTextBox x:Name="rtbText" Margin="10,40" Block.LineHeight="2" TextChanged="rtbText_TextChanged"/>
+        <TextBlock x:Name="tbResult" HorizontalAlignment="Center" Margin="0,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+
+    </Grid>
+</Window>
