@@ -14,10 +14,10 @@ namespace EnglishVocabulary
     {
         public static void CreateTopic(Topic topic)
         {
-            using(IDbConnection db = new SQLiteConnection(
-                ConfigurationManager.
-                ConnectionStrings["VocabularyDBConnectionString"].
-                ConnectionString))
+            using (IDbConnection db = new SQLiteConnection(
+            ConfigurationManager.
+            ConnectionStrings["VocabularyDBConnectionString"].
+            ConnectionString))
             {
                 int count = db.Query<object>(
                     "select Topic from Topics " +
@@ -26,7 +26,7 @@ namespace EnglishVocabulary
 
                 // If there is no such topic in table,
                 // then create it.
-                if(count == 0)
+                if (count == 0)
                 {
                     // Insert new topic in Topics table.
                     db.Execute($"insert into Topics (Topic) " +
@@ -46,7 +46,7 @@ namespace EnglishVocabulary
 
                 // If there is no such Subtopic in current topic,
                 // then create it.
-                if(count == 0)
+                if (count == 0)
                 {
                     // Insert subtopic in current topic table.
                     db.Execute($"insert into {topic.TopicName} (Subtopic) " +
@@ -70,7 +70,7 @@ namespace EnglishVocabulary
 
                     // If there no such word in table,
                     // then insert it.
-                    if(count == 0)
+                    if (count == 0)
                     {
                         db.Execute($"insert into {topic.Subtopic.SubtopicName} (EngWord ,RusWord)" +
                         $" values ('{word.Eng}' ,'{word.Rus}')");
