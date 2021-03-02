@@ -19,10 +19,10 @@ namespace EnglishVocabulary
             ConnectionStrings["VocabularyDBConnectionString"].
             ConnectionString))
             {
-                int count = db.Query<object>(
-                    "select Topic from Topics " +
-                    $"where Topic='{topic.TopicName}'").
-                    Count();
+                string queryString = "select Topic from Topics " +
+                    $"where Topic='{topic.TopicName}'";
+
+                int count = db.Query<object>(queryString).Count();
 
                 // If there is no such topic in table,
                 // then create it.
@@ -32,11 +32,13 @@ namespace EnglishVocabulary
                     db.Execute($"insert into Topics (Topic) " +
                         $"values ('{topic.TopicName}')");
 
-                    // Create new table for this topic.
-                    db.Execute($"create table '{topic.TopicName}' (" +
+                    queryString = $"create table '{topic.TopicName}' (" +
                         "'ID' integer not null unique," +
                         "'Subtopic' text not null unique," +
-                        "primary key('ID' autoincrement))");
+                        "primary key('ID' autoincrement))";
+
+                    // Create new table for this topic.
+                    db.Execute(queryString);
                 }
 
                 count = db.Query<object>(
@@ -52,12 +54,14 @@ namespace EnglishVocabulary
                     db.Execute($"insert into {topic.TopicName} (Subtopic) " +
                         $"values ('{topic.Subtopic.SubtopicName}')");
 
-                    // Create new table for current subtopic.
-                    db.Execute($"create table '{topic.Subtopic.SubtopicName}' (" +
+                    queryString = $"create table '{topic.Subtopic.SubtopicName}' (" +
                         "'ID' integer not null unique," +
                         "'EngWord' text not null unique," +
                         "'RusWord' text not null," +
-                        "primary key('ID' autoincrement))");
+                        "primary key('ID' autoincrement))";
+
+                    // Create new table for current subtopic.
+                    db.Execute(queryString);
                 }
 
                 // Insert words in table.

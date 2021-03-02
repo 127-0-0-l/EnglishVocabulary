@@ -13,69 +13,69 @@ namespace EnglishVocabulary
         {
             InitializeComponent();
 
-            using (IDbConnection db = new SQLiteConnection(
-            ConfigurationManager.
-            ConnectionStrings["VocabularyDBConnectionString"].
-            ConnectionString))
-            {
-                int count = db.Query<object>(
-                    "select Topic from Topics " +
-                    $"where Topic='TopicName'").
-                    Count();
+            //using (IDbConnection db = new SQLiteConnection(
+            //ConfigurationManager.
+            //ConnectionStrings["VocabularyDBConnectionString"].
+            //ConnectionString))
+            //{
+            //    int count = db.Query<object>(
+            //        "select Topic from Topics " +
+            //        $"where Topic='TopicName'").
+            //        Count();
 
-                // If there is no such topic in table,
-                // then create it.
-                if (count == 0)
-                {
-                    // Insert new topic in Topics table.
-                    db.Execute($"insert into Topics (Topic) " +
-                        $"values ('TopicName')");
+            //    // If there is no such topic in table,
+            //    // then create it.
+            //    if (count == 0)
+            //    {
+            //        // Insert new topic in Topics table.
+            //        db.Execute($"insert into Topics (Topic) " +
+            //            $"values ('TopicName')");
 
-                    // Create new table for this topic.
-                    db.Execute($"create table 'TopicName' (" +
-                        "'ID' integer not null unique," +
-                        "'Subtopic' text not null unique," +
-                        "primary key('ID' autoincrement))");
-                }
+            //        // Create new table for this topic.
+            //        db.Execute($"create table 'TopicName' (" +
+            //            "'ID' integer not null unique," +
+            //            "'Subtopic' text not null unique," +
+            //            "primary key('ID' autoincrement))");
+            //    }
 
-                count = db.Query<object>(
-                    $"select Subtopic from TopicName " +
-                    $"where Subtopic='SubtopicName'").
-                    Count();
+            //    count = db.Query<object>(
+            //        $"select Subtopic from TopicName " +
+            //        $"where Subtopic='SubtopicName'").
+            //        Count();
 
-                // If there is no such Subtopic in current topic,
-                // then create it.
-                if (count == 0)
-                {
-                    // Insert subtopic in current topic table.
-                    db.Execute($"insert into TopicName (Subtopic) " +
-                        $"values ('SubtopicName')");
+            //    // If there is no such Subtopic in current topic,
+            //    // then create it.
+            //    if (count == 0)
+            //    {
+            //        // Insert subtopic in current topic table.
+            //        db.Execute($"insert into TopicName (Subtopic) " +
+            //            $"values ('SubtopicName')");
 
-                    // Create new table for current subtopic.
-                    db.Execute($"create table 'SubtopicName' (" +
-                        "'ID' integer not null unique," +
-                        "'EngWord' text not null unique," +
-                        "'RusWord' text not null," +
-                        "primary key('ID' autoincrement))");
-                }
+            //        // Create new table for current subtopic.
+            //        db.Execute($"create table 'SubtopicName' (" +
+            //            "'ID' integer not null unique," +
+            //            "'EngWord' text not null unique," +
+            //            "'RusWord' text not null," +
+            //            "primary key('ID' autoincrement))");
+            //    }
 
-                // Insert words in table.
-                //foreach (var word in topic.Subtopic.Words)
-                //{
-                    count = db.Query<object>(
-                        $"select EngWord from SubtopicName " +
-                        $"where EngWord='Eng'").
-                        Count();
+            //    // Insert words in table.
+            //    //foreach (var word in topic.Subtopic.Words)
+            //    //{
+            //        count = db.Query<object>(
+            //            $"select EngWord from SubtopicName " +
+            //            $"where EngWord='Eng'").
+            //            Count();
 
-                    // If there no such word in table,
-                    // then insert it.
-                    if (count == 0)
-                    {
-                        db.Execute($"insert into SubtopicName (EngWord ,RusWord)" +
-                        $" values ('Eng' ,'Rus')");
-                    }
-                //}
-            }
+            //        // If there no such word in table,
+            //        // then insert it.
+            //        if (count == 0)
+            //        {
+            //            db.Execute($"insert into SubtopicName (EngWord ,RusWord)" +
+            //            $" values ('Eng' ,'Rus')");
+            //        }
+            //    //}
+            //}
 
             //using (IDbConnection db = new SQLiteConnection(
             //ConfigurationManager.

@@ -56,7 +56,7 @@ namespace EnglishVocabulary
 
                 foreach (var subtopic in subtopics)
                 {
-                    topic.Subtopic.SubtopicName = regexSuntopicName.Match(subtopic.ToString()).ToString();
+                    topic.Subtopic.SubtopicName = regexSuntopicName.Match(subtopic.ToString()).ToString().Remove('\r');
 
                     foreach (var word in regexWord.Matches(subtopic.ToString()))
                     {
