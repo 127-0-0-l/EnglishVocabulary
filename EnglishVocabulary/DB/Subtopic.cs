@@ -9,6 +9,6 @@ namespace EnglishVocabulary
     class Subtopic
     {
         public string SubtopicName { get; set; }
-        public List<(string Eng, string Rus)> Words { get; set; }
+        public List<(string Eng, string Rus)> Words { get; set; } = new List<(string Eng, string Rus)>();
     }
 }

@@ -18,9 +18,8 @@ namespace EnglishVocabulary
             try
             {
                 Topic topic = new Topic();
-                topic.Subtopic = new Subtopic();
-                topic.Subtopic.Words = new List<(string Eng, string Rus)>();
 
+                // Get text from rich text box with words.
                 string inputText = new TextRange(
                         rtbAddTopicAllWords.Document.ContentStart,
                         rtbAddTopicAllWords.Document.ContentEnd).Text;
@@ -31,7 +30,8 @@ namespace EnglishVocabulary
                     throw new Exception("Fields must be filled");
                 }
 
-                // If there is no subtopic name.
+                // Lines with "=" is lines with words and their translates.
+                // So if first line contains "=" then there no subtopic name.
                 if (new Regex(".+").Matches(inputText)[0].ToString().Contains('='))
                 {
                     throw new Exception("Add at least one subtopic name");
