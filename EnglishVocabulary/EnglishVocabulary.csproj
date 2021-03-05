@@ -123,12 +123,12 @@
     <Resource Include="Assets\close.png" />
     <Resource Include="Assets\minimize.png" />
     <Resource Include="Assets\company.png" />
-    <Resource Include="Assets\Help.txt">
+    <None Include="Assets\Help.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\About.txt">
+    </None>
+    <None Include="Assets\About.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -9,7 +9,7 @@ namespace EnglishVocabulary
         /// </summary>
         private void LoadHelp()
         {
-            string path = @".\..\..\Assets\Help.txt";
+            string path = @".\Assets\Help.txt";
             
             using (StreamReader file = new StreamReader(path))
             {

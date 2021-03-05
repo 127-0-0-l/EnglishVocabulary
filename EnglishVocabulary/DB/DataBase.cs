@@ -32,7 +32,7 @@ namespace EnglishVocabulary
                     db.Execute($"insert into Topics (Topic) " +
                         $"values ('{topic.TopicName}')");
 
-                    queryString = $"create table '{topic.TopicName}' (" +
+                    queryString = $"create table \"Topic {topic.TopicName}\" (" +
                         "'ID' integer not null unique," +
                         "'Subtopic' text not null unique," +
                         "primary key('ID' autoincrement))";
@@ -54,7 +54,7 @@ namespace EnglishVocabulary
                     db.Execute($"insert into {topic.TopicName} (Subtopic) " +
                         $"values ('{topic.Subtopic.SubtopicName}')");
 
-                    queryString = $"create table '{topic.Subtopic.SubtopicName}' (" +
+                    queryString = $"create table \"Subtopic {topic.Subtopic.SubtopicName}\" (" +
                         "'ID' integer not null unique," +
                         "'EngWord' text not null unique," +
                         "'RusWord' text not null," +
