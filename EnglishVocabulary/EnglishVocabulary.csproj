@@ -111,6 +111,9 @@
     </EmbeddedResource>
     <Resource Include="Fonts\Aqum 2 Small caps.otf" />
     <Resource Include="Fonts\DINRoundPro-Medi.otf" />
+    <None Include="DB\VocabularyDB.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -120,11 +123,12 @@
     <Resource Include="Assets\close.png" />
     <Resource Include="Assets\minimize.png" />
     <Resource Include="Assets\company.png" />
-    <Resource Include="Assets\Help.txt" />
-    <Resource Include="Assets\About.txt" />
-    <Content Include="DB\VocabularyDB.db">
+    <Resource Include="Assets\Help.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </Resource>
+    <Resource Include="Assets\About.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
