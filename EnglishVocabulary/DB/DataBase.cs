@@ -42,7 +42,7 @@ namespace EnglishVocabulary
                 }
 
                 count = db.Query<object>(
-                    $"select Subtopic from {topic.TopicName} " +
+                    $"select Subtopic from \"Topic {topic.TopicName}\" " +
                     $"where Subtopic='{topic.Subtopic.SubtopicName}'").
                     Count();
 
@@ -51,7 +51,7 @@ namespace EnglishVocabulary
                 if (count == 0)
                 {
                     // Insert subtopic in current topic table.
-                    db.Execute($"insert into {topic.TopicName} (Subtopic) " +
+                    db.Execute($"insert into \"Topic {topic.TopicName}\" (Subtopic) " +
                         $"values ('{topic.Subtopic.SubtopicName}')");
 
                     queryString = $"create table \"Subtopic {topic.Subtopic.SubtopicName}\" (" +
@@ -68,7 +68,7 @@ namespace EnglishVocabulary
                 foreach (var word in topic.Subtopic.Words)
                 {
                     count = db.Query<object>(
-                        $"select EngWord from {topic.Subtopic.SubtopicName} " +
+                        $"select EngWord from \"Subtopic {topic.Subtopic.SubtopicName}\" " +
                         $"where EngWord='{word.Eng}'").
                         Count();
 
@@ -76,7 +76,7 @@ namespace EnglishVocabulary
                     // then insert it.
                     if (count == 0)
                     {
-                        db.Execute($"insert into {topic.Subtopic.SubtopicName} (EngWord ,RusWord)" +
+                        db.Execute($"insert into \"Subtopic {topic.Subtopic.SubtopicName}\" (EngWord ,RusWord)" +
                         $" values ('{word.Eng}' ,'{word.Rus}')");
                     }
                 }
@@ -102,7 +102,7 @@ namespace EnglishVocabulary
                 ConnectionStrings["VocabularyDBConnectionString"].
                 ConnectionString))
             {
-                var subtopics = db.Query<string>($"select Subtopic from {topic}").ToList();
+                var subtopics = db.Query<string>($"select Subtopic from \"Topic {topic}\"").ToList();
                 return subtopics;
             }
         }
@@ -114,7 +114,7 @@ namespace EnglishVocabulary
                 ConnectionStrings["VocabularyDBConnectionString"].
                 ConnectionString))
             {
-                var words = db.Query<(string, string)>($"select EngWord, RusWord from {subtopic}").ToList();
+                var words = db.Query<(string, string)>($"select EngWord, RusWord from \"Subtopic {subtopic}\"").ToList();
                 return words;
             }
         }
