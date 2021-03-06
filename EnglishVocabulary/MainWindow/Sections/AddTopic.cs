@@ -42,22 +42,29 @@ namespace EnglishVocabulary
                 Regex regexSubtopics = new Regex(@"[- \w]+\r(.+=.+|\n|\r)+");
                 Regex regexSuntopicName = new Regex(@"(^|\n)[- \w]+\r");
                 Regex regexWord = new Regex(".+=.+");
-                Regex regexEngWord = new Regex(".+=");
-                Regex regexRusWord = new Regex("=.+");
+                Regex regexWordLeft = new Regex(".+=");
+                Regex regexWordRight = new Regex("=.+");
 
-                MatchCollection subtopics = regexSubtopics.Matches(new TextRange(
-                    rtbAddTopicAllWords.Document.ContentStart,
-                    rtbAddTopicAllWords.Document.ContentEnd).Text);
+                // Find subtopics with their words.
+                MatchCollection subtopics = regexSubtopics.Matches(inputText);
 
                 foreach (var subtopic in subtopics)
                 {
-                    topic.Subtopic.SubtopicName = regexSuntopicName.Match(subtopic.ToString()).ToString().Replace('\r', ' ');
+                    topic.Subtopic = new Subtopic();
 
+                    // Get subtopic name from
+                    // subtopic (subtopic name with words).
+                    topic.Subtopic.SubtopicName = 
+                        regexSuntopicName.Match(subtopic.ToString()).
+                        ToString().
+                        Replace('\r', ' ');
+
+                    // Add words in subtopic
                     foreach (var word in regexWord.Matches(subtopic.ToString()))
                     {
                         topic.Subtopic.Words.Add((
-                            regexEngWord.Match(word.ToString()).ToString().Replace('=', ' '),
-                            regexRusWord.Match(word.ToString()).ToString().Replace('=', ' ')));
+                            regexWordLeft.Match(word.ToString()).ToString().Replace('=', ' '),
+                            regexWordRight.Match(word.ToString()).ToString().Replace('=', ' ')));
                     }
 
                     DataBase.CreateTopic(topic);

@@ -1022,7 +1022,6 @@
                      HorizontalAlignment="Left"
                      Height="23"
                      Margin="57,16,0,0"
-                     TextWrapping="Wrap"
                      VerticalAlignment="Top"
                      Width="120"
                      Background="{Binding Fill, ElementName=colorBackground}"
