@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System;
 
 namespace EnglishVocabulary
 {
@@ -18,12 +19,33 @@ namespace EnglishVocabulary
 
         private int[] GetRandomUniqueIndexes(int minValue, int maxValue, int count)
         {
+            if(count > maxValue - minValue)
+            {
+                count = maxValue - minValue;
+            }
+
             int[] allIndexes = new int[maxValue - minValue];
 
-            for (int i = 0, index = minValue; i < allIndexes.Length; i++, index++)
+            for (int i = 0, ind = minValue; i < allIndexes.Length; i++, ind++)
             {
-                allIndexes[i] = index;
+                allIndexes[i] = ind;
             }
+
+            int[] resultIndexes = new int[count];
+
+            Random rnd = new Random();
+            int maxIndex = allIndexes.Length - 1;
+            int index;
+            for (int i = 0; i < resultIndexes.Length; i++)
+            {
+                index = rnd.Next(maxIndex + 1);
+                resultIndexes[i] = allIndexes[index];
+
+                allIndexes[index] = allIndexes[maxIndex];
+                maxIndex--;
+            }
+
+            return resultIndexes;
         }
     }
 }
