@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
 using Dapper;
 
@@ -19,7 +16,9 @@ namespace EnglishVocabulary
             ConnectionStrings["VocabularyDBConnectionString"].
             ConnectionString))
             {
-                string queryString = "select Topic from Topics " +
+                string queryString =
+                    "select Topic " +
+                    "from Topics " +
                     $"where Topic='{topic.TopicName}'";
 
                 int count = db.Query<object>(queryString).Count();
@@ -32,7 +31,8 @@ namespace EnglishVocabulary
                     db.Execute($"insert into Topics (Topic) " +
                         $"values ('{topic.TopicName}')");
 
-                    queryString = $"create table \"Topic {topic.TopicName}\" (" +
+                    queryString =
+                        $"create table \"Topic {topic.TopicName}\" (" +
                         "'ID' integer not null unique," +
                         "'Subtopic' text not null unique," +
                         "primary key('ID' autoincrement))";
@@ -76,8 +76,9 @@ namespace EnglishVocabulary
                     // then insert it.
                     if (count == 0)
                     {
-                        db.Execute($"insert into \"Subtopic {topic.Subtopic.SubtopicName}\" (EngWord ,RusWord)" +
-                        $" values ('{word.Eng}' ,'{word.Rus}')");
+                        db.Execute($"insert into \"Subtopic {topic.Subtopic.SubtopicName}\" " +
+                            $"(EngWord ,RusWord)" +
+                            $" values ('{word.Eng}' ,'{word.Rus}')");
                     }
                 }
             }
@@ -90,7 +91,10 @@ namespace EnglishVocabulary
                 ConnectionStrings["VocabularyDBConnectionString"].
                 ConnectionString))
             {
-                var topics = db.Query<string>("select Topic from Topics").ToList();
+                var topics = db.
+                    Query<string>("select Topic from Topics").
+                    ToList();
+
                 return topics;
             }
         }
@@ -102,7 +106,10 @@ namespace EnglishVocabulary
                 ConnectionStrings["VocabularyDBConnectionString"].
                 ConnectionString))
             {
-                var subtopics = db.Query<string>($"select Subtopic from \"Topic {topic}\"").ToList();
+                var subtopics = db.
+                    Query<string>($"select Subtopic from \"Topic {topic}\"").
+                    ToList();
+
                 return subtopics;
             }
         }

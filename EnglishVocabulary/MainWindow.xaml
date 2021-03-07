@@ -969,7 +969,8 @@
                           Margin="6,0,0,0"
                           Foreground="{Binding Fill, ElementName=colorText}"
                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                          FontSize="14"/>
+                          FontSize="14"
+                          SelectionChanged="cbTestHeaderTopic_SelectionChanged"/>
                 <ComboBox x:Name="cbTestHeaderSubtopic"
                           Width="150"
                           HorizontalAlignment="Left"
@@ -978,7 +979,8 @@
                           Foreground="{Binding Fill, ElementName=colorText}"
                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                           FontSize="14"
-                          IsEnabled="False"/>
+                          IsEnabled="False"
+                          SelectionChanged="cbTestHeaderSubtopic_SelectionChanged"/>
                 <ComboBox x:Name="cbTestHeaderMode"
                           Width="80"
                           HorizontalAlignment="Left"
@@ -987,7 +989,11 @@
                           Foreground="{Binding Fill, ElementName=colorText}"
                           FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                           FontSize="14"
-                          IsEnabled="False"/>
+                          IsEnabled="False"
+                          SelectionChanged="cbTestHeaderMode_SelectionChanged">
+                    <System:String>Eng - Rus</System:String>
+                    <System:String>Rus - Eng</System:String>
+                </ComboBox>
                 <Button x:Name="btnTestHeaderStart"
                         Template="{StaticResource CustomButton}"
                         HorizontalAlignment="Right"
@@ -998,7 +1004,9 @@
                         FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                         Foreground="{Binding Fill, ElementName=colorButtonText}"
                         FontSize="14"
-                        Background="{Binding Fill, ElementName=colorButton}"/>
+                        Background="{Binding Fill, ElementName=colorButton}"
+                        IsEnabled="False"
+                        Click="btnTestHeaderStart_Click"/>
             </Grid>
         </Grid>
 

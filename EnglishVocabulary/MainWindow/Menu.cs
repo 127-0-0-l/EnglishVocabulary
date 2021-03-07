@@ -14,6 +14,7 @@ namespace EnglishVocabulary
         private void btnMenuTest_Click(object sender, RoutedEventArgs e)
         {
             SetActiveSection(grdTest);
+            cbTestHeaderTopic.ItemsSource = DataBase.GetTopics();
         }
 
         /// <summary>

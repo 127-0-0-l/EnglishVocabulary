@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Documents;
@@ -59,7 +57,7 @@ namespace EnglishVocabulary
                         ToString().
                         Replace('\r', ' ');
 
-                    // Add words in subtopic
+                    // Add words in subtopic.
                     foreach (var word in regexWord.Matches(subtopic.ToString()))
                     {
                         topic.Subtopic.Words.Add((
@@ -67,6 +65,7 @@ namespace EnglishVocabulary
                             regexWordRight.Match(word.ToString()).ToString().Replace('=', ' ')));
                     }
 
+                    // Write all data in database (if no exist already).
                     DataBase.CreateTopic(topic);
                 }
             }
