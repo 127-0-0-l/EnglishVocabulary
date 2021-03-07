@@ -12,9 +12,12 @@ namespace EnglishVocabulary
     {
         private void cbTestHeaderTopic_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            string topicName = cbTestHeaderTopic.SelectedItem.ToString();
-            cbTestHeaderSubtopic.ItemsSource = DataBase.GetSubtopics(topicName);
-            cbTestHeaderSubtopic.IsEnabled = true;
+            if(cbTestHeaderTopic.SelectedItem != null)
+            {
+                string topicName = cbTestHeaderTopic.SelectedItem.ToString();
+                cbTestHeaderSubtopic.ItemsSource = DataBase.GetSubtopics(topicName);
+                cbTestHeaderSubtopic.IsEnabled = true;
+            }
         }
 
         private void cbTestHeaderSubtopic_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -28,6 +31,29 @@ namespace EnglishVocabulary
         }
 
         private void btnTestHeaderStart_Click(object sender, RoutedEventArgs e)
+        {
+            StartTest();
+            ShowTestGrid();
+            ResetTestHeader();
+        }
+
+        private void ShowTestGrid()
+        {
+            grdTestTest.Visibility = Visibility.Visible;
+            grdTestHeader.Visibility = Visibility.Hidden;
+        }
+
+        private void ResetTestHeader()
+        {
+            cbTestHeaderTopic.Text = "";
+            cbTestHeaderSubtopic.Text = "";
+            cbTestHeaderSubtopic.IsEnabled = false;
+            cbTestHeaderMode.Text = "";
+            cbTestHeaderMode.IsEnabled = false;
+            btnTestHeaderStart.IsEnabled = false;
+        }
+
+        private void StartTest()
         {
 
         }
