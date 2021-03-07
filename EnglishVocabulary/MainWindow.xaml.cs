@@ -16,6 +16,14 @@ namespace EnglishVocabulary
             LoadAbout();
         }
 
-        
+        private int[] GetRandomUniqueIndexes(int minValue, int maxValue, int count)
+        {
+            int[] allIndexes = new int[maxValue - minValue];
+
+            for (int i = 0, index = minValue; i < allIndexes.Length; i++, index++)
+            {
+                allIndexes[i] = index;
+            }
+        }
     }
 }

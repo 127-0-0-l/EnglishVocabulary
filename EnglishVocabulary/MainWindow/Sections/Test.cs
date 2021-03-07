@@ -41,6 +41,14 @@ namespace EnglishVocabulary
         {
             grdTestTest.Visibility = Visibility.Visible;
             grdTestHeader.Visibility = Visibility.Hidden;
+            grdTestResult.Visibility = Visibility.Hidden;
+        }
+        
+        private void ShowTestResults()
+        {
+            grdTestTest.Visibility = Visibility.Hidden;
+            grdTestHeader.Visibility = Visibility.Visible;
+            grdTestResult.Visibility = Visibility.Visible;
         }
 
         private void ResetTestHeader()
@@ -55,7 +63,30 @@ namespace EnglishVocabulary
 
         private void StartTest()
         {
+            List<(string eng, string rus)> allWords =
+                DataBase.GetWords(cbTestHeaderSubtopic.SelectedItem.ToString());
 
+            string[] GetWordSet((string eng, string rus) word)
+            {
+                string[] words = new string[4];
+                Random rnd = new Random();
+
+                int translateIndex = rnd.Next(4);
+
+                for (int i = 0; i < 4; i++)
+                {
+                    if(i == translateIndex)
+                    {
+                        words[i] = word.rus;
+                    }
+                    else
+                    {
+                        words[i] = allWords[rnd.Next(allWords.Count)].rus;
+                    }
+                }
+
+                return words;
+            }
         }
     }
 }
