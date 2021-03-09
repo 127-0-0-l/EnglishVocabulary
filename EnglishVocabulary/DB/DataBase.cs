@@ -57,7 +57,7 @@ namespace EnglishVocabulary
                     queryString = $"create table \"Subtopic {topic.Subtopic.SubtopicName}\" (" +
                         "'ID' integer not null unique," +
                         "'LeftWord' text not null unique," +
-                        "'Right' text not null," +
+                        "'RightWord' text not null," +
                         "primary key('ID' autoincrement))";
 
                     // Create new table for current subtopic.

@@ -61,8 +61,16 @@ namespace EnglishVocabulary
                     foreach (var word in regexWord.Matches(subtopic.ToString()))
                     {
                         topic.Subtopic.Words.Add((
-                            regexWordLeft.Match(word.ToString()).ToString().Replace('=', ' '),
-                            regexWordRight.Match(word.ToString()).ToString().Replace('=', ' ')));
+                            regexWordLeft.
+                                Match(word.ToString()).
+                                ToString().
+                                Replace('=', ' '),
+                            regexWordRight.
+                                Match(word.ToString()).
+                                ToString().
+                                Replace('=', ' ').
+                                Replace('\r', ' ')
+                        ));
                     }
 
                     // Write all data in database (if no exist already).

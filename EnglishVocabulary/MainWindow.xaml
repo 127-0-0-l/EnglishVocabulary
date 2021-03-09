@@ -991,8 +991,8 @@
                           FontSize="14"
                           IsEnabled="False"
                           SelectionChanged="cbTestHeaderMode_SelectionChanged">
-                    <System:String>Eng - Rus</System:String>
-                    <System:String>Rus - Eng</System:String>
+                    <System:String>Default</System:String>
+                    <System:String>Inverse</System:String>
                 </ComboBox>
                 <Button x:Name="btnTestHeaderStart"
                         Template="{StaticResource CustomButton}"

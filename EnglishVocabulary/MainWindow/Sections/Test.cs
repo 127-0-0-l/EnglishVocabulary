@@ -65,6 +65,16 @@ namespace EnglishVocabulary
         {
             List<(string left, string right)> allWords = DataBase.GetWords(cbTestHeaderSubtopic.SelectedItem.ToString());
 
+            if (cbTestHeaderMode.SelectedItem.ToString() == "Inverse")
+            {
+                for (int i = 0; i < allWords.Count; i++)
+                {
+                    (string left, string right) temp = (allWords[i].left, allWords[i].right);
+                    Swap(ref temp.left, ref temp.right);
+                    allWords[i] = temp;
+                }
+            }
+
             int[] indexes = GetRandomUniqueIndexes(0, allWords.Count - 1, allWords.Count - 1);
 
             int rightAnswersCount = 0;
