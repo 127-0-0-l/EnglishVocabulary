@@ -19,12 +19,14 @@ namespace EnglishVocabulary
 
         private int[] GetRandomUniqueIndexes(int minValue, int maxValue, int count)
         {
-            if(count > maxValue - minValue)
+            int allValuesCount = maxValue - minValue + 1;
+
+            if (count > allValuesCount)
             {
-                count = maxValue - minValue;
+                count = allValuesCount;
             }
 
-            int[] allIndexes = new int[maxValue - minValue];
+            int[] allIndexes = new int[allValuesCount];
 
             for (int i = 0, ind = minValue; i < allIndexes.Length; i++, ind++)
             {

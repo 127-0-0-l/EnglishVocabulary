@@ -56,8 +56,8 @@ namespace EnglishVocabulary
 
                     queryString = $"create table \"Subtopic {topic.Subtopic.SubtopicName}\" (" +
                         "'ID' integer not null unique," +
-                        "'EngWord' text not null unique," +
-                        "'RusWord' text not null," +
+                        "'LeftWord' text not null unique," +
+                        "'Right' text not null," +
                         "primary key('ID' autoincrement))";
 
                     // Create new table for current subtopic.
@@ -68,8 +68,8 @@ namespace EnglishVocabulary
                 foreach (var word in topic.Subtopic.Words)
                 {
                     count = db.Query<object>(
-                        $"select EngWord from \"Subtopic {topic.Subtopic.SubtopicName}\" " +
-                        $"where EngWord='{word.Eng}'").
+                        $"select LeftWord from \"Subtopic {topic.Subtopic.SubtopicName}\" " +
+                        $"where LeftWord='{word.Left}'").
                         Count();
 
                     // If there no such word in table,
@@ -77,8 +77,8 @@ namespace EnglishVocabulary
                     if (count == 0)
                     {
                         db.Execute($"insert into \"Subtopic {topic.Subtopic.SubtopicName}\" " +
-                            $"(EngWord ,RusWord)" +
-                            $" values ('{word.Eng}' ,'{word.Rus}')");
+                            $"(LeftWord ,RightWord)" +
+                            $" values ('{word.Left}' ,'{word.Right}')");
                     }
                 }
             }
@@ -114,14 +114,14 @@ namespace EnglishVocabulary
             }
         }
 
-        public static List<(string eng, string rus)> GetWords(string subtopic)
+        public static List<(string left, string right)> GetWords(string subtopic)
         {
             using (IDbConnection db = new SQLiteConnection(
                 ConfigurationManager.
                 ConnectionStrings["VocabularyDBConnectionString"].
                 ConnectionString))
             {
-                var words = db.Query<(string, string)>($"select EngWord, RusWord from \"Subtopic {subtopic}\"").ToList();
+                var words = db.Query<(string, string)>($"select LeftWord, RightWord from \"Subtopic {subtopic}\"").ToList();
                 return words;
             }
         }

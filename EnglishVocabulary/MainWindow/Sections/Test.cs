@@ -63,10 +63,26 @@ namespace EnglishVocabulary
 
         private void StartTest()
         {
-            List<(string eng, string rus)> allWords =
-                DataBase.GetWords(cbTestHeaderSubtopic.SelectedItem.ToString());
+            List<(string left, string right)> allWords = DataBase.GetWords(cbTestHeaderSubtopic.SelectedItem.ToString());
 
-            string[] GetWordSet((string eng, string rus) word)
+            int[] indexes = GetRandomUniqueIndexes(0, allWords.Count - 1, allWords.Count - 1);
+
+            int rightAnswersCount = 0;
+            int wrongAnswersCount = 0;
+            int noAnswersCount = 0;
+
+            btnTestTestNext.Click += (s, a) =>
+            {
+
+            };
+
+            btnTestTestFinish.Click += (s, a) =>
+            {
+
+            };
+
+            
+            string[] GetWordSet((string left, string right) word)
             {
                 string[] words = new string[4];
                 Random rnd = new Random();
@@ -77,11 +93,11 @@ namespace EnglishVocabulary
                 {
                     if(i == translateIndex)
                     {
-                        words[i] = word.rus;
+                        words[i] = word.right;
                     }
                     else
                     {
-                        words[i] = allWords[rnd.Next(allWords.Count)].rus;
+                        words[i] = allWords[rnd.Next(allWords.Count)].right;
                     }
                 }
 

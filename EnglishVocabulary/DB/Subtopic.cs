@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace EnglishVocabulary
 {
     class Subtopic
     {
         public string SubtopicName { get; set; }
-        public List<(string Eng, string Rus)> Words { get; set; } = new List<(string Eng, string Rus)>();
+        public List<(string Left, string Right)> Words { get; set; } = new List<(string Left, string Right)>();
     }
 }
