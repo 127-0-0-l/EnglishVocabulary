@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Linq;
+using System.Windows.Controls;
 
 namespace EnglishVocabulary
 {
@@ -76,23 +78,65 @@ namespace EnglishVocabulary
             }
 
             int[] indexes = GetRandomUniqueIndexes(0, allWords.Count - 1, allWords.Count - 1);
+            int currentIndex = 0;
 
             int rightAnswersCount = 0;
             int wrongAnswersCount = 0;
             int noAnswersCount = 0;
 
+            SetCurrentWords();
+
             btnTestTestNext.Click += (s, a) =>
             {
+                RadioButton checkedRadioButton =
+                    grdTestTest.Children.
+                        OfType<RadioButton>().
+                        Where(rb => rb.IsChecked == true).
+                        FirstOrDefault();
 
+                if(checkedRadioButton == null)
+                {
+                    noAnswersCount++;
+                }
+                else if(checkedRadioButton.Content.ToString() == allWords[indexes[currentIndex]].right)
+                {
+                    rightAnswersCount++;
+                }
+                else
+                {
+                    wrongAnswersCount++;
+                }
+
+                currentIndex++;
+
+                if(currentIndex == indexes.Length)
+                {
+                    FinishTest();
+                }
+                else
+                {
+                    SetCurrentWords();
+                }
             };
 
             btnTestTestFinish.Click += (s, a) =>
             {
-
+                FinishTest();
             };
 
+            void SetCurrentWords()
+            {
+                tbTestTestWord.Text = allWords[indexes[currentIndex]].left;
+
+                string[] words = GetWordSet();
+
+                rbtnTestTest1.Content = words[0];
+                rbtnTestTest2.Content = words[1];
+                rbtnTestTest3.Content = words[2];
+                rbtnTestTest4.Content = words[3];
+            }
             
-            string[] GetWordSet((string left, string right) word)
+            string[] GetWordSet()
             {
                 string[] words = new string[4];
                 Random rnd = new Random();
@@ -103,7 +147,7 @@ namespace EnglishVocabulary
                 {
                     if(i == translateIndex)
                     {
-                        words[i] = word.right;
+                        words[i] = allWords[indexes[currentIndex]].right;
                     }
                     else
                     {
@@ -112,6 +156,17 @@ namespace EnglishVocabulary
                 }
 
                 return words;
+            }
+
+            void FinishTest()
+            {
+                grdTestTest.Visibility = Visibility.Hidden;
+                grdTestHeader.Visibility = Visibility.Visible;
+                grdTestResult.Visibility = Visibility.Visible;
+
+                tbTestResultRightAnswers.Text = rightAnswersCount.ToString();
+                tbTestResultWrongAnswers.Text = wrongAnswersCount.ToString();
+                tbTestResultNoAnswer.Text = noAnswersCount.ToString();
             }
         }
     }
