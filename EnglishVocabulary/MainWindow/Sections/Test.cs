@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using System.Linq;
 using System.Windows.Controls;
 
 namespace EnglishVocabulary
 {
     public partial class MainWindow
     {
-        private void cbTestHeaderTopic_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void cbTestHeaderTopic_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(cbTestHeaderTopic.SelectedItem != null)
             {
@@ -22,12 +21,12 @@ namespace EnglishVocabulary
             }
         }
 
-        private void cbTestHeaderSubtopic_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void cbTestHeaderSubtopic_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cbTestHeaderMode.IsEnabled = true;
         }
 
-        private void cbTestHeaderMode_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void cbTestHeaderMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             btnTestHeaderStart.IsEnabled = true;
         }
@@ -141,17 +140,27 @@ namespace EnglishVocabulary
                 string[] words = new string[4];
                 Random rnd = new Random();
 
-                int translateIndex = rnd.Next(4);
+                int rightWordIndex = rnd.Next(4);
+                int[] tempIndexes = GetRandomUniqueIndexes(0, allWords.Count - 1, 4);
+                int currentTempIndex = 0;
 
                 for (int i = 0; i < 4; i++)
                 {
-                    if(i == translateIndex)
+                    if(i == rightWordIndex)
                     {
                         words[i] = allWords[indexes[currentIndex]].right;
                     }
                     else
                     {
-                        words[i] = allWords[rnd.Next(allWords.Count)].right;
+                        if(tempIndexes[currentTempIndex] != currentIndex)
+                        {
+                            words[i] = allWords[tempIndexes[currentTempIndex]].right;
+                        }
+                        else
+                        {
+                            words[i] = allWords[3].right;
+                        }
+                        currentTempIndex++;
                     }
                 }
 
