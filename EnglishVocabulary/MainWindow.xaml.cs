@@ -56,5 +56,20 @@ namespace EnglishVocabulary
             a = b;
             b = temp;
         }
+
+        private void cbDeleteTopicTopic_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btnDeleteTopicDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cbDeleteTopicSubtopic_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

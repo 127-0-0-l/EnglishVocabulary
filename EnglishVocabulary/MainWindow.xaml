@@ -1203,7 +1203,7 @@
         <Grid x:Name="grdDeleteTopic"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Background="{Binding Background, ElementName=cnvBase}"
-              Visibility="Visible">
+              Visibility="Hidden">
             <ComboBox x:Name="cbDeleteTopicTopic"
                       HorizontalAlignment="Left"
                       Margin="10,10,0,0"
@@ -1211,7 +1211,8 @@
                       Width="250"
                       Foreground="{Binding Fill, ElementName=colorText}"
                       FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
-                      FontSize="14"/>
+                      FontSize="14"
+                      SelectionChanged="cbDeleteTopicTopic_SelectionChanged"/>
             <ComboBox x:Name="cbDeleteTopicSubtopic"
                       HorizontalAlignment="Left"
                       Margin="10,40,0,0"
@@ -1220,7 +1221,8 @@
                       Foreground="{Binding Fill, ElementName=colorText}"
                       FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                       FontSize="14"
-                      IsEnabled="False"/>
+                      IsEnabled="False"
+                      SelectionChanged="cbDeleteTopicSubtopic_SelectionChanged"/>
             <Button x:Name="btnDeleteTopicDelete"
                     Template="{StaticResource CustomButton}"
                     HorizontalAlignment="Left"
@@ -1232,7 +1234,9 @@
                     Foreground="{Binding Fill, ElementName=colorButtonText}"
                     FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                     FontSize="14"
-                    Background="{Binding Fill, ElementName=colorButton}"/>
+                    IsEnabled="False"
+                    Background="{Binding Fill, ElementName=colorButton}"
+                    Click="btnDeleteTopicDelete_Click"/>
         </Grid>
 
         <Grid x:Name="grdColorTheme"

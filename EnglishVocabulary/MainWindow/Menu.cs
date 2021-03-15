@@ -39,6 +39,7 @@ namespace EnglishVocabulary
         private void btnMenuDeleteTopic_Click(object sender, RoutedEventArgs e)
         {
             SetActiveSection(grdDeleteTopic);
+            cbDeleteTopicTopic.ItemsSource = DataBase.GetTopics();
         }
 
         /// <summary>
