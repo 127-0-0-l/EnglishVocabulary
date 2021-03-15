@@ -38,6 +38,7 @@ namespace EnglishVocabulary
             cbDeleteTopicSubtopic.Text = "";
             cbDeleteTopicSubtopic.IsEnabled = false;
             btnDeleteTopicDelete.IsEnabled = false;
+            cbDeleteTopicTopic.ItemsSource = DataBase.GetTopics();
         }
     }
 }
