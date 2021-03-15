@@ -72,6 +72,9 @@ namespace EnglishVocabulary
         private void StartTest()
         {
             List<(string left, string right)> allWords = DataBase.GetWords(cbTestHeaderSubtopic.SelectedItem.ToString());
+            prbTestResultRightAnswers.Maximum = allWords.Count;
+            prbTestResultWrongAnswers.Maximum = allWords.Count;
+            prbTestResultUnknown.Maximum = allWords.Count;
 
             if (cbTestHeaderMode.SelectedItem.ToString() == "Inverse")
             {
@@ -184,6 +187,15 @@ namespace EnglishVocabulary
                 tbTestResultRightAnswers.Text = rightAnswersCount.ToString();
                 tbTestResultWrongAnswers.Text = wrongAnswersCount.ToString();
                 tbTestResultNoAnswer.Text = noAnswersCount.ToString();
+
+                DtawResultRectangles();
+            }
+
+            void DtawResultRectangles()
+            {
+                prbTestResultRightAnswers.Value = rightAnswersCount;
+                prbTestResultWrongAnswers.Value = wrongAnswersCount;
+                prbTestResultUnknown.Value = noAnswersCount;
             }
         }
     }

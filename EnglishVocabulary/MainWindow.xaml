@@ -757,7 +757,7 @@
         <Grid x:Name="grdTest"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Focusable="True"
-              Visibility="Hidden"
+              Visibility="Visible"
               Background="{Binding Fill, ElementName=colorBackground}">
             <Grid x:Name="grdTestTest"
                   Visibility="Hidden"
@@ -856,35 +856,41 @@
             </Grid>
             <Grid x:Name="grdTestResult"
                   Background="{Binding Fill, ElementName=colorBackground}"
-                  Visibility="Hidden">
+                  Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="{Binding Height, ElementName=grdTestHeader}"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Rectangle x:Name="rctTestResultRightAnswers"
-                           Grid.Row="1"
-                           Fill="{Binding Fill, ElementName=colorTestGood}"
-                           HorizontalAlignment="Left"
-                           Height="20"
-                           Margin="150,20,0,0"
-                           VerticalAlignment="Top"
-                           Width="200"/>
-                <Rectangle x:Name="rctTestResultWrongAnswers"
-                           Grid.Row="1"
-                           Fill="{Binding Fill, ElementName=colorTestFail}"
-                           HorizontalAlignment="Left"
-                           Height="20"
-                           Margin="150,50,0,0"
-                           VerticalAlignment="Top"
-                           Width="200"/>
-                <Rectangle x:Name="rctTestResultUnknown"
-                           Grid.Row="1"
-                           Fill="{Binding Fill, ElementName=colorTestUnknown}"
-                           HorizontalAlignment="Left"
-                           Height="20"
-                           Margin="150,80,0,0"
-                           VerticalAlignment="Top"
-                           Width="200"/>
+                <ProgressBar x:Name="prbTestResultRightAnswers"
+                             Grid.Row="1"
+                             BorderBrush="{Binding Fill, ElementName=colorTestGood}"
+                             Foreground="{Binding Fill, ElementName=colorTestGood}"
+                             Background="{x:Null}"
+                             HorizontalAlignment="Left"
+                             Height="20"
+                             Margin="150,20,0,0"
+                             VerticalAlignment="Top"
+                             Width="200"/>
+                <ProgressBar x:Name="prbTestResultWrongAnswers"
+                             Grid.Row="1"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Height="20"
+                             Width="200"
+                             Margin="150,50,0,0"
+                             Background="{x:Null}"
+                             BorderBrush="{Binding Fill, ElementName=colorTestFail}"
+                             Foreground="{Binding Fill, ElementName=colorTestFail}"/>
+                <ProgressBar x:Name="prbTestResultUnknown"
+                             Grid.Row="1"
+                             BorderBrush="{Binding Fill, ElementName=colorTestUnknown}"
+                             Foreground="{Binding Fill, ElementName=colorTestUnknown}"
+                             Background="{x:Null}"
+                             HorizontalAlignment="Left"
+                             Height="20"
+                             Margin="150,80,0,0"
+                             VerticalAlignment="Top"
+                             Width="200"/>
                 <TextBlock HorizontalAlignment="Left"
                            Grid.Row="1"
                            Margin="19,20,0,0"
