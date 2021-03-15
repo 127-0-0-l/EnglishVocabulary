@@ -1203,7 +1203,7 @@
         <Grid x:Name="grdDeleteTopic"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Background="{Binding Background, ElementName=cnvBase}"
-              Visibility="Hidden">
+              Visibility="Visible">
             <ComboBox x:Name="cbDeleteTopicTopic"
                       HorizontalAlignment="Left"
                       Margin="10,10,0,0"
@@ -1212,11 +1212,20 @@
                       Foreground="{Binding Fill, ElementName=colorText}"
                       FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                       FontSize="14"/>
+            <ComboBox x:Name="cbDeleteTopicSubtopic"
+                      HorizontalAlignment="Left"
+                      Margin="10,40,0,0"
+                      VerticalAlignment="Top"
+                      Width="250"
+                      Foreground="{Binding Fill, ElementName=colorText}"
+                      FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
+                      FontSize="14"
+                      IsEnabled="False"/>
             <Button x:Name="btnDeleteTopicDelete"
                     Template="{StaticResource CustomButton}"
                     HorizontalAlignment="Left"
                     Height="30"
-                    Margin="10,37,0,0"
+                    Margin="10,70,0,0"
                     VerticalAlignment="Top"
                     Width="80"
                     Content="Delete"

@@ -12,9 +12,9 @@ namespace EnglishVocabulary
         public static void CreateTopic(Topic topic)
         {
             using (IDbConnection db = new SQLiteConnection(
-            ConfigurationManager.
-            ConnectionStrings["VocabularyDBConnectionString"].
-            ConnectionString))
+                ConfigurationManager.
+                ConnectionStrings["VocabularyDBConnectionString"].
+                ConnectionString))
             {
                 string queryString =
                     "select Topic " +
@@ -76,7 +76,8 @@ namespace EnglishVocabulary
                     // then insert it.
                     if (count == 0)
                     {
-                        db.Execute($"insert into \"Subtopic {topic.Subtopic.SubtopicName}\" " +
+                        db.Execute(
+                            $"insert into \"Subtopic {topic.Subtopic.SubtopicName}\" " +
                             $"(LeftWord ,RightWord)" +
                             $" values ('{word.Left}' ,'{word.Right}')");
                     }
@@ -123,6 +124,21 @@ namespace EnglishVocabulary
             {
                 var words = db.Query<(string, string)>($"select LeftWord, RightWord from \"Subtopic {subtopic}\"").ToList();
                 return words;
+            }
+        }
+
+        public static void DeleteSubtopic(string subtopicName)
+        {
+            using (IDbConnection db = new SQLiteConnection(
+                ConfigurationManager.
+                ConnectionStrings["VocabularyDBConnectionString"].
+                ConnectionString))
+            {
+                db.Execute(
+                    $"drop table \"Subtopic {subtopicName}\"");
+
+                db.Execute(
+                    $"delete from table \"Subtopic {subtopicName}\"");
             }
         }
     }
