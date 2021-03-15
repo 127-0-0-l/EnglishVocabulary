@@ -127,7 +127,7 @@ namespace EnglishVocabulary
             }
         }
 
-        public static void DeleteSubtopic(string subtopicName)
+        public static void DeleteSubtopic(string topicName, string subtopicName)
         {
             using (IDbConnection db = new SQLiteConnection(
                 ConfigurationManager.
@@ -138,7 +138,13 @@ namespace EnglishVocabulary
                     $"drop table \"Subtopic {subtopicName}\"");
 
                 db.Execute(
-                    $"delete from table \"Subtopic {subtopicName}\"");
+                    $"delete from \"Topic {topicName}\" where Subtopic=\"{subtopicName}\"");
+
+                if(GetSubtopics(topicName).Count == 0)
+                {
+                    db.Execute(
+                        $"drop table \"Table {topicName}\"");
+                }
             }
         }
     }
