@@ -86,12 +86,12 @@ namespace EnglishVocabulary
                 }
             }
 
-            int[] indexes = GetRandomUniqueIndexes(0, allWords.Count - 1, allWords.Count - 1);
+            int[] indexes = GetRandomUniqueIndexes(0, allWords.Count - 1, allWords.Count);
             int currentIndex = 0;
 
             int rightAnswersCount = 0;
             int wrongAnswersCount = 0;
-            int noAnswersCount = 0;
+            int noAnswersCount = allWords.Count;
 
             SetCurrentWords();
 
@@ -103,17 +103,15 @@ namespace EnglishVocabulary
                         Where(rb => rb.IsChecked == true).
                         FirstOrDefault();
 
-                if(checkedRadioButton == null)
-                {
-                    noAnswersCount++;
-                }
-                else if(checkedRadioButton.Content.ToString() == allWords[indexes[currentIndex]].right)
+                if(checkedRadioButton.Content.ToString() == allWords[indexes[currentIndex]].right)
                 {
                     rightAnswersCount++;
+                    noAnswersCount--;
                 }
                 else
                 {
                     wrongAnswersCount++;
+                    noAnswersCount--;
                 }
 
                 currentIndex++;
@@ -140,6 +138,8 @@ namespace EnglishVocabulary
 
             void SetCurrentWords()
             {
+                tbTestTestCurrentWordNumber.Text = $"{currentIndex + 1} / {allWords.Count}";
+
                 tbTestTestWord.Text = allWords[indexes[currentIndex]].left;
 
                 string[] words = GetWordSet();
