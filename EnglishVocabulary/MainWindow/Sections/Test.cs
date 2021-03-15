@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace EnglishVocabulary
 {
@@ -86,6 +87,7 @@ namespace EnglishVocabulary
                 }
             }
 
+            string[] answers = new string[allWords.Count];
             int[] indexes = GetRandomUniqueIndexes(0, allWords.Count - 1, allWords.Count);
             int currentIndex = 0;
 
@@ -110,11 +112,13 @@ namespace EnglishVocabulary
                 {
                     rightAnswersCount++;
                     noAnswersCount--;
+                    answers[currentIndex] = checkedRadioButton.Content.ToString();
                 }
                 else if (checkedRadioButton != null)
                 {
                     wrongAnswersCount++;
                     noAnswersCount--;
+                    answers[currentIndex] = checkedRadioButton.Content.ToString();
                 }
 
                 currentIndex++;
@@ -201,6 +205,33 @@ namespace EnglishVocabulary
                 btnTestTestFinish.Click -= btnTestTestFinish_Click;
 
                 DtawResultRectangles();
+
+                for (int i = 0; i < allWords.Count; i++)
+                {
+                    if(answers[i] == allWords[indexes[i]].right)
+                    {
+                        TextRange text = new TextRange(rtbTestResultWords.Document.ContentEnd, rtbTestResultWords.Document.ContentEnd);
+                        text.Text = "right\n";
+                        text.ApplyPropertyValue(ForegroundProperty, colorTestGood.Fill);
+                        rtbTestResultWords.AppendText($"{allWords[indexes[i]].left} - {allWords[indexes[i]].right}\n\n");
+                    }
+                    else if (answers[i] == null)
+                    {
+                        TextRange text = new TextRange(rtbTestResultWords.Document.ContentEnd, rtbTestResultWords.Document.ContentEnd);
+                        text.Text = "no answer\n";
+                        text.ApplyPropertyValue(ForegroundProperty, colorTestUnknown.Fill);
+                        rtbTestResultWords.AppendText($"{allWords[indexes[i]].left} - {allWords[indexes[i]].right}\n\n");
+                    }
+                    else
+                    {
+                        TextRange text = new TextRange(rtbTestResultWords.Document.ContentEnd, rtbTestResultWords.Document.ContentEnd);
+                        text.Text = "wrong\n";
+                        text.ApplyPropertyValue(ForegroundProperty, colorTestFail.Fill);
+                        rtbTestResultWords.AppendText($"word: {allWords[indexes[i]].left}\n");
+                        rtbTestResultWords.AppendText($"your answer: {answers[i]}\n");
+                        rtbTestResultWords.AppendText($"right answer: {allWords[indexes[i]].right}\n\n");
+                    }
+                }
             }
 
             void DtawResultRectangles()
