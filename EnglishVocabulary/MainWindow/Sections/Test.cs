@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Media;
 
 namespace EnglishVocabulary
 {
@@ -46,50 +47,23 @@ namespace EnglishVocabulary
             }
         }
 
-        private void ShowTestGrid()
-        {
-            grdTestTest.Visibility = Visibility.Visible;
-            grdTestHeader.Visibility = Visibility.Hidden;
-            grdTestResult.Visibility = Visibility.Hidden;
-        }
-        
-        private void ShowTestResults()
-        {
-            grdTestTest.Visibility = Visibility.Hidden;
-            grdTestHeader.Visibility = Visibility.Visible;
-            grdTestResult.Visibility = Visibility.Visible;
-        }
-
-        private void ResetTestHeader()
-        {
-            cbTestHeaderTopic.Text = "";
-            cbTestHeaderSubtopic.Text = "";
-            cbTestHeaderSubtopic.IsEnabled = false;
-            cbTestHeaderMode.Text = "";
-            cbTestHeaderMode.IsEnabled = false;
-            btnTestHeaderStart.IsEnabled = false;
-        }
-
         private void StartTest()
         {
-            List<(string left, string right)> allWords = DataBase.GetWords(cbTestHeaderSubtopic.SelectedItem.ToString());
-            prbTestResultRightAnswers.Maximum = allWords.Count;
-            prbTestResultWrongAnswers.Maximum = allWords.Count;
-            prbTestResultUnknown.Maximum = allWords.Count;
+            List<(string left, string right)> allWords =
+                DataBase.GetWords(cbTestHeaderSubtopic.SelectedItem.ToString());
 
-            if (cbTestHeaderMode.SelectedItem.ToString() == "Inverse")
+            SetProgressBarsMaxValue(allWords.Count);
+
+            string testMode = cbTestHeaderMode.SelectedItem.ToString();
+            if (testMode == "Inverse")
             {
-                for (int i = 0; i < allWords.Count; i++)
-                {
-                    (string left, string right) temp = (allWords[i].left, allWords[i].right);
-                    Swap(ref temp.left, ref temp.right);
-                    allWords[i] = temp;
-                }
+                InverseWords();
             }
 
-            string[] answers = new string[allWords.Count];
             int[] indexes = GetRandomUniqueIndexes(0, allWords.Count - 1, allWords.Count);
             int currentIndex = 0;
+
+            string[] answers = new string[allWords.Count];
 
             int rightAnswersCount = 0;
             int wrongAnswersCount = 0;
@@ -98,6 +72,9 @@ namespace EnglishVocabulary
             SetCurrentWords();
 
             btnTestTestNext.Click += new RoutedEventHandler(btnTestTestNext_Click);
+            btnTestTestFinish.Click += new RoutedEventHandler(btnTestTestFinish_Click);
+
+            #region Methods
 
             void btnTestTestNext_Click(object sender, RoutedEventArgs e)
             {
@@ -107,19 +84,7 @@ namespace EnglishVocabulary
                         Where(rb => rb.IsChecked == true).
                         FirstOrDefault();
 
-                if (checkedRadioButton != null &&
-                    checkedRadioButton.Content.ToString() == allWords[indexes[currentIndex]].right)
-                {
-                    rightAnswersCount++;
-                    noAnswersCount--;
-                    answers[currentIndex] = checkedRadioButton.Content.ToString();
-                }
-                else if (checkedRadioButton != null)
-                {
-                    wrongAnswersCount++;
-                    noAnswersCount--;
-                    answers[currentIndex] = checkedRadioButton.Content.ToString();
-                }
+                CheckAnswer(checkedRadioButton);
 
                 currentIndex++;
 
@@ -132,37 +97,19 @@ namespace EnglishVocabulary
                     SetCurrentWords();
                 }
 
-                if (checkedRadioButton != null)
-                {
-                    checkedRadioButton.IsChecked = false;
-                }
+                ResetRadioButton(checkedRadioButton);
             }
-
-            btnTestTestFinish.Click += new RoutedEventHandler(btnTestTestFinish_Click);
 
             void btnTestTestFinish_Click(object sender, RoutedEventArgs e)
             {
                 FinishTest();
             }
 
-            void SetCurrentWords()
-            {
-                tbTestTestCurrentWordNumber.Text = $"{currentIndex + 1} / {allWords.Count}";
-
-                tbTestTestWord.Text = allWords[indexes[currentIndex]].left;
-
-                string[] words = GetWordSet();
-
-                rbtnTestTest1.Content = words[0];
-                rbtnTestTest2.Content = words[1];
-                rbtnTestTest3.Content = words[2];
-                rbtnTestTest4.Content = words[3];
-            }
-            
             string[] GetWordSet()
             {
-                string[] words = new string[4];
                 Random rnd = new Random();
+
+                string[] words = new string[4];
 
                 int rightWordIndex = rnd.Next(4);
                 int[] tempIndexes = GetRandomUniqueIndexes(0, allWords.Count - 1, 4);
@@ -170,13 +117,13 @@ namespace EnglishVocabulary
 
                 for (int i = 0; i < 4; i++)
                 {
-                    if(i == rightWordIndex)
+                    if (i == rightWordIndex)
                     {
                         words[i] = allWords[indexes[currentIndex]].right;
                     }
                     else
                     {
-                        if(tempIndexes[currentTempIndex] != currentIndex)
+                        if (tempIndexes[currentTempIndex] != currentIndex)
                         {
                             words[i] = allWords[tempIndexes[currentTempIndex]].right;
                         }
@@ -193,40 +140,113 @@ namespace EnglishVocabulary
 
             void FinishTest()
             {
-                grdTestTest.Visibility = Visibility.Hidden;
-                grdTestHeader.Visibility = Visibility.Visible;
-                grdTestResult.Visibility = Visibility.Visible;
+                ShowTestResultsGrid();
+                ShowAnswersRatio();
+                ShowAnswersResult();
 
+                btnTestTestNext.Click -= btnTestTestNext_Click;
+                btnTestTestFinish.Click -= btnTestTestFinish_Click;
+            }
+
+            void SetProgressBarsMaxValue(int value)
+            {
+                prbTestResultRightAnswers.Maximum = value;
+                prbTestResultWrongAnswers.Maximum = value;
+                prbTestResultUnknown.Maximum = value;
+            }
+
+            void SetCurrentWords()
+            {
+                tbTestTestCurrentWordNumber.Text = $"{currentIndex + 1} / {allWords.Count}";
+
+                tbTestTestWord.Text = allWords[indexes[currentIndex]].left;
+
+                string[] words = GetWordSet();
+
+                rbtnTestTest1.Content = words[0];
+                rbtnTestTest2.Content = words[1];
+                rbtnTestTest3.Content = words[2];
+                rbtnTestTest4.Content = words[3];
+            }
+
+            void InverseWords()
+            {
+                for (int i = 0; i < allWords.Count; i++)
+                {
+                    (string left, string right) temp = (allWords[i].left, allWords[i].right);
+                    Swap(ref temp.left, ref temp.right);
+                    allWords[i] = temp;
+                }
+            }
+
+            void ShowAnswersRatio()
+            {
                 tbTestResultRightAnswers.Text = rightAnswersCount.ToString();
                 tbTestResultWrongAnswers.Text = wrongAnswersCount.ToString();
                 tbTestResultNoAnswer.Text = noAnswersCount.ToString();
 
-                btnTestTestNext.Click -= btnTestTestNext_Click;
-                btnTestTestFinish.Click -= btnTestTestFinish_Click;
+                prbTestResultRightAnswers.Value = rightAnswersCount;
+                prbTestResultWrongAnswers.Value = wrongAnswersCount;
+                prbTestResultUnknown.Value = noAnswersCount;
+            }
 
-                DtawResultRectangles();
+            void CheckAnswer(RadioButton radioButton)
+            {
+                if (radioButton != null &&
+                    radioButton.Content.ToString() == allWords[indexes[currentIndex]].right)
+                {
+                    rightAnswersCount++;
+                    noAnswersCount--;
+                    answers[currentIndex] = radioButton.Content.ToString();
+                }
+                else if (radioButton != null)
+                {
+                    wrongAnswersCount++;
+                    noAnswersCount--;
+                    answers[currentIndex] = radioButton.Content.ToString();
+                }
+            }
 
+            void ResetRadioButton(RadioButton radioButton)
+            {
+                if (radioButton != null)
+                {
+                    radioButton.IsChecked = false;
+                }
+            }
+
+            void AppendColorText(string text, Brush color)
+            {
+                TextRange range =
+                            new TextRange(
+                                rtbTestResultWords.Document.ContentEnd,
+                                rtbTestResultWords.Document.ContentEnd);
+                range.Text = text;
+                range.ApplyPropertyValue(ForegroundProperty, color);
+            }
+
+            void ShowAnswersResult()
+            {
                 for (int i = 0; i < allWords.Count; i++)
                 {
-                    if(answers[i] == allWords[indexes[i]].right)
+                    if (answers[i] == allWords[indexes[i]].right)
                     {
-                        TextRange text = new TextRange(rtbTestResultWords.Document.ContentEnd, rtbTestResultWords.Document.ContentEnd);
-                        text.Text = "right\n";
-                        text.ApplyPropertyValue(ForegroundProperty, colorTestGood.Fill);
-                        rtbTestResultWords.AppendText($"{allWords[indexes[i]].left} - {allWords[indexes[i]].right}\n\n");
+                        AppendColorText("right\n", colorTestGood.Fill);
+
+                        rtbTestResultWords.
+                            AppendText($"{allWords[indexes[i]].left} - {allWords[indexes[i]].right}\n\n");
                     }
                     else if (answers[i] == null)
                     {
-                        TextRange text = new TextRange(rtbTestResultWords.Document.ContentEnd, rtbTestResultWords.Document.ContentEnd);
-                        text.Text = "no answer\n";
-                        text.ApplyPropertyValue(ForegroundProperty, colorTestUnknown.Fill);
-                        rtbTestResultWords.AppendText($"{allWords[indexes[i]].left} - {allWords[indexes[i]].right}\n\n");
+                        AppendColorText("no answer\n", colorTestUnknown.Fill);
+
+                        rtbTestResultWords.
+                            AppendText($"{allWords[indexes[i]].left} - {allWords[indexes[i]].right}\n\n");
                     }
                     else
                     {
-                        TextRange text = new TextRange(rtbTestResultWords.Document.ContentEnd, rtbTestResultWords.Document.ContentEnd);
-                        text.Text = "wrong\n";
-                        text.ApplyPropertyValue(ForegroundProperty, colorTestFail.Fill);
+                        AppendColorText("wrong\n", colorTestFail.Fill);
+
                         rtbTestResultWords.AppendText($"word: {allWords[indexes[i]].left}\n");
                         rtbTestResultWords.AppendText($"your answer: {answers[i]}\n");
                         rtbTestResultWords.AppendText($"right answer: {allWords[indexes[i]].right}\n\n");
@@ -234,12 +254,31 @@ namespace EnglishVocabulary
                 }
             }
 
-            void DtawResultRectangles()
-            {
-                prbTestResultRightAnswers.Value = rightAnswersCount;
-                prbTestResultWrongAnswers.Value = wrongAnswersCount;
-                prbTestResultUnknown.Value = noAnswersCount;
-            }
+            #endregion
+        }
+
+        private void ShowTestGrid()
+        {
+            grdTestTest.Visibility = Visibility.Visible;
+            grdTestHeader.Visibility = Visibility.Hidden;
+            grdTestResult.Visibility = Visibility.Hidden;
+        }
+
+        private void ShowTestResultsGrid()
+        {
+            grdTestTest.Visibility = Visibility.Hidden;
+            grdTestHeader.Visibility = Visibility.Visible;
+            grdTestResult.Visibility = Visibility.Visible;
+        }
+
+        private void ResetTestHeader()
+        {
+            cbTestHeaderTopic.Text = "";
+            cbTestHeaderSubtopic.Text = "";
+            cbTestHeaderSubtopic.IsEnabled = false;
+            cbTestHeaderMode.Text = "";
+            cbTestHeaderMode.IsEnabled = false;
+            btnTestHeaderStart.IsEnabled = false;
         }
     }
 }
