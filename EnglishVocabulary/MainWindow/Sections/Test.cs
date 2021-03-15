@@ -232,7 +232,7 @@ namespace EnglishVocabulary
                 TextRange range = new TextRange(
                     rtbTestResultWords.Document.ContentStart,
                     rtbTestResultWords.Document.ContentEnd);
-                range.Text = "";
+                range.Text = "\r\n";
 
                 for (int i = 0; i < allWords.Count; i++)
                 {
