@@ -30,7 +30,8 @@ namespace EnglishVocabulary
         /// </summary>
         private void btnMenuEditTopic_Click(object sender, RoutedEventArgs e)
         {
-            SetActiveSection(grdEditTopic);
+            MessageBox.Show("will be added in next versions");
+            //SetActiveSection(grdEditTopic);
         }
 
         /// <summary>
@@ -47,7 +48,8 @@ namespace EnglishVocabulary
         /// </summary>
         private void btnMenuColorTheme_Click(object sender, RoutedEventArgs e)
         {
-            SetActiveSection(grdColorTheme);
+            MessageBox.Show("will be added in next versions");
+            //SetActiveSection(grdColorTheme);
         }
 
         /// <summary>

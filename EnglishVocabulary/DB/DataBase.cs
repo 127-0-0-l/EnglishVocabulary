@@ -143,7 +143,10 @@ namespace EnglishVocabulary
                 if(GetSubtopics(topicName).Count == 0)
                 {
                     db.Execute(
-                        $"drop table \"Table {topicName}\"");
+                        $"drop table \"Topic {topicName}\"");
+
+                    db.Execute(
+                        $"delete from Topics where Topic=\"{topicName}\"");
                 }
             }
         }

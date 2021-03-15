@@ -549,39 +549,36 @@
     </Window.Resources>
 
     <Grid x:Name="grdMain">
-        <Rectangle x:Name="colorHeader" Fill="#FF4D606E" Visibility="Hidden"/>
-        <Rectangle x:Name="colorHeaderText" Fill="#FFF5F5F5" Visibility="Hidden"/>
-        <Rectangle x:Name="colorHeaderButton" Fill="#FFF5F5F5" Visibility="Hidden"/>
-        <Rectangle x:Name="colorHeaderButtonEnter" Fill="#000" Visibility="Hidden"/>
-        <Rectangle x:Name="colorHeaderButtonClick" Fill="#FF8A8A8A" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeader" Fill="#4d606e" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderText" Fill="#f5f5f5" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderButton" Fill="#f5f5f5" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderButtonEnter" Fill="#ffb400" Visibility="Hidden"/>
+        <Rectangle x:Name="colorHeaderButtonClick" Fill="#70a1d7" Visibility="Hidden"/>
 
-        <Rectangle x:Name="colorScrollViewer" Fill="#FF8A8A8A" Visibility="Hidden"/>
-        <Rectangle x:Name="colorMenu" Fill="#FF6356E5" Visibility="Hidden"/>
+        <Rectangle x:Name="colorScrollViewer" Fill="#5685e5" Visibility="Hidden"/>
+        <Rectangle x:Name="colorMenu" Fill="#3d57d3" Visibility="Hidden"/>
 
-        <Rectangle x:Name="colorButton" Fill="#FF5685E5" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonDisabled" Fill="#FF8AA6DE" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonEnter" Fill="#FF225FDC" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonClick" Fill="#FF8A8A8A" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonText" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorButtonTextDisabled" Fill="#FFC20000" Visibility="Hidden"/>
-        <Rectangle x:Name="colorBackground" Fill="White" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButton" Fill="#6078ea" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonDisabled" Fill="#8e99ce" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonEnter" Fill="#4965ea" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonClick" Fill="#3a52c2" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonText" Fill="#f5f5f5" Visibility="Hidden"/>
+        <Rectangle x:Name="colorButtonTextDisabled" Fill="#d3d4d8" Visibility="Hidden"/>
+        <Rectangle x:Name="colorBackground" Fill="#f5f5f5" Visibility="Hidden"/>
 
-        <Rectangle x:Name="colorText" Fill="Black" Visibility="Hidden"/>
-        <Rectangle x:Name="colorTextSelected" Fill="#FF005BFF" Visibility="Hidden"/>
+        <Rectangle x:Name="colorText" Fill="#2d4059" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTextSelected" Fill="#70a1d7" Visibility="Hidden"/>
 
-        <Rectangle x:Name="colorImage" Fill="WhiteSmoke" Visibility="Hidden"/>
+        <Rectangle x:Name="colorImage" Fill="#dbe2ef" Visibility="Hidden"/>
 
-        <Rectangle x:Name="colorTestHeader" Fill="#FF7E7E7E" Visibility="Hidden"/>
-        <Rectangle x:Name="colorTestGood" Fill="#FF00D804" Visibility="Hidden"/>
-        <Rectangle x:Name="colorTestFail" Fill="#FFE20700" Visibility="Hidden"/>
-        <Rectangle x:Name="colorTestUnknown" Fill="#FFCFE600" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestHeader" Fill="#4d606e" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestGood" Fill="#61b15a" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestFail" Fill="#f47c7c" Visibility="Hidden"/>
+        <Rectangle x:Name="colorTestUnknown" Fill="#f0d43a" Visibility="Hidden"/>
 
-        <Rectangle x:Name="colorComboBox" Fill="#FFB7B7B7" Visibility="Hidden"/>
+        <Rectangle x:Name="colorComboBox" Fill="#cecece" Visibility="Hidden"/>
 
-        <Rectangle x:Name="colorRadioButton" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorRadioButtonBorder" Fill="#000fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorRadioButtonSelected" Fill="#fff" Visibility="Hidden"/>
-        <Rectangle x:Name="colorRadioButtonBorderSelected" Fill="#fff" Visibility="Hidden"/>
+        <Rectangle x:Name="colorRadioButton" Fill="#f5f5f5" Visibility="Hidden"/>
 
         <Rectangle x:Name="colorCaret" Fill="#FFFFA400" Visibility="Hidden"/>
 
@@ -792,7 +789,6 @@
                              Margin="40,40,0,0"
                              VerticalAlignment="Top"
                              Background="{Binding Fill, ElementName=colorRadioButton}"
-                             BorderBrush="{Binding Fill, ElementName=colorRadioButtonBorder}"
                              Foreground="{Binding Fill, ElementName=colorText}"
                              FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                              FontSize="14"/>
@@ -803,7 +799,6 @@
                              Margin="40,60,0,0"
                              VerticalAlignment="Top"
                              Background="{Binding Fill, ElementName=colorRadioButton}"
-                             BorderBrush="{Binding Fill, ElementName=colorRadioButtonBorder}"
                              Foreground="{Binding Fill, ElementName=colorText}"
                              FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                              FontSize="14"/>
@@ -814,7 +809,6 @@
                              Margin="40,80,0,0"
                              VerticalAlignment="Top"
                              Background="{Binding Fill, ElementName=colorRadioButton}"
-                             BorderBrush="{Binding Fill, ElementName=colorRadioButtonBorder}"
                              Foreground="{Binding Fill, ElementName=colorText}"
                              FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                              FontSize="14"/>
@@ -825,7 +819,6 @@
                              Margin="40,100,0,0"
                              VerticalAlignment="Top"
                              Background="{Binding Fill, ElementName=colorRadioButton}"
-                             BorderBrush="{Binding Fill, ElementName=colorRadioButtonBorder}"
                              Foreground="{Binding Fill, ElementName=colorText}"
                              FontFamily="/EnglishVocabulary;component/Fonts/#DIN Round Pro"
                              FontSize="14"/>
