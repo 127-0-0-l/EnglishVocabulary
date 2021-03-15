@@ -122,7 +122,9 @@ namespace EnglishVocabulary
                 ConnectionStrings["VocabularyDBConnectionString"].
                 ConnectionString))
             {
-                var words = db.Query<(string, string)>($"select LeftWord, RightWord from \"Subtopic {topic} {subtopic}\"").ToList();
+                var words = db.
+                    Query<(string, string)>($"select LeftWord, RightWord from \"Subtopic {topic} {subtopic}\"").
+                    ToList();
                 return words;
             }
         }
