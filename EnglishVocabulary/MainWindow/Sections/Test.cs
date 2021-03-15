@@ -95,7 +95,9 @@ namespace EnglishVocabulary
 
             SetCurrentWords();
 
-            btnTestTestNext.Click += (s, a) =>
+            btnTestTestNext.Click += new RoutedEventHandler(btnTestTestNext_Click);
+
+            void btnTestTestNext_Click(object sender, RoutedEventArgs e)
             {
                 RadioButton checkedRadioButton =
                     grdTestTest.Children.
@@ -103,12 +105,13 @@ namespace EnglishVocabulary
                         Where(rb => rb.IsChecked == true).
                         FirstOrDefault();
 
-                if(checkedRadioButton.Content.ToString() == allWords[indexes[currentIndex]].right)
+                if (checkedRadioButton != null &&
+                    checkedRadioButton.Content.ToString() == allWords[indexes[currentIndex]].right)
                 {
                     rightAnswersCount++;
                     noAnswersCount--;
                 }
-                else
+                else if (checkedRadioButton != null)
                 {
                     wrongAnswersCount++;
                     noAnswersCount--;
@@ -116,7 +119,7 @@ namespace EnglishVocabulary
 
                 currentIndex++;
 
-                if(currentIndex == indexes.Length)
+                if (currentIndex == indexes.Length)
                 {
                     FinishTest();
                 }
@@ -125,16 +128,18 @@ namespace EnglishVocabulary
                     SetCurrentWords();
                 }
 
-                if(checkedRadioButton != null)
+                if (checkedRadioButton != null)
                 {
                     checkedRadioButton.IsChecked = false;
                 }
-            };
+            }
 
-            btnTestTestFinish.Click += (s, a) =>
+            btnTestTestFinish.Click += new RoutedEventHandler(btnTestTestFinish_Click);
+
+            void btnTestTestFinish_Click(object sender, RoutedEventArgs e)
             {
                 FinishTest();
-            };
+            }
 
             void SetCurrentWords()
             {
@@ -191,6 +196,9 @@ namespace EnglishVocabulary
                 tbTestResultRightAnswers.Text = rightAnswersCount.ToString();
                 tbTestResultWrongAnswers.Text = wrongAnswersCount.ToString();
                 tbTestResultNoAnswer.Text = noAnswersCount.ToString();
+
+                btnTestTestNext.Click -= btnTestTestNext_Click;
+                btnTestTestFinish.Click -= btnTestTestFinish_Click;
 
                 DtawResultRectangles();
             }
