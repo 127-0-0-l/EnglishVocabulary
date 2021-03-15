@@ -33,9 +33,16 @@ namespace EnglishVocabulary
 
         private void btnTestHeaderStart_Click(object sender, RoutedEventArgs e)
         {
-            StartTest();
-            ShowTestGrid();
-            ResetTestHeader();
+            if(DataBase.GetWords(cbTestHeaderSubtopic.SelectedItem.ToString()).Count > 3)
+            {
+                StartTest();
+                ShowTestGrid();
+                ResetTestHeader();
+            }
+            else
+            {
+                MessageBox.Show("Test should contain at least 4 words. You can add words in current subtopic or choose other");
+            }
         }
 
         private void ShowTestGrid()
@@ -115,6 +122,7 @@ namespace EnglishVocabulary
                 else
                 {
                     SetCurrentWords();
+                    checkedRadioButton.IsChecked = false;
                 }
             };
 
