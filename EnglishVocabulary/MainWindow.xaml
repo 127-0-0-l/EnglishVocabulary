@@ -757,7 +757,7 @@
         <Grid x:Name="grdTest"
               Margin="{Binding Margin, ElementName=cnvBase}"
               Focusable="True"
-              Visibility="Visible"
+              Visibility="Hidden"
               Background="{Binding Fill, ElementName=colorBackground}">
             <Grid x:Name="grdTestTest"
                   Visibility="Hidden"
@@ -856,7 +856,7 @@
             </Grid>
             <Grid x:Name="grdTestResult"
                   Background="{Binding Fill, ElementName=colorBackground}"
-                  Visibility="Visible">
+                  Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="{Binding Height, ElementName=grdTestHeader}"/>
                     <RowDefinition Height="*"/>

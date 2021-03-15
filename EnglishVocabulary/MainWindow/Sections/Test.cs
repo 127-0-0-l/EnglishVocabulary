@@ -125,6 +125,10 @@ namespace EnglishVocabulary
                 else
                 {
                     SetCurrentWords();
+                }
+
+                if(checkedRadioButton != null)
+                {
                     checkedRadioButton.IsChecked = false;
                 }
             };
