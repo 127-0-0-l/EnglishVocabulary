@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
@@ -20,6 +17,11 @@ namespace EnglishVocabulary
                 string topicName = cbTestHeaderTopic.SelectedItem.ToString();
                 cbTestHeaderSubtopic.ItemsSource = DataBase.GetSubtopics(topicName);
                 cbTestHeaderSubtopic.IsEnabled = true;
+
+                cbTestHeaderSubtopic.Text = "";
+                cbTestHeaderMode.Text = "";
+                cbTestHeaderMode.IsEnabled = false;
+                btnTestHeaderStart.IsEnabled = false;
             }
         }
 
@@ -35,7 +37,7 @@ namespace EnglishVocabulary
 
         private void btnTestHeaderStart_Click(object sender, RoutedEventArgs e)
         {
-            if(DataBase.GetWords(cbTestHeaderSubtopic.SelectedItem.ToString()).Count > 3)
+            if(DataBase.GetWords(cbTestHeaderTopic.SelectedItem.ToString(), cbTestHeaderSubtopic.SelectedItem.ToString()).Count > 3)
             {
                 StartTest();
                 ShowTestGrid();
@@ -50,7 +52,7 @@ namespace EnglishVocabulary
         private void StartTest()
         {
             List<(string left, string right)> allWords =
-                DataBase.GetWords(cbTestHeaderSubtopic.SelectedItem.ToString());
+                DataBase.GetWords(cbTestHeaderTopic.SelectedItem.ToString(), cbTestHeaderSubtopic.SelectedItem.ToString());
 
             SetProgressBarsMaxValue(allWords.Count);
 
@@ -123,13 +125,13 @@ namespace EnglishVocabulary
                     }
                     else
                     {
-                        if (tempIndexes[currentTempIndex] != currentIndex)
+                        if (tempIndexes[currentTempIndex] != indexes[currentIndex])
                         {
                             words[i] = allWords[tempIndexes[currentTempIndex]].right;
                         }
                         else
                         {
-                            words[i] = allWords[3].right;
+                            words[i] = allWords[tempIndexes[3]].right;
                         }
                         currentTempIndex++;
                     }
@@ -227,6 +229,11 @@ namespace EnglishVocabulary
 
             void ShowAnswersResult()
             {
+                TextRange range = new TextRange(
+                    rtbTestResultWords.Document.ContentStart,
+                    rtbTestResultWords.Document.ContentEnd);
+                range.Text = "";
+
                 for (int i = 0; i < allWords.Count; i++)
                 {
                     if (answers[i] == allWords[indexes[i]].right)

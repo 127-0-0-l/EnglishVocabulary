@@ -75,6 +75,9 @@ namespace EnglishVocabulary
 
                     // Write all data in database (if no exist already).
                     DataBase.CreateTopic(topic);
+
+                    tbAddTopicTopic.Text = "";
+                    rtbAddTopicAllWords.Document.Blocks.Clear();
                 }
             }
             catch (Exception ex)
