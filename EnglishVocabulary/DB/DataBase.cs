@@ -100,6 +100,11 @@ namespace EnglishVocabulary
             }
         }
 
+        /* 
+            В методе ниже вылетает Exeption
+            При выборе чего-либо в Меню TEST        
+        */
+
         public static List<string> GetSubtopics(string topic)
         {
             using (IDbConnection db = new SQLiteConnection(
